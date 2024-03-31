@@ -1,113 +1,117 @@
-import Image from 'next/image'
+"use client"
+import React, { useEffect, useRef, useState } from "react";
+
+// next
+import Image from "next/image";
+
+// Components
+import Card from "@/components/Card";
+import ProductCard from "@/components/Cards/ProductCard";
+import GiftCard from "@/components/Cards/GiftCard";
+import TextCard from "@/components/Cards/TextCard";
+import ReadingEffect from "@/components/ReadingEffect";
+import TopScrollButton from "@/components/TopScrollButton";
 
 export default function Home() {
+  // useRef
+  const typingRef = useRef({innerText: ''});
+  const welcomeTypingRef = useRef({innerText: ''});
+  const videoRef = useRef(null);
+  const BackgroundImageRef = useRef(null);
+
+  // useState
+  // const [MarginRem, setMarginRem] = useState("-22rem");
+
+  useEffect(() => {
+    if(window.innerWidth <= 490){
+      videoRef.current.style.display = "none";
+      BackgroundImageRef.current.style.display = "block";
+    }else{
+      videoRef.current.style.display = "block";
+      BackgroundImageRef.current.style.display = "none";
+    }
+
+    try{
+      let program = "Programmer D";
+      let index = 0;
+      let TypingInterval = setInterval(() => {
+        if(index >= program.length){
+          clearInterval(TypingInterval)
+        }else{
+          welcomeTypingRef.current.innerText = program.substring(0, index += 1);
+        }
+      }, 50);
+    }catch(err){}
+
+    let video_collection = ["video1", "video2"];
+    let rand = Math.floor(Math.random()*2);
+    videoRef.current.src = "/videos/"+video_collection[rand]+".mp4";
+
+    let collection = ["HTML", "CSS", "Javascript", "Java", "Python", "c/c++", "Web Development", "App Development", "Reactjs", "Nextjs", "React Native"];
+    let position = 0; let index = 0;
+
+    let TypingInterval = setInterval(() => {
+      if (position >= collection.length) {
+        index = 0; position = 0;
+        typingRef.current.innerText = "";
+      }else{
+        if (index >= collection[position].length) {
+          index = 0;
+          position += 1;
+          typingRef.current.innerText = "";
+        } else {
+          typingRef.current.innerText = collection[position].substring(0, index += 1);
+        }
+      }
+    }, 400);
+    return () => clearInterval(TypingInterval);
+  }, [BackgroundImageRef]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
+        <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
+        <img src="/images/programming.jpg" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
+        <div className="w-full h-full backdrop-brightness-50 flex flex-col justify-center items-center absolute rounded-b-xl text-center">
+          <div className="flex flex-col justify-center items-start">
+            <h2 className="text-xl min-[480px]:text-5xl text-white mb-3">Welcome to <span ref={welcomeTypingRef} className="text-purple-500"></span></h2>
+            <h2 className="text-lg min-[485px]:text-2xl text-white">Learn <span ref={typingRef} className="text-purple-400 text-xl"></span><span className="text-slate-700">|</span></h2>
+          </div>
+          <div className="flex justify-start items-center">
+            <a href="https://www.youtube.com/programmerd7" target="_blank">
+            <button className="inline-block px-7 py-3 mb-1 mt-3 border-2 border-blue-500 text-blue-500 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" role="button" data-mdb-ripple="true" data-mdb-ripple-color="light">Go To Channel</button>
+            </a>
+          </div>
         </div>
       </div>
+      <h2 className="text-center text-4xl mt-10 mb-10">Recommended Courses</h2>
+      <div className="flex justify-around items-center flex-wrap mt-20 mb-20">
+        <Card title="Tailwindcss" src="/images/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
+        
+        <Card title="Chat GPT" src="/images/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+        <Card title="C Language" src="/images/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
+        <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />
+        <TextCard title={"Javascript Full Course in 2024!"} desc={"Welcome to the Programmer D beginner's JavaScript course! In this article we will look at JavaScript from a high level, answering questions such as \"What is it?\" and \"What can you do with it?\""} />
       </div>
-    </main>
+
+      <h2 className="text-center text-4xl mt-10 mb-5">My Gear</h2>
+      <div className="flex justify-around items-center flex-wrap mt-10 mb-20 overflow-x-hidden">
+        <ProductCard image={"/images/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
+        <ProductCard image={"/images/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
+      </div>
+
+      <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
+        {/* text */}
+        <ReadingEffect className="w-2/4 text-center mt-20 mb-20 text-2xl sm:text-5xl lg:text-6xl text-slate-50 select-none" text={"programmer "} textcase={"upper"} toNewText="D" toClass="text-blue-400" />
+        {/* image */}
+        <Image src={"/images/programmerd.png"} width={500} height={500} alt="image" className="w-2/4 h-auto" />
+      </div>
+
+      <TopScrollButton />
+    </>
   )
 }
