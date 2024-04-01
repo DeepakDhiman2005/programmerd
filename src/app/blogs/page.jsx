@@ -1,5 +1,5 @@
 "use client"
-import React, {useRef, useState, useEffect} from "react";
+import React, {useRef, useState, useEffect, Suspense} from "react";
 
 // components
 import Blogposts from "@/components/Blogposts";
@@ -53,7 +53,7 @@ const Blogs = () => {
         blogapi();
     }, []);
 
-    return <>  
+    return <Suspense>  
         <div className="pl-5 pr-5 pb-5 bg-slate-50">
             <div className="w-full flex justify-between items-center flex-col sm:flex-row">
                 {/* title */}
@@ -76,7 +76,7 @@ const Blogs = () => {
                 </div>
             }
         </div>
-    </>
+    </Suspense>
 }
 
 export default Blogs;

@@ -1,6 +1,6 @@
 "use client"
 import MessageEmit from "@/components/MessageEmit";
-import React, {useRef, useState} from "react";
+import React, {Suspense, useRef, useState} from "react";
 
 /** @param Contact - Contact us */
 const Contact = () => {
@@ -61,7 +61,7 @@ const Contact = () => {
         }
     }
 
-    return <>
+    return <Suspense>
         <MessageEmit success={SuccessMessage} position={"center"} display={MessageDisplay} message={Message} value={(e)=>{
             setMessageDisplay(e);
         }} />
@@ -92,7 +92,7 @@ const Contact = () => {
 
             <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={SubmitData}>Submit</button>
         </form>
-    </>
+    </Suspense>
 }
 
 export default Contact;

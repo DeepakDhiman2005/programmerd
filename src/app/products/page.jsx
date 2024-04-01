@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 // icons
 import { FaTools } from "react-icons/fa";
@@ -27,7 +27,7 @@ const Products = () => {
         func();
     }, []);
 
-    return <>
+    return <Suspense>
         <div className="flex justify-center items-center mt-10 mb-10 flex-col">
             <div className="flex justify-center items-center">
                 <FaTools className="text-purple-700" size={"30px"} />
@@ -76,7 +76,7 @@ const Products = () => {
                 <Image src={"https://rukminim2.flixcart.com/image/612/612/xif0q/computer/z/f/f/-original-imagtun66ff6zfjk.jpeg?q=70"} width={500} height={60} className="w-full h-[540px]" />
             </a>
         </div> */}
-    </>
+    </Suspense>
 }
 
 export default Products;

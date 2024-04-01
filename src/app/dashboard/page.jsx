@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { Suspense } from "react";
 
 // next
 import { useRouter } from "next/navigation";
@@ -13,7 +13,7 @@ const DashBoard = ({slug}) => {
     // router
     const router = useRouter();
 
-    return <>
+    return <Suspense>
         <div className="flex justify-start items-start p-4 pt-6">
             {/* sidebar */}
             <DashBoardSideBar value={(e)=>{
@@ -25,7 +25,7 @@ const DashBoard = ({slug}) => {
             {/* top button */}
             <TopScrollButton />
         </div>
-    </>
+    </Suspense>
 }
 
 export default DashBoard;

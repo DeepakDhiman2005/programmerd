@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 
 // next
 import { useSearchParams } from "next/navigation";
@@ -30,7 +30,7 @@ const SearchPage = () => {
         }catch(err){}
     }
 
-    return <>
+    return <Suspense>
         <h2 className="text-center mt-7 mb-7 font-bold text-2xl text-slate-900">Result for query: <span className="text-purple-700 font-semibold">{searchparams.get("query")}</span></h2>
 
         <div className="flex flex-col justify-center items-center">
@@ -73,7 +73,7 @@ const SearchPage = () => {
                 }
             </div>
         </div>
-    </>
+    </Suspense>
 }
 
 export default SearchPage;

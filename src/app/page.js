@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 
 // next
 import Image from "next/image";
@@ -23,13 +23,15 @@ export default function Home() {
   // const [MarginRem, setMarginRem] = useState("-22rem");
 
   useEffect(() => {
-    if(window.innerWidth <= 490){
-      videoRef.current.style.display = "none";
-      BackgroundImageRef.current.style.display = "block";
-    }else{
-      videoRef.current.style.display = "block";
-      BackgroundImageRef.current.style.display = "none";
-    }
+    try{
+      if(window.innerWidth <= 490){
+        videoRef.current.style.display = "none";
+        BackgroundImageRef.current.style.display = "block";
+      }else{
+        videoRef.current.style.display = "block";
+        BackgroundImageRef.current.style.display = "none";
+      }  
+    }catch(err){ }
 
     try{
       let program = "Programmer D";
@@ -41,34 +43,41 @@ export default function Home() {
           welcomeTypingRef.current.innerText = program.substring(0, index += 1);
         }
       }, 50);
+    }catch(err){ }
+
+    try{
+      let video_collection = ["video1", "video2"];
+      let rand = Math.floor(Math.random()*2);
+      videoRef.current.src = "/videos/"+video_collection[rand]+".mp4";
     }catch(err){}
 
-    let video_collection = ["video1", "video2"];
-    let rand = Math.floor(Math.random()*2);
-    videoRef.current.src = "/videos/"+video_collection[rand]+".mp4";
+    try{
+      let collection = ["HTML", "CSS", "Javascript", "Java", "Python", "c/c++", "Web Development", "App Development", "Reactjs", "Nextjs", "React Native"];
+      let position = 0; let index = 0;
 
-    let collection = ["HTML", "CSS", "Javascript", "Java", "Python", "c/c++", "Web Development", "App Development", "Reactjs", "Nextjs", "React Native"];
-    let position = 0; let index = 0;
-
-    let TypingInterval = setInterval(() => {
-      if (position >= collection.length) {
-        index = 0; position = 0;
-        typingRef.current.innerText = "";
-      }else{
-        if (index >= collection[position].length) {
-          index = 0;
-          position += 1;
+      let TypingInterval = setInterval(() => {
+        if (position >= collection.length) {
+          index = 0; position = 0;
           typingRef.current.innerText = "";
-        } else {
-          typingRef.current.innerText = collection[position].substring(0, index += 1);
+        }else{
+          if (index >= collection[position].length) {
+            index = 0;
+            position += 1;
+            typingRef.current.innerText = "";
+          } else {
+            typingRef.current.innerText = collection[position].substring(0, index += 1);
+          }
         }
-      }
-    }, 400);
-    return () => clearInterval(TypingInterval);
+      }, 400);
+      return () => clearInterval(TypingInterval);      
+    }catch(err){
+      console.log(err)
+    }
+
   }, [BackgroundImageRef]);
 
   return (
-    <>
+    <Suspense>
       <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
         <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
         <img src="/images/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
@@ -112,6 +121,6 @@ export default function Home() {
       </div>
 
       <TopScrollButton />
-    </>
+    </Suspense>
   )
 }

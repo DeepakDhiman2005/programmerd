@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react";
+import React, { Suspense } from "react";
 
 // next
 import Image from "next/image";
@@ -11,7 +11,7 @@ import { IoKeyOutline } from "react-icons/io5"; // password
 
 const Signup = () => {
 
-    return <>
+    return <Suspense>
         <div className="flex justify-center items-center w-full">
             <div className="flex flex-col justify-center items-start w-11/12 bg-white border border-solid rounded-md mt-4 mb-4">
                 <Image src={"/images/banner.png"} width={1000} height={100} alt="image" className="rounded-t-md w-full" />
@@ -38,7 +38,7 @@ const Signup = () => {
                 </form>
             </div>
         </div>
-    </>
+    </Suspense>
 }
 
 export default Signup;
