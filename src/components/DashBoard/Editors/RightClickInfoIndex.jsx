@@ -7,7 +7,10 @@ import { MdEdit } from "react-icons/md"; // edit
 import { MdOutlineDetails } from "react-icons/md"; // details
 import { BiSolidHide } from "react-icons/bi"; // hide
 
-const RightClickInfoIndex = ({ children, value = function () { } }) => {
+/**
+ * @param redux data store
+ */
+const RightClickInfoIndex = ({ redux=null, children, className, value = function () { } }) => {
     // variable
     const OpenTime = "bg-white border border-solid border-slate-300 fixed z-30 shadow-md transition-all shadow-slate-300 w-3/12 overflow-hidden";
     const CloseTime = "bg-white fixed z-30 transition-all w-0 overflow-hidden";
@@ -94,7 +97,7 @@ const RightClickInfoIndex = ({ children, value = function () { } }) => {
                 _text = text.innerText;
             }
             // console.log(_text)
-            value({ type: _text, data: Obj, children: children });
+            value({ type: _text, data: Obj, children: children, redux: redux });
         } catch (err) { }
     }
 
@@ -121,7 +124,7 @@ const RightClickInfoIndex = ({ children, value = function () { } }) => {
             </div>
         </div>
 
-        <div onContextMenu={ContextMenu} aria-valuetext="rightpopup">
+        <div onContextMenu={ContextMenu} className={className} aria-valuetext="rightpopup">
             {children}
         </div>
     </>

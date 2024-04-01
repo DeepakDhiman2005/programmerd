@@ -3,7 +3,9 @@ import React from "react";
 
 /** @param props - {success: bool, display: bool, message: String, value: function, 
  * position: (left, right, center): Default left} */
-const MessageEmit = (props) => {
+const MessageEmit = ({success=false, display=false, message="", value=function(){}}) => {
+    const props = {success: success, display: display, message: message, value: value};
+    
     return <div className="flex items-center ml-3 mr-3" style={{justifyContent: props.position ? props.position: "left"}}>
     {
         props.success ? (

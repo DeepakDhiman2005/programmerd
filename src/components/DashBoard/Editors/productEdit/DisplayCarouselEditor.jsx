@@ -3,11 +3,11 @@ import React, {useState} from "react";
 
 // component
 import Button from "@/components/Button";
-import ImageSelectBox from "@/components/SelectorBox/ImageSelectBox";
 import MyInput from "@/components/MyInput";
 
 // icons
 import { CiCirclePlus } from "react-icons/ci";
+import PathSelectorBox from "./PathSelectorBox";
 
 const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
     // useState
@@ -16,20 +16,20 @@ const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
     // onAdd
     const onDisplayCarouselArray = () => {
         // console.log(true)
-        setDisplayCarsouelArray([...DisplayCarouselArray, {image: {src: ""}, href: "", id: DisplayCarouselArray.length+1}]);
+        setDisplayCarsouelArray([...DisplayCarouselArray, {image: "", href: "", id: DisplayCarouselArray.length+1}]);
     }
 
     // onchange
-    const ChangeDisplayCarouselArray = ({value, ariaValueText}) => {
+    const ChangeDisplayCarouselArray = ({value, ariaValueText, type}) => {
         let valuetext = parseInt(ariaValueText);
 
         // console.log(value, valuetext)
         let _array = [];
         DisplayCarouselArray.map((data)=>{
             if(data.id === valuetext){
-                if(typeof value === "string"){
+                if(type === "href"){
                     _array.push({image: data.image, href: value, id: data.id});
-                }else{
+                }else {
                     _array.push({image: value, href: data.href, id: data.id});
                 }
             }else {
@@ -70,14 +70,14 @@ const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
                             return <div className="flex flex-col justify-center items-center w-full mb-2 mt-2">
                                 <div className="flex justify-center items-center w-full">
                                     <MyInput type="text" placeholder="Write Affilate Link..." className="outline-none border-b border-solid w-full border-slate-800 mb-2 mt-2" defaultValue={href} onChange={(e) => {
-                                        ChangeDisplayCarouselArray({ value: e.target.value, ariaValueText: e.target.ariaValueText });
+                                        ChangeDisplayCarouselArray({ value: e.target.value, ariaValueText: e.target.ariaValueText, type: "href" });
                                     }} ariaValueText={i + 1} />
                                     <Button color="red" className="ml-2" ariaValueText={i + 1} onClick={onDeleteDisplayCarouselArray}>Delete</Button>
                                 </div>
 
                                 <div className="w-full">
-                                    <ImageSelectBox uniqueID={`imageSelectCarousel${i + 1}`} defaultValue={image} ariaValueText={`${i + 1}`} value={(e) => {
-                                        ChangeDisplayCarouselArray({ value: e.image, ariaValueText: e.ariaValueText });
+                                    <PathSelectorBox uniqueID={i+1} defaultValue={image} ariaValueText={i + 1} value={(e)=>{
+                                        ChangeDisplayCarouselArray(e);
                                     }} />
                                 </div>
                             </div>

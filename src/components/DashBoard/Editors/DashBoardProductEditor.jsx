@@ -1,64 +1,88 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react";
 
+// function
+import getCurrentDate from "@/components/Functions/getCurrentDate";
+
 // component
-import ImageSelectBox from "@/components/SelectorBox/ImageSelectBox";
-import Button from "@/components/Button";
 import PopUpElement from "@/components/PopUpElement";
 import Card from "@/components/Card";
 import ConfirmCard from "@/components/ConfirmCard";
 import Dropdown from "@/components/Dropdown";
 import DisplayCarousel from "@/components/Carousels/DisplayCarousel";
-import MyInput from "@/components/MyInput";
 import ImageRender from "@/components/ImageRender";
 import FourCardCollectionEditor from "./productEdit/FourCardCollectionEditor";
 import DisplayCarouselEidtor from "./productEdit/DisplayCarouselEditor";
 import CardEditor from "./productEdit/CardEditor";
 import FourCardCollection from "@/components/Cards/FourCardCollection";
+import MessageEmit from "@/components/MessageEmit";
+
 
 const DashBoardProductEditor = ({ data, value=function(){} }) => {
     // useState
     const [OverView, setOverView] = useState(false);
-    const [Img, setImg] = useState(false);
     const [ConfirmDisplay, setConfirmDisplay] = useState(false);
-    const [ImageInputType, setImageInputeType] = useState("");
     const [EditorType, setEditorType] = useState(false);
     const [DisplayCarouselArray, setDisplayCarsouelArray] = useState([]);
     const [CardData, setCardData] = useState({title: "", desc: "", href: "", image: {src: ""}});
     const [FourCard, setFourCard] = useState(false);
+    const [MessageDisplay, setMessageDisplay] = useState(false);
 
-    // useRef
-    const titleRef = useRef({value: ""});
-    const linkRef = useRef({value: ""});
-    const descRef = useRef({value: ""});
+    const [Uploads, setUploads] = useState(false);
 
-    // function
     const CreateCard = async () => {
-        let obj = {
-            title: titleRef.current.value,
-            desc: descRef.current.value,
-            href: linkRef.current.value,
-            image: Img
-        }
-        // console.log(obj);
-        // value(obj);
-        if(obj.title !== "" && obj.desc !== "" && obj.href !== "" && obj.image){
-            let formData = new FormData();
-            formData.append("title", obj.title);
-            formData.append("desc", obj.desc);
-            formData.append("href", obj.href);
-            formData.append("image", obj.image);
+        const {method, data, date, type} = Uploads;
 
-            const response = await fetch("http://localhost:3000/api/products/", {
-                method: "POST",
-                body: formData
-            });
-            const messg = await response.json();
-            // console.log(messg);
-        }
-    }
+        const formData = new FormData();
+        formData.append("method", method);
+        formData.append("date", date);
+        formData.append("type", type);
 
-    const CreateDisplayCarousel = () => {
+        if(Uploads.type === "Card"){
+            for(let x in data){
+                formData.append(x, data[x]);
+            }
+        }
+        else if(Uploads.type === "FourCardCollection"){
+            // console.log(Uploads.data);
+            let _data = Uploads.data;
+            formData.append("title", _data.title);
+            let data = _data.data;
+            // console.log(data);
+            for(let i=0; i < data.length; i++){
+                formData.append(`title${i+1}`, data[i].title);
+                formData.append(`desc${i+1}`, data[i].desc);
+                formData.append(`href${i+1}`, data[i].href);
+                formData.append(`image${i+1}`, data[i].image);
+            }
+        }
+        else if(Uploads.type === "DisplayCarousel"){
+            // console.log(data)
+            for(let i=0; i < data.length; i++){
+                formData.append(`href${i+1}`, data[i].href);
+                formData.append(`id${i+1}`, data[i].id);
+                formData.append(`image${i+1}`, data[i].image);
+            }
+        }
+
+        // console.log(Uploads);
+        const response = await fetch("http://localhost:3000/api/products/", {
+            method: "POST",
+            body: formData
+        });
+        const resp = await response.json();
+        // console.log(resp);
+        if(resp){
+            const audio = new Audio("/sound/send.mp3");
+            window.scrollTo(0, 0);
+            audio.play();
+            setMessageDisplay(true);
+    
+            let onetime = setInterval(() => {
+                value(Uploads);
+                clearInterval(onetime);
+            }, 1500);
+        }
     }
 
     useEffect(()=>{
@@ -73,13 +97,13 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
         <PopUpElement popup={OverView} value={e => {setOverView(e)}}>
             {
                 EditorType === "Card" ? <>
-                    <Card title={CardData.title} desc={CardData.desc} href={CardData.href} file={CardData.image} button={"View"} />
+                    <Card title={CardData.title} desc={CardData.desc} href={CardData.href} image={CardData.image} button={"View"} />
                 </>:
                 EditorType === "DisplayCarousel" ? <>
                     <DisplayCarousel>
                         {
                             DisplayCarouselArray.map((e)=>{
-                                return <ImageRender file={e.image} width={1000} height={1000} className="cursor-pointer w-full h-full" />
+                                return <ImageRender image={e.image} width={1000} height={1000} className="cursor-pointer w-full h-full" />
                             })
                         }
                     </DisplayCarousel>
@@ -95,6 +119,8 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
             setConfirmDisplay(false);
         }} />
 
+        <MessageEmit success={true} display={MessageDisplay} message="Data submit Successfully!" position={"center"} value={(e)=>{ setMessageDisplay(e); }} />
+
         <div className="flex justify-between items-center w-full">
             <h2 className="text-lg text-slate-800 font-semibold">Affilate Editor</h2>
             <Dropdown color="green" className="flex justify-center items-center" value={(e)=>{
@@ -109,22 +135,37 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
         {
             EditorType === "Card" ? <>
                 <CardEditor value={(e)=>{
-                    setCardData(e.data);
-                    setOverView(e.overview);
+                    if(e.submit){
+                        setUploads({ method: "add", data: e.data, date: getCurrentDate(), type: "Card" });
+                        setConfirmDisplay(true);
+                    }else {
+                        setCardData(e.data);
+                        setOverView(e.overview);
+                    }
                 }} />
             </>: 
             EditorType === "FourCardCollection" ?<>
                 <div className="flex justify-center items-center">
                     <FourCardCollectionEditor value={(e)=>{
-                        setFourCard({data: e.data, title: e.title})
-                        setOverView(e.overview);
+                        if(e.submit){
+                            setUploads({ method: "add", data: {title: e.title, data: e.data}, date: getCurrentDate(), type: "FourCardCollection" });
+                            setConfirmDisplay(true);
+                        }else {
+                            setFourCard({data: e.data, title: e.title})
+                            setOverView(e.overview);
+                        }
                     }} />
                 </div>
             </>: 
             EditorType === "DisplayCarousel" ? <>
                 <DisplayCarouselEidtor value={(e)=>{
-                    setDisplayCarsouelArray(e.data);
-                    setOverView(e.overview);
+                    if(e.submit){
+                        setUploads({method: "add", data: e.data, date: getCurrentDate(), type: "DisplayCarousel"});
+                        setConfirmDisplay(true);
+                    }else { 
+                        setDisplayCarsouelArray(e.data);
+                        setOverView(e.overview);
+                    }
                 }} />
             </>: null
         }

@@ -28,7 +28,6 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
 
     const onCreate = ({overview, submit}) => {
         let fourcard = [Layer1.current, Layer2.current, Layer3.current, Layer4.current];
-        console.log(fourcard)
         let onetime = false;
         for(let i=0; i<fourcard.length; i++){
             if(fourcard[i].title !== ""){ } else { onetime = true; break; }
@@ -55,7 +54,7 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
 
             <div className="flex justify-between items-center w-full">
                 {/* layer 1 */}
-                <div className="flex flex-col justify-start items-start w-1/2">
+                <div className="flex flex-col justify-start items-start w-1/2 bg-slate-50 p-2 border border-solid rounded-md">
                     <div className="flex justify-center mb-2 items-center">
                         <label className="text-red-700 cursor-pointer" htmlFor={UUID1}>Title:</label>
                         <input placeholder="Title..." className="outline-none selection:text-blue-700 ml-2" autoComplete="off" name={UUID1} id={UUID1} onChange={(e)=>{Layer1.current.title = e.target.value; }}  />
@@ -85,7 +84,7 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
                 </div>
 
                 {/* layer 2 */}
-                <div className="flex flex-col justify-start items-start ml-3 w-1/2">
+                <div className="flex flex-col justify-start items-start ml-3 w-1/2 bg-slate-50 p-2 border border-solid rounded-md">
                     <div className="flex justify-center mb-2 items-center">
                         <label className="text-red-700 cursor-pointer" htmlFor={UUID2}>Title:</label>
                         <input placeholder="Title..." className="outline-none selection:text-blue-700 ml-2" autoComplete="off" name={UUID2} id={UUID2} onChange={(e)=>{Layer2.current.title = e.target.value; }}  />
@@ -116,7 +115,7 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
 
             <div className="flex justify-between items-center w-full mt-4">
                 {/* layer 3 */}
-                <div className="flex flex-col justify-start items-start w-1/2">
+                <div className="flex flex-col justify-start items-start w-1/2 bg-slate-50 p-2 border border-solid rounded-md">
                     <div className="flex justify-center mb-2 items-center">
                         <label className="text-red-700 cursor-pointer" htmlFor={UUID3}>Title:</label>
                         <input placeholder="Title..." className="outline-none selection:text-blue-700 ml-2" autoComplete="off" name={UUID3} id={UUID3} onChange={(e)=>{Layer3.current.title = e.target.value; }}  />
@@ -145,7 +144,7 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
                 </div>
 
                 {/* layer 4 */}
-                <div className="flex flex-col justify-start items-start ml-3 w-1/2">
+                <div className="flex flex-col justify-start items-start ml-3 w-1/2 bg-slate-50 p-2 border border-solid rounded-md">
                     <div className="flex justify-center mb-2 items-center">
                         <label className="text-red-700 cursor-pointer" htmlFor={UUID4}>Title:</label>
                         <input placeholder="Title..." className="outline-none selection:text-blue-700 ml-2" autoComplete="off" name={UUID4} id={UUID4} onChange={(e)=>{Layer4.current.title = e.target.value; }}  />
@@ -174,8 +173,8 @@ const FourCardCollectionEditor = ({ uniqueID = "", value=function(){} }) => {
                 </div>
             </div>
 
-            <div className="flex justify-start w-full mb-3 items-center">
-                <Button color="purple" className="ml-2">Submit</Button>
+            <div className="flex justify-start w-full mb-3 mt-3 items-center">
+                <Button color="purple" className="ml-2" onClick={()=> {onCreate({submit: true})} }>Submit</Button>
                 <Button color="blue" className="ml-2" onClick={() => {onCreate({overview: true})}}>OverView</Button>
             </div>
         </div>

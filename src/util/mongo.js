@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose, { Schema } from "mongoose"
 
 // schema
 const blogSchema = new mongoose.Schema({
@@ -7,11 +7,10 @@ const blogSchema = new mongoose.Schema({
 });
 
 const ProductSchema = new mongoose.Schema({
-    title: String,
-    desc: String,
-    href: String,
-    image: String,
-    src: String
+    method: String,
+    date: String,
+    type: String,
+    data: Schema.Types.Mixed
 })
 
 const Blogposts = mongoose.models.blogposts || mongoose.model("blogposts", blogSchema);

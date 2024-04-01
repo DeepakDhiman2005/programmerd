@@ -38,6 +38,7 @@ const DashBoardMonitor = ({ slug }) => {
                     {
                         Editor.editor ? <DashBoardProductEditor data={Editor} value={(e)=>{
                             setEditor({editor: false, data: e});
+                            // console.log(e);
                         }} />: <DashBoardProducts getData={Editor} value={(e)=>{
                             setEditor(e);
                         }} />

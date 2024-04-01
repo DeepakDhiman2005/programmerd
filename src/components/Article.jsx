@@ -49,19 +49,19 @@ const Article = (props) => {
                             data.code ? <CodeHighlighter type="python" array={data.code} /> : null
                         }
                         {
-                            data.image ? <ImageRender file={data.image.file} src={data.image.src ? data.image.src: "/logo.svg"} width={data.image.width} height={data.image.height} onClick={() => {
+                            data.image ? <ImageRender image={data.image.image} width={data.image.width} height={data.image.height} onClick={() => {
                                 // console.log(data.image);
                                 setPopUpImage(true);
                                 try{
-                                    if(data.image.file){
+                                    if(data.image.image){
                                         setImageData({
-                                            file: data.image.file,
+                                            file: data.image.image,
                                             width: data.image.width,
                                             height: data.image.height
                                         })
                                     }else{
                                         setImageData({
-                                            src: data.image.src,
+                                            src: data.image.image,
                                             width: data.image.width,
                                             height: data.image.height
                                         });

@@ -11,7 +11,7 @@ import Button from "./Button";
  * @param {*} children {<li>, <li>, ...} tags <Dropdown> ... </Dropdown>
  * @returns value = value(e){ ... }
  */
-const Dropdown = ({children, color="", className="", value=function(){}}) => {
+const Dropdown = ({children, title="", color="", className="", value=function(){}}) => {
     // useState
     const [ShowArrow, setShowArrow] = useState(false);
 
@@ -40,7 +40,7 @@ const Dropdown = ({children, color="", className="", value=function(){}}) => {
     return <>
         <div className="flex flex-col justify-center items-center">
             <Button color={color} className={className} onClick={onDropDown}>
-                <h2>Types</h2>
+                <h2>{title !== "" ? title: "Types"}</h2>
                 {
                     ShowArrow ? <MdKeyboardArrowUp size={"25px"} className="mt-1 ml-1" />: <MdKeyboardArrowDown size={"25px"} className="mt-1 ml-1" />
                 }

@@ -85,7 +85,7 @@ const DisplayCarousel = ({ children, unique = "" }) => {
     }
 
     return <>
-        <div className="w-full flex justify-between items-center relative">
+        <div className="w-full flex justify-between items-center mt-4 mb-4 relative">
             {/* left */}
             <div className="bg-white p-2 pt-7 pb-7 cursor-pointer border border-solid border-slate-200 rounded-md shadow-md shadow-slate-200 active:bg-slate-100 ml-3 absolute left-0 z-10" onClick={onLeft}>
                 <RiArrowLeftSLine size={"25px"} />

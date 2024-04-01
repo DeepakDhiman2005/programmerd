@@ -13,15 +13,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
 
     useEffect(() => {
         if(data){
-            let _array = [];
-            for(let i = 0; i < data.length; i++){
-                if(typeof data[i].image === "string"){
-                    _array.push({title: data[i].title, desc: data[i].desc, href: data[i].href, src: data[i].image});
-                }else {
-                    _array.push({title: data[i].title, desc: data[i].desc, href: data[i].href, file: data[i].image});
-                }
-            }
-            setData([..._array]);
+            setData(data);
         }
     }, [data]);
 
@@ -35,7 +27,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
                         <a href={Data[0].href ? Data[0].href: null} target="_blank">
                             <div className="bg-white border border-solid border-gray-300 flex flex-col justify-center items-center w-auto h-auto cursor-pointer rounded-sm p-2 m-2">
                                 <div className="flex justify-center items-center w-full">
-                                    <ImageRender file={Data[0].file} src={Data[0].src} width={180} height={180} alt="image" className="hover:scale-90" />
+                                    <ImageRender image={Data[0].image} width={180} height={180} alt="image" className="hover:scale-90" />
                                 </div>
                                 <div className="flex flex-col justify-start items-start mt-3 w-full ml-3">
                                     <h2 className="text-slate-700 text-xl">{Data[0].title}</h2>
@@ -47,7 +39,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
                         <a href={Data[1].href ? Data[1].href: null} target="_blank">
                             <div className="bg-white border border-solid border-gray-300 flex flex-col justify-center items-center w-auto h-auto cursor-pointer rounded-sm p-2 m-2">
                                 <div className="flex justify-center items-center w-full">
-                                    <ImageRender file={Data[1].file} src={Data[1].src} width={180} height={180} alt="image" className="hover:scale-90" />
+                                    <ImageRender image={Data[1].image} width={180} height={180} alt="image" className="hover:scale-90" />
                                 </div>
                                 <div className="flex flex-col justify-start items-start mt-3 w-full ml-3">
                                     <h2 className="text-slate-700 text-xl">{Data[1].title}</h2>
@@ -61,7 +53,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
                         <a href={Data[2].href ? Data[2].href: null} target="_blank">
                             <div className="bg-white border border-solid border-gray-300 flex flex-col justify-center items-center w-auto h-auto cursor-pointer rounded-sm p-2 m-2">
                                 <div className="flex justify-center items-center w-full">
-                                    <ImageRender file={Data[2].file} src={Data[2].src} width={180} height={180} alt="image" className="hover:scale-90" />
+                                    <ImageRender image={Data[2].image} width={180} height={180} alt="image" className="hover:scale-90" />
                                 </div>
                                 <div className="flex flex-col justify-start items-start mt-3 w-full ml-3">
                                     <h2 className="text-slate-700 text-xl">{Data[2].title}</h2>
@@ -73,7 +65,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
                         <a href={Data[3].href ? Data[3].href: null} target="_blank">
                             <div className="bg-white border border-solid border-gray-300 flex flex-col justify-center items-center w-auto h-auto cursor-pointer rounded-sm p-2 m-2">
                                 <div className="flex justify-center items-center w-full">
-                                    <ImageRender file={Data[3].file} src={Data[3].src} width={180} height={180} alt="image" className="hover:scale-90" />
+                                    <ImageRender image={Data[3].image} width={180} height={180} alt="image" className="hover:scale-90" />
                                 </div>
                                 <div className="flex flex-col justify-start items-start mt-3 w-full ml-3">
                                     <h2 className="text-slate-700 text-xl">{Data[3].title}</h2>
