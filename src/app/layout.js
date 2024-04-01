@@ -17,7 +17,7 @@ export const metadata = {
   description: 'Learn Coding online in programmerD.'
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
   return (
     <html lang="en">
       <head>
