@@ -21,7 +21,7 @@ const Products = (props) => {
     const func = async () => {
         try{
              // const response = await fetch("https://programmerd.vercel.app/api/products", { method: "GET" });
-            const data = await axios.get("https://programmerd.vercel.app/api/products");
+            const data = await axios.get("/api/products");
             // const data = await response.json();
             setData(data.data);
         }catch(err){
