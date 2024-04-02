@@ -20,8 +20,8 @@ const Products = (props) => {
     const func = async () => {
         const API_KEY = process.env.API_KEY;
         // const response = await fetch("http://localhost:3000/api/products");
-        // let apiPath = String(API_KEY) + "/api/products";
-        const response = await fetch(`/api/products`);
+        let apiPath = String(API_KEY) + "/api/products";
+        const response = await fetch(apiPath);
         const data = await response.json();
 
         setData(data);
