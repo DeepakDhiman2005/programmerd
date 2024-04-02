@@ -19,10 +19,14 @@ const Products = (props) => {
     const [Data, setData] = useState(false);
     // ${process.env.API_KEY}
     const func = async () => {
-        // const response = await fetch("https://programmerd.vercel.app/api/products", { method: "GET" });
-        const data = await axios.get("/api/products");
-        // const data = await response.json();
-        setData(data.data);
+        try{
+             // const response = await fetch("https://programmerd.vercel.app/api/products", { method: "GET" });
+            const data = await axios.get("/api/products");
+            // const data = await response.json();
+            setData(data.data);
+        }catch(err){
+            console.log(err)
+        }
     }
 
     useEffect(()=>{
