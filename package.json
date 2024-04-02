@@ -2,6 +2,7 @@
   "name": "programmerd",
   "version": "0.1.0",
   "private": true,
+  "proxy": "https://programmerd.vercel.app/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
