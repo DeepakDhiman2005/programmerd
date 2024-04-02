@@ -18,7 +18,7 @@ const Products = (props) => {
     const [Data, setData] = useState(false);
     // ${process.env.API_KEY}
     const func = async () => {
-        const response = await fetch("/api/products", { method: "GET" });
+        const response = await fetch("https://programmerd.vercel.app/api/products", { method: "GET" });
         const data = await response.json();
 
         setData(data);
