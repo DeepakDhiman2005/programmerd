@@ -25,7 +25,7 @@ export async function POST(response){
             get_data = data;
         }
     });
-    // console.log(get_data);
+    console.log(get_data);
 
     // console.log(resp.query);
     return NextResponse.json(get_data);

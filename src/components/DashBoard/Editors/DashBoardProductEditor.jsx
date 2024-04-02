@@ -66,7 +66,7 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
         }
 
         // console.log(Uploads);
-        const response = await fetch("http://localhost:3000/api/products/", {
+        const response = await fetch("/api/products/", {
             method: "POST",
             body: formData
         });

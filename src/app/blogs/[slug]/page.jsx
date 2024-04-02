@@ -21,7 +21,7 @@ const blog = (params) => {
     const blogapi = async () => {
         let _query = slug.match("%20") ? slug.replaceAll("%20", " "): slug;
 
-        const response = await fetch("http://localhost:3000/api/blogs", {
+        const response = await fetch("/api/blogs", {
             method: "POST",
             body: JSON.stringify({query: _query}),
             headers: {
