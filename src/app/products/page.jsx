@@ -16,15 +16,10 @@ import TopLoader from "@/components/TopLoader";
 
 const Products = (props) => {
     const [Data, setData] = useState(false);
-
+    // ${process.env.API_KEY}
     const func = async () => {
-        const response = await fetch(`${process.env.API_KEY}/api/products`, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
+        const response = await fetch("/api/products", { method: "GET" });
         const data = await response.json();
-        console.log(data)
 
         setData(data);
     }

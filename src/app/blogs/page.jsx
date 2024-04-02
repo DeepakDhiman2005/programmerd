@@ -43,7 +43,7 @@ const Blogs = (props) => {
     ];
 
     const blogapi = async () => {
-        const response = await fetch("http://localhost:3000/api/blogs");
+        const response = await fetch("/api/blogs", { method: "GET" });
         const data = await response.json();
         // console.log(data);
         setBlogList(data);
