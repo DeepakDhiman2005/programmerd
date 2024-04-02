@@ -5,7 +5,7 @@ import React, { useRef, useState } from "react";
 import { RiArrowLeftSLine } from "react-icons/ri"; // left
 import { RiArrowRightSLine } from "react-icons/ri"; // right
 
-const DisplayCarousel = ({ children, unique = "" }) => {
+const DisplayCarousel = ({ children, unique = "" }, key="") => {
     // variables
     const btngray = "bg-slate-600 border-slate-600 border border-solid rounded-full ml-1 mr-1 shadow-sm shadow-slate-600 w-2 h-2 cursor-pointer";
     const btnorg = "bg-white border border-solid rounded-full ml-1 mr-1 shadow-sm shadow-slate-100 w-2 h-2 cursor-pointer";
@@ -85,7 +85,7 @@ const DisplayCarousel = ({ children, unique = "" }) => {
     }
 
     return <>
-        <div className="w-full flex justify-between items-center mt-4 mb-4 relative">
+        <div key={key} className="w-full flex justify-between items-center mt-4 mb-4 relative">
             {/* left */}
             <div className="bg-white p-2 pt-7 pb-7 cursor-pointer border border-solid border-slate-200 rounded-md shadow-md shadow-slate-200 active:bg-slate-100 ml-3 absolute left-0 z-10" onClick={onLeft}>
                 <RiArrowLeftSLine size={"25px"} />
@@ -107,7 +107,7 @@ const DisplayCarousel = ({ children, unique = "" }) => {
                 <div ref={btnRef} className="absolute mb-10 z-10">
                     {
                         children.length ? children.map((data, i) => {
-                            return <button key={i} className={i === 0 ? btngray : btnorg} id={"carousel-button-" + unique + i}></button>
+                            return <button key={"DisplayCarouselButtonsKey"+i} className={i === 0 ? btngray : btnorg} id={"carousel-button-" + unique + i}></button>
                         }) : null
                     }
                 </div>

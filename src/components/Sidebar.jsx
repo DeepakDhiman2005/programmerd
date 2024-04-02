@@ -122,7 +122,7 @@ const Sidebar = () => {
     }
 
     return <>
-        <div className="flex flex-col justify-start items-start fixed left-0 w-0 bg-white h-screen overflow-hidden z-50" id="sidebar" style={{transition: '0.5s', width: SidebarEvent ? '100%': '0px'}}>
+        <div key={"GlobalSideBar"} className="flex flex-col justify-start items-start fixed left-0 w-0 bg-white h-screen overflow-hidden z-50" id="sidebar" style={{transition: '0.5s', width: SidebarEvent ? '100%': '0px'}}>
             <div className="flex justify-between w-full items-center p-5 cursor-pointer active:bg-slate-100" onClick={GetName}>
                 <h2 className="text-xl text-slate-700 cursor-pointer">Courses</h2>
                 <MdKeyboardArrowRight className="text-black" size={"25px"} />
@@ -163,17 +163,17 @@ const Sidebar = () => {
             </div>
 
             {/* po-pop left sidebar */}
-            <div ref={RightRef} className="flex flex-col w-0 bg-slate-50 h-full fixed z-50 right-0 overflow-hidden" style={{transition: "0.5s"}}>
+            <div ref={RightRef} key={"SideBarLeftPopWindow"} className="flex flex-col w-0 bg-slate-50 h-full fixed z-50 right-0 overflow-hidden" style={{transition: "0.5s"}}>
                 {/* top view */}
-                <div className="w-full flex justify-start items-center pl-2 bg-white border-b border-solid border-slate-200 pt-4 pb-4">
+                <div key={"SideBarLeftPopWindowTop"} className="w-full flex justify-start items-center pl-2 bg-white border-b border-solid border-slate-200 pt-4 pb-4">
                     <FaArrowLeftLong size={"18px"} className="text-slate-600 ml-3 cursor-pointer" onClick={GoToRight} />
                     <h2 className="text-xl ml-3 text-slate-700">{Title}</h2>
                 </div>
                 {/* Content */}
-                <div className="flex overflow-y-scroll">
+                <div key={"SideBarLeftPopWindowBottom"} className="flex overflow-y-scroll">
                     {
                         Title === "Blog" ? (
-                            <div className="p-4 w-full">
+                            <div key={"BlogCardInSideBar"} className="p-4 w-full">
                                 <h2 className="mb-2 mt-2 ml-5 text-4xl text-start font-semibold tracking-tight text-gray-900 dark:text-white">Coding Articles</h2>
                                 <Blogposts bloglist={JsonDataList} />
                                 <button className="flex items-center justify-between mt-5 mb-5 ml-5 text-white bg-purple-600 dark:bg-purple-400 hover:bg-purple-700 dark:hover:bg-purple-500 px-4 py-2 rounded-md text-md font-medium transition w-fit cursor-pointer" onClick={()=>{
@@ -183,7 +183,7 @@ const Sidebar = () => {
                             </div>
                         ): Title === "Courses" ? (
                             <>
-                                <div className="flex justify-around items-center flex-wrap w-full mt-20 mb-20">
+                                <div key={"CoursesCardInSideBar"} className="flex justify-around items-center flex-wrap w-full mt-20 mb-20">
                                     <Card title="Tailwindcss" image="/images/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
                                     
                                     <Card title="Chat GPT" image="/images/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />

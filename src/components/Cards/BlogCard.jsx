@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 /** @param props - title: "String", desc: "String", date: "November 20, 2024" */
-const BlogCard = (props) => {
+const BlogCard = (props, key="") => {
     // router
     const router = useRouter();
 
@@ -17,7 +17,7 @@ const BlogCard = (props) => {
     }
 
     return <>
-        <div className="flex mt-5 mb-5 flex-col shadow-lg items-start bg-white border border-solid border-slate-100 rounded-lg p-4 w-full md:w-2/3">
+        <div key={key} className="flex mt-5 mb-5 flex-col shadow-lg items-start bg-white border border-solid border-slate-100 rounded-lg p-4 w-full md:w-2/3">
             <h2 className="mb-2 text-2xl text-start font-bold tracking-tight text-gray-900 dark:text-white selection:text-blue-600">{props.title}</h2>
             <p className="font-normal text-start text-lg text-gray-900 dark:text-gray-800">{props.desc}</p>
             {/* bottom */}

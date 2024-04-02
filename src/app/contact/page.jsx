@@ -1,9 +1,12 @@
 "use client"
-import MessageEmit from "@/components/MessageEmit";
 import React, {Suspense, useRef, useState} from "react";
 
+// components
+import MessageEmit from "@/components/MessageEmit";
+import TopLoader from "@/components/TopLoader";
+
 /** @param Contact - Contact us */
-const Contact = () => {
+const Contact = (props) => {
     const Email = useRef(null);
     const Password = useRef(null);
     const CheckBox = useRef(null);
@@ -61,7 +64,7 @@ const Contact = () => {
         }
     }
 
-    return <Suspense>
+    return <Suspense fallback={<TopLoader/>}>
         <MessageEmit success={SuccessMessage} position={"center"} display={MessageDisplay} message={Message} value={(e)=>{
             setMessageDisplay(e);
         }} />

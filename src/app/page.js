@@ -11,8 +11,9 @@ import GiftCard from "@/components/Cards/GiftCard";
 import TextCard from "@/components/Cards/TextCard";
 import ReadingEffect from "@/components/ReadingEffect";
 import TopScrollButton from "@/components/TopScrollButton";
+import TopLoader from "@/components/TopLoader";
 
-export default function Home() {
+export default function Home(props) {
   // useRef
   const typingRef = useRef({innerText: ''});
   const welcomeTypingRef = useRef({innerText: ''});
@@ -77,7 +78,7 @@ export default function Home() {
   }, [BackgroundImageRef]);
 
   return (
-    <Suspense>
+    <Suspense fallback={<TopLoader />}>
       <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
         <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
         <img src="/images/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />

@@ -1,5 +1,4 @@
 "use server"
-import { db_products } from '../db/product';
 
 // next
 import { NextResponse } from "next/server";
@@ -13,6 +12,5 @@ export async function GET(response){
     const blog = await Blogposts.find();
     // console.log(blog);
 
-    const data = db_products;
-    return NextResponse.json(data);
+    return NextResponse.json(blog);
 }

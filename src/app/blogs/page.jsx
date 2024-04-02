@@ -3,13 +3,14 @@ import React, {useRef, useState, useEffect, Suspense} from "react";
 
 // components
 import Blogposts from "@/components/Blogposts";
+import Loader from "@/components/Loader";
+import TopLoader from "@/components/TopLoader";
 
 // icons
 import { IoIosSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import Loader from "@/components/Loader";
 
-const Blogs = () => {
+const Blogs = (props) => {
     // useRef
     const searchRef = useRef();
 
@@ -53,7 +54,7 @@ const Blogs = () => {
         blogapi();
     }, []);
 
-    return <Suspense>  
+    return <Suspense fallback={<TopLoader/>}>  
         <div className="pl-5 pr-5 pb-5 bg-slate-50">
             <div className="w-full flex justify-between items-center flex-col sm:flex-row">
                 {/* title */}

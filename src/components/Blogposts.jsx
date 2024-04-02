@@ -51,9 +51,9 @@ const Blogposts = ({search="", bloglist=[], value=function(){}}) => {
     return <>
         {/* <BlogCard title={"This is Blog Title"} desc={"Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit repudiandae quo iusto illum quod ipsa, labore nesciunt asperiores quis itaque distinctio beatae consequatur vero. Fugiat dolorem obcaecati temporibus repellendus esse recusandae aut asperiores, maiores quaerat ea aperiam incidunt, fugit quidem?  veritatis doloremque rem facilis debitis quis maiores officia culpa distinctio alias omnis expedita nulla minima enim quod perspiciatis adipisci?"} date={"November 20, 2024"} /> */}
         {
-            DisplayResult ? DataList.map((data)=>{
-                return <BlogCard title={data.title} desc={data.desc} date={data.date} />
-            }): <h2 className="mt-10 mb-10 text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
+            DisplayResult ? DataList.map((data, i)=>{
+                return <BlogCard key={"BlogCardKey"+i} title={data.title} desc={data.desc} date={data.date} />
+            }): <h2 key={"BlogCardNotFoundKey"} className="mt-10 mb-10 text-3xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
                 Result Not Found: <span className="text-blue-600">{search}</span>
             </h2>
         }

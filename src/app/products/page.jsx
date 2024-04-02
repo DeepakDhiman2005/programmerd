@@ -12,12 +12,16 @@ import Card from "@/components/Card";
 import DisplayCarousel from "@/components/Carousels/DisplayCarousel";
 import FourCardCollection from "@/components/Cards/FourCardCollection";
 import Loader from "@/components/Loader";
+import TopLoader from "@/components/TopLoader";
 
-const Products = () => {
+const Products = (props) => {
     const [Data, setData] = useState(false);
 
     const func = async () => {
-        const response = await fetch("http://localhost:3000/api/products");
+        const API_KEY = process.env.API_KEY;
+        // const response = await fetch("http://localhost:3000/api/products");
+        let apiPath = String(API_KEY) + "/api/products";
+        const response = await fetch(apiPath);
         const data = await response.json();
 
         setData(data);
@@ -27,7 +31,7 @@ const Products = () => {
         func();
     }, []);
 
-    return <Suspense>
+    return <Suspense fallback={<TopLoader/>}>
         <div className="flex justify-center items-center mt-10 mb-10 flex-col">
             <div className="flex justify-center items-center">
                 <FaTools className="text-purple-700" size={"30px"} />
@@ -41,13 +45,13 @@ const Products = () => {
                 Data ? Data.map((value, i)=>{
                     return <>
                         {
-                            value.type === "Card" ? <Card key={value.data.id} title={value.data.title} desc={value.data.desc} button={"View"} image={value.data.image.match(new RegExp("http://")) || value.data.image.match(new RegExp("https://")) ? value.data.image: `/uploads/products/${value.data.image}`} href={value.data.href} /> : null
+                            value.type === "Card" ? <Card key={"Card"+value.data.id} title={value.data.title} desc={value.data.desc} button={"View"} image={value.data.image.match(new RegExp("http://")) || value.data.image.match(new RegExp("https://")) ? value.data.image: `/uploads/products/${value.data.image}`} href={value.data.href} /> : null
                         }
                         {
-                            value.type === "DisplayCarousel" ? <DisplayCarousel unique={`displaycarouselfetch${i+1}`}>
+                            value.type === "DisplayCarousel" ? <DisplayCarousel key={"ProductDisplayCarousel" + i} unique={`displaycarouselfetch${i+1}`}>
                                 {
-                                    value.data.map(({href, id, image})=>{
-                                        return <a href={href} target="_blank" className="w-full h-full">
+                                    value.data.map(({href, id, image}, i)=>{
+                                        return <a key={"ProductAOnDisplayCarousel" + i} href={href} target="_blank" className="w-full h-full">
                                             <Image src={image ? image.replace("./public", ""): "/logo.svg"} alt="image" width={1000} height={1000} className="cursor-pointer w-full h-full" />
                                         </a>
                                     })
@@ -55,7 +59,7 @@ const Products = () => {
                             </DisplayCarousel>: null
                         }
                         {
-                            value.type === "FourCardCollection" ? <FourCardCollection title={value.data.title} data={value.data.data} />: null
+                            value.type === "FourCardCollection" ? <FourCardCollection key={"ProductFourCardCollection" + i} title={value.data.title} data={value.data.data} />: null
                         }
                     </>
                 }): <Loader />

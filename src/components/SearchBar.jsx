@@ -165,7 +165,7 @@ const SearchBar = () => {
     }, [searchbarvalue]);
 
     return <>
-        <div ref={searchvoid} className="w-0 h-0 flex items-center justify-center fixed top-0 z-[100] backdrop-brightness-75 overflow-hidden" id="searchbar_body_id" onClick={OnSearchBar}>
+        <div ref={searchvoid} key={"SearchBarGlobal"} className="w-0 h-0 flex items-center justify-center fixed top-0 z-[100] backdrop-brightness-75 overflow-hidden" id="searchbar_body_id" onClick={OnSearchBar}>
             {/* main box */}
             <div className="w-3/4 bg-gray-100 rounded-lg border border-slate-300 border-solid">
                 {/* layer up */}
@@ -182,12 +182,12 @@ const SearchBar = () => {
                 {/* layer middle */}
                 <div ref={searchbox} className="flex h-96 justify-start flex-col items-center pt-4 pl-3 pr-3 overflow-y-scroll">
                     {
-                        DisplayResult ? SearchLists.map((data)=>{
-                            return <div className="mt-3 mb-3 cursor-pointer w-full flex items-center rounded-md border border-solid justify-between border-slate-200 bg-slate-100 p-3 pt-4 pb-4 hover:bg-blue-600 hover:text-white text-gray-800" onClick={onShowLink}>
+                        DisplayResult ? SearchLists.map((data, i)=>{
+                            return <div key={"SearchLinks" + i} className="mt-3 mb-3 cursor-pointer w-full flex items-center rounded-md border border-solid justify-between border-slate-200 bg-slate-100 p-3 pt-4 pb-4 hover:bg-blue-600 hover:text-white text-gray-800" onClick={onShowLink}>
                                 <h2 className="text-center">{data.title}</h2>
                                 <MdOutlineKeyboardArrowRight size={"23px"} className="cursor-pointer" />
                             </div>
-                        }): <h2 className="text-2xl mt-10 mb-10">No Result For "<span className="text-blue-700">{search.current.value}</span>"</h2>
+                        }): <h2 key={"SearchLinksNotFound"} className="text-2xl mt-10 mb-10">No Result For "<span className="text-blue-700">{search.current.value}</span>"</h2>
                     }
                     
                     {/* <h2 className="text-2xl mt-10 mb-10">No Result For "fdafda"</h2> */}

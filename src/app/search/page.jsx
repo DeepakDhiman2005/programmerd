@@ -3,8 +3,9 @@ import React, { Suspense, useState } from "react";
 
 // next
 import { useSearchParams } from "next/navigation";
+import TopLoader from "@/components/TopLoader";
 
-const SearchPage = () => {
+const SearchPage = (props) => {
     const searchparams = useSearchParams();
     // console.log(searchparams.get("query"))
 
@@ -30,12 +31,12 @@ const SearchPage = () => {
         }catch(err){}
     }
 
-    return <Suspense>
+    return <Suspense fallback={<TopLoader />}>
         <h2 className="text-center mt-7 mb-7 font-bold text-2xl text-slate-900">Result for query: <span className="text-purple-700 font-semibold">{searchparams.get("query")}</span></h2>
 
-        <div className="flex flex-col justify-center items-center">
+        <div key={"globalSearchBar"} className="flex flex-col justify-center items-center">
             <ul className="list-none flex justify-start w-[90%] items-center">
-                <li className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
+                <li key={"SearchBarLiBlog"} className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
                     <h2 className="mb-2 hover:text-purple-800">Blogs (0)</h2>
                     { LineHighLight === "blogs" ? <span className="bg-purple-700 w-full h-[2px]"></span>: null}
                 </li>

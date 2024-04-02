@@ -8,12 +8,13 @@ import { useRouter } from "next/navigation";
 import DashBoardSideBar from "@/components/DashBoard/DashBoardSideBar";
 import DashBoardMonitor from "@/components/DashBoard/DashBoardMonitor";
 import TopScrollButton from "@/components/TopScrollButton";
+import TopLoader from "@/components/TopLoader";
 
 const DashBoard = ({slug}) => {
     // router
     const router = useRouter();
 
-    return <Suspense>
+    return <Suspense fallback={<TopLoader/>}>
         <div className="flex justify-start items-start p-4 pt-6">
             {/* sidebar */}
             <DashBoardSideBar value={(e)=>{

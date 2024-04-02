@@ -238,7 +238,7 @@ const DashBoardBlogEditor = ({ data }) => {
                     </div>
                     {/* buttons */}
                     <div className="mt-3 flex items-center justify-between">
-                        <Dropdown value={onDropDown}>
+                        <Dropdown value={onDropDown} className="flex justify-center items-center">
                             <li>Title</li>
                             <li>Description</li>
                             <li>Code</li>

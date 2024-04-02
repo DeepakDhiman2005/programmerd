@@ -7,7 +7,7 @@ import ImageRender from "../ImageRender";
 /**
  * @param data data = [{ title: "", desc: "", image:src|file }, ...], or title = ""
  */
-const FourCardCollection = ({ title = "", data = false }) => {
+const FourCardCollection = ({ title = "", data = false }, key="") => {
     // useState
     const [Data, setData] = useState([{}, {}, {}, {}]);
 
@@ -18,7 +18,7 @@ const FourCardCollection = ({ title = "", data = false }) => {
     }, [data]);
 
     return <>
-        <div className="flex flex-col justify-center items-start p-3 bg-white border border-solid rounded-md m-3">
+        <div key={key} className="flex flex-col justify-center items-start p-3 bg-white border border-solid rounded-md m-3">
             <h2 className="font-bold text-xl mb-8 mt-4">{title}</h2>
 
             {

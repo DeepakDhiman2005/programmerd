@@ -8,11 +8,13 @@ import Image from "next/image";
 // import { MdEmail } from "react-icons/md";
 import { MdOutlineMail } from "react-icons/md"; // email
 import { IoKeyOutline } from "react-icons/io5"; // password
+import TopLoader from "@/components/TopLoader";
 
-const Signup = () => {
+const Signup = (props) => {
 
-    return <Suspense>
-        <div className="flex justify-center items-center w-full">
+    return (
+    <Suspense fallback={<TopLoader />}>
+        <div key={"SignupPageKey"} className="flex justify-center items-center w-full">
             <div className="flex flex-col justify-center items-start w-11/12 bg-white border border-solid rounded-md mt-4 mb-4">
                 <Image src={"/images/banner.png"} width={1000} height={100} alt="image" className="rounded-t-md w-full" />
                 <form className="flex flex-col justify-center items-start bg-slate-950 rounded-b-md p-4 pl-6 w-full">
@@ -39,6 +41,7 @@ const Signup = () => {
             </div>
         </div>
     </Suspense>
+    );
 }
 
 export default Signup;
