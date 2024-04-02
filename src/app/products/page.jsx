@@ -1,6 +1,6 @@
 "use client"
 import React, { Suspense, useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 // icons
 import { FaTools } from "react-icons/fa";
@@ -20,10 +20,10 @@ const Products = (props) => {
     // ${process.env.API_KEY}
     const func = async () => {
         try{
-             // const response = await fetch("https://programmerd.vercel.app/api/products", { method: "GET" });
-            const data = await axios.get("/api/products");
-            // const data = await response.json();
-            setData(data.data);
+             const response = await fetch("/api/products", { method: "GET" });
+            // const data = await axios.get("/api/products");
+            const data = await response.json();
+            setData(data);
         }catch(err){
             console.log(err)
         }
