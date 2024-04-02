@@ -18,11 +18,13 @@ const Products = (props) => {
     const [Data, setData] = useState(false);
 
     const func = async () => {
-        const API_KEY = process.env.API_KEY;
-        // const response = await fetch("http://localhost:3000/api/products");
-        let apiPath = String(API_KEY) + "/api/products";
-        const response = await fetch(apiPath);
+        const response = await fetch(`${process.env.API_KEY}/api/products`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
         const data = await response.json();
+        console.log(data)
 
         setData(data);
     }
