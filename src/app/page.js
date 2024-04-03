@@ -81,7 +81,7 @@ export default function Home(props) {
     <Suspense fallback={<TopLoader />}>
       <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
         <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
-        <img src="/images/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
+        <img src="/image/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
         <div className="w-full h-full backdrop-brightness-50 flex flex-col justify-center items-center absolute rounded-b-xl text-center">
           <div className="flex flex-col justify-center items-start">
             <h2 className="text-xl min-[480px]:text-5xl text-white mb-3">Welcome to <span ref={welcomeTypingRef} className="text-purple-500"></span></h2>
@@ -96,11 +96,11 @@ export default function Home(props) {
       </div>
       <h2 className="text-center text-4xl mt-10 mb-10">Recommended Courses</h2>
       <div className="flex justify-around items-center flex-wrap mt-20 mb-20">
-        <Card title="Tailwindcss" image="/images/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
+        <Card title="Tailwindcss" image="/image/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
         
-        <Card title="Chat GPT" image="/images/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
+        <Card title="Chat GPT" image="/image/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
 
-        <Card title="C Language" image="/images/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
+        <Card title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
@@ -110,16 +110,15 @@ export default function Home(props) {
 
       <h2 className="text-center text-4xl mt-10 mb-5">My Gear</h2>
       <div className="flex justify-around items-center flex-wrap mt-10 mb-20 overflow-x-hidden">
-        <ProductCard image={"/images/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
-        <ProductCard image={"/images/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
+        <ProductCard image={"/image/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
+        <ProductCard image={"/image/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
       </div>
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}
         <ReadingEffect className="w-2/4 text-center mt-20 mb-20 text-2xl sm:text-5xl lg:text-6xl text-slate-50 select-none" text={"programmer "} textcase={"upper"} toNewText="D" toClass="text-blue-400" />
         {/* image */}
-        {/* <Image src={"/images/programmerd.png"} width={500} height={500} alt="image" className="w-2/4 h-auto" /> */}
-        <img src={"/image/programmerd.png"} alt="image" className="w-2/4 h-auto" />
+        <Image src={"/image/programmerd.png"} width={500} height={500} alt="image" className="w-2/4 h-auto" />
       </div>
 
       <TopScrollButton />
