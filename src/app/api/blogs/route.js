@@ -16,17 +16,22 @@ export async function GET(response){
 }
 
 export async function POST(response){
-    const resp = await response.json();
-    const _query = resp.query.toLowerCase();
-    // console.log(_query);
-    let get_data = {};
-    db_blogs.filter((data)=>{
-        if(data.title.toLowerCase().match(_query)){
-            get_data = data;
-        }
-    });
-    console.log(get_data);
-
-    // console.log(resp.query);
-    return NextResponse.json(get_data);
+    
+    return NextResponse.json({ message: "Data Submit Successfully!" });
 }
+
+// export async function POST(response){
+//     const resp = await response.json();
+//     const _query = resp.query.toLowerCase();
+//     // console.log(_query);
+//     let get_data = {};
+//     db_blogs.filter((data)=>{
+//         if(data.title.toLowerCase().match(_query)){
+//             get_data = data;
+//         }
+//     });
+//     // console.log(get_data);
+
+//     // console.log(resp.query);
+//     return NextResponse.json(get_data);
+// }

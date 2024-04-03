@@ -11,6 +11,7 @@ import ConfirmCard from "../ConfirmCard";
 import Loader from "../Loader";
 import DisplayCarousel from "../Carousels/DisplayCarousel";
 import FourCardCollection from "../Cards/FourCardCollection";
+import PopupDetailsCard from "../PopUpElements/PopupDetailsCard";
 
 const DashBoardProducts = ({ getData, value = function () { } }) => {
     // useState
@@ -23,17 +24,19 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
     const [FourCardCount, setFourCardCount] = useState(0);
     const [DisplayCarouselCount, setDisplayCarouselCount] = useState(0);
 
+    const [PopUpDetailsDisplay, setPopUpDetailsDisplay] = useState(false);
+    const [DetailsMenu, setDetailsMenu] = useState([]);
+
     // function
     const func = async () => {
         // console.log(LineHighLight);
-        const response = await fetch("http://localhost:3000/api/products");
+        const response = await fetch("/api/products");
         const data = await response.json();
         // console.log(data);
         setData(data);
     }
 
     const RightClick = (e) => {
-        console.log(e);
         let type = e.type.toLowerCase();
         if (type === "edit") {
             value({ editor: true, data: e.children, type: e.children.type.name });
@@ -44,7 +47,14 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
         } else if (type === "hide") {
 
         } else if (type === "details") {
-            console.log({ data: e.children, type: e.children.type.name });
+            setPopUpDetailsDisplay(true);
+            setDetailsMenu([
+                { key: "Date", value: e.redux.date },
+                { key: "Type", value: e.redux.type },
+                { key: "Method", value: e.redux.method },
+                { key: "ID", value: e.redux._id }
+            ])
+            // console.log({ data: e.children, type: e.children.type.name });
         }
     }
 
@@ -94,6 +104,10 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
             if (e) {
                 setConfirmDisplay(false);
             } else { setConfirmDisplay(false); }
+        }} />
+
+        <PopupDetailsCard display={PopUpDetailsDisplay} list={DetailsMenu} CloseDetails={(e)=>{
+            setPopUpDetailsDisplay(false);
         }} />
 
         <div className="flex flex-col justify-center items-center">

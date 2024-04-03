@@ -12,6 +12,7 @@ const nextConfig = {
               pathname: '/*/**',
             }
           ],
+          path: '/_next/image'
     },
     env: {
       MONGO_URI: "mongodb+srv://ProgrammerD:deepak8339@cluster0.tnmxvha.mongodb.net/programmerdData?retryWrites=true&w=majority",
@@ -32,7 +33,17 @@ const nextConfig = {
                   { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
                   { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
               ]
-          }
+          },
+          {
+            // matching all API routes
+            source: "/api/blogs",
+            headers: [
+                { key: "Access-Control-Allow-Credentials", value: "true" },
+                { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin
+                { key: "Access-Control-Allow-Methods", value: "GET,DELETE,PATCH,POST,PUT" },
+                { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
+            ]
+        }
       ]
   }
 }

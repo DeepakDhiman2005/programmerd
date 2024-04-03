@@ -4,7 +4,8 @@ import React, { useEffect, useState, useRef } from "react";
 // next
 import Image from "next/image";
 
-// icons
+// function
+import getCurrentDate from "@/components/Functions/getCurrentDate";
 
 // components
 import Dropdown from "@/components/Dropdown";
@@ -32,6 +33,7 @@ const DashBoardBlogEditor = ({ data }) => {
     const filedContent = useRef(null);
     const ContentData = useRef([]);
     const PopupRef = useRef(null);
+    const [Uploads, setUploads] = useState(false);
 
     let Data = [
         // {
@@ -61,7 +63,7 @@ const DashBoardBlogEditor = ({ data }) => {
     }, [MultiContentCall]);
 
     // function
-    const onSubmit = () => {
+    const onSubmit = (type="") => {
         let _title = filedTitle.current.value;
         let _desc = filedDesc.current.value;
         let _date = filedDate.current.value;
@@ -107,9 +109,13 @@ const DashBoardBlogEditor = ({ data }) => {
             content: content,
             comment: []
         }
-        console.log(blog);
+        
         // console.log(ContentArray)
-        setBlog(blog);
+        if(type === "overview"){
+            setBlog(blog);
+        }else {
+            console.log({ method: "add", data: blog, date: getCurrentDate(), type: "blog" })
+        }
         // console.log(_title, _desc, _date)
     }
 
@@ -253,9 +259,12 @@ const DashBoardBlogEditor = ({ data }) => {
             {/* bottom layer */}
             <div className="flex justify-between items-center w-full">
                 <div className="flex justify-start items-center">
-                    <button className="flex items-center justify-between text-white bg-purple-600 dark:bg-purple-400 hover:bg-purple-700 dark:hover:bg-purple-500 px-4 py-2 rounded-md text-md font-medium transition w-fit cursor-pointer selection:text-white" onClick={onSubmit}>Submit</button>
+                    <button className="flex items-center justify-between text-white bg-purple-600 dark:bg-purple-400 hover:bg-purple-700 dark:hover:bg-purple-500 px-4 py-2 rounded-md text-md font-medium transition w-fit cursor-pointer selection:text-white" onClick={()=>{ onSubmit("submit"); }}>Submit</button>
 
-                    <Button color="blue" className="ml-3" onClick={() => PopUpOverViewPage(true)}>OverView</Button>
+                    <Button color="blue" className="ml-3" onClick={() => {
+                        onSubmit("overview");
+                        PopUpOverViewPage(true)
+                    }}>OverView</Button>
                 </div>
 
                 <div className="flex pt-2 items-center justify-end">

@@ -11,6 +11,7 @@ import DashBoardProductEditor from "./Editors/DashBoardProductEditor";
 
 // icons
 import { RxCross2 } from "react-icons/rx";
+import DashBoardHome from "./DashBoardHome";
 
 const DashBoardMonitor = ({ slug }) => {
     const [Editor, setEditor] = useState({editor: false, data: null});
@@ -24,6 +25,11 @@ const DashBoardMonitor = ({ slug }) => {
                     }} />: null
                 }
             </h2>
+            {
+                slug === undefined || slug === "/" || slug === "dashboard" ? <>
+                    <DashBoardHome />
+                </>: null
+            }
             {
                 slug === "blogs" ? <>
                     {
