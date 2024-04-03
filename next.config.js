@@ -12,7 +12,6 @@ const nextConfig = {
               pathname: '/*/**',
             }
           ],
-          path: '/_next/image'
     },
     env: {
       MONGO_URI: "mongodb+srv://ProgrammerD:deepak8339@cluster0.tnmxvha.mongodb.net/programmerdData?retryWrites=true&w=majority",
