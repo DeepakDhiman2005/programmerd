@@ -118,7 +118,8 @@ export default function Home(props) {
         {/* text */}
         <ReadingEffect className="w-2/4 text-center mt-20 mb-20 text-2xl sm:text-5xl lg:text-6xl text-slate-50 select-none" text={"programmer "} textcase={"upper"} toNewText="D" toClass="text-blue-400" />
         {/* image */}
-        <Image src={"/images/programmerd.png"} width={500} height={500} alt="image" className="w-2/4 h-auto" />
+        {/* <Image src={"/images/programmerd.png"} width={500} height={500} alt="image" className="w-2/4 h-auto" /> */}
+        <img src={"/images/programmerd.png"} alt="image" className="w-2/4 h-auto" />
       </div>
 
       <TopScrollButton />
