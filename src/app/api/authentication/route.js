@@ -1,7 +1,7 @@
 "use server"
 import { NextResponse } from "next/server"
 import { cookies } from "next/headers"
-import bcrypt from "bcrypt"
+import { compare, hashSync, genSaltSync } from "bcrypt"
 
 // database
 import { Auth } from "@/util/mongo";
@@ -36,7 +36,7 @@ export async function POST(response) {
     
                 let findPass = false;
                 for(let i=0; i < findData.length; i++){
-                    findPass = await bcrypt.compare(password, findData[0].password);
+                    findPass = await compare(password, findData[0].password);
                 }
     
                 // console.log(findPass)
@@ -46,8 +46,8 @@ export async function POST(response) {
                     resp.bool = true;
                     cookies().set("programmerd", true);
                 }else {
-                    // let salt = await bcrypt.genSaltSync(saltRound);
-                    // let hashPass = await bcrypt.hashSync(password, salt);
+                    // let salt = await genSaltSync(saltRound);
+                    // let hashPass = await hashSync(password, salt);
                     // let data = await Auth({email: email, password: hashPass});
     
                     // await data.save();
