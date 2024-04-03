@@ -16,7 +16,7 @@ const Signup = (props) => {
     <Suspense fallback={<TopLoader />}>
         <div key={"SignupPageKey"} className="flex justify-center items-center w-full">
             <div className="flex flex-col justify-center items-start w-11/12 bg-white border border-solid rounded-md mt-4 mb-4">
-                <Image src={"/images/banner.png"} width={1000} height={100} alt="image" className="rounded-t-md w-full" />
+                <Image src={"/image/banner.png"} width={1000} height={100} alt="image" className="rounded-t-md w-full" />
                 <form className="flex flex-col justify-center items-start bg-slate-950 rounded-b-md p-4 pl-6 w-full">
                     <div className="flex justify-start w-full items-center mb-3 mt-3">
                         <label htmlFor="email" className="cursor-pointer text-purple-600 mr-4"><MdOutlineMail size={"28px"} className="bg-transparent drop-shadow-xl shadow-purple-600" /></label>
