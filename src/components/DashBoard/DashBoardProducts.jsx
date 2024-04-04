@@ -10,8 +10,8 @@ import RightClickInfoIndex from "./Editors/RightClickInfoIndex";
 import ConfirmCard from "../ConfirmCard";
 import Loader from "../Loader";
 import DisplayCarousel from "../Carousels/DisplayCarousel";
-import FourCardCollection from "../Cards/FourCardCollection";
 import PopupDetailsCard from "../PopUpElements/PopupDetailsCard";
+import FourCard from "../Cards/FourCardCollection/FourCard";
 
 const DashBoardProducts = ({ getData, value = function () { } }) => {
     // useState
@@ -39,7 +39,7 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
     const RightClick = (e) => {
         let type = e.type.toLowerCase();
         if (type === "edit") {
-            value({ editor: true, data: e.children, type: e.children.type.name });
+            value({ editor: true, data: e.redux, type: e.children.type.name });
         } else if (type === "delete") {
             // console.log("delete");
             setConfirmMessage("Are Your Sure Delete of This Card");
@@ -86,7 +86,7 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
                     card += 1;
                 }else if(data[i].type === "DisplayCarousel"){
                     carousel += 1;
-                }else if(data[i].type === "FourCardCollection"){
+                }else if(data[i].type === "FourCard"){
                     four += 1;
                 }
             }
@@ -136,8 +136,8 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
                         </li>
 
                         <li className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
-                            <h2 className="mb-2 hover:text-purple-800">FourCardCollection ({FourCardCount})</h2>
-                            {LineHighLight === "fourcardcollection" ? <span className="bg-purple-700 w-full h-[2px]"></span> : null}
+                            <h2 className="mb-2 hover:text-purple-800">FourCard ({FourCardCount})</h2>
+                            {LineHighLight === "fourcard" ? <span className="bg-purple-700 w-full h-[2px]"></span> : null}
                         </li>
                     </ul>
 
@@ -180,13 +180,13 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
                                                 })
                                             }
                                         </>:
-                                        LineHighLight === "fourcardcollection" ? <>
+                                        LineHighLight === "fourcard" ? <>
                                             {
                                                 Data.map((_data, i)=>{
                                                     let data = _data.data;
-                                                    return _data.type === "FourCardCollection" ? <>
+                                                    return _data.type === "FourCard" ? <>
                                                         <RightClickInfoIndex redux={_data} value={(e) => { RightClick(e) }}>
-                                                            <FourCardCollection title={data.title} data={data.data} />
+                                                            <FourCard key={"ProductFourCard" + i} title={data.title} data={data.data} />
                                                         </RightClickInfoIndex>
                                                     </>: null
                                                 })

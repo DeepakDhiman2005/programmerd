@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // component
 import MyInput from "@/components/MyInput";
@@ -9,6 +9,13 @@ import Dropdown from "@/components/Dropdown";
 const PathSelectorBox = ({defaultValue="", ariaValueText="", uniqueID="", value=function(){}}) => {
     // useState
     const [ImageInputType, setImageInputeType] = useState("");
+    
+    useEffect(()=>{
+        try{
+            let defineType = defaultValue.match("http") || defaultValue.match("https");
+            setImageInputeType(defineType ? "Image Link": "Select Image")
+        }catch(err){}
+    }, [defaultValue]);
 
     return <>
         <div className="flex flex-col justify-center items-center w-full">

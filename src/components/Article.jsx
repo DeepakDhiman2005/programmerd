@@ -53,19 +53,11 @@ const Article = (props) => {
                                 // console.log(data.image);
                                 setPopUpImage(true);
                                 try{
-                                    if(data.image.image){
-                                        setImageData({
-                                            file: data.image.image,
-                                            width: data.image.width,
-                                            height: data.image.height
-                                        })
-                                    }else{
-                                        setImageData({
-                                            src: data.image.image,
-                                            width: data.image.width,
-                                            height: data.image.height
-                                        });
-                                    }
+                                    setImageData({
+                                        image: data.image.image,
+                                        width: data.image.width,
+                                        height: data.image.height
+                                    })
                                 }catch(err){}
                             }} /> : null
                         }

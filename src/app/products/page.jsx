@@ -11,9 +11,9 @@ import Image from "next/image";
 // components
 import Card from "@/components/Card";
 import DisplayCarousel from "@/components/Carousels/DisplayCarousel";
-import FourCardCollection from "@/components/Cards/FourCardCollection";
 import Loader from "@/components/Loader";
 import TopLoader from "@/components/TopLoader";
+import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
 const Products = (props) => {
     const [Data, setData] = useState(false);
@@ -61,7 +61,7 @@ const Products = (props) => {
                             </DisplayCarousel>: null
                         }
                         {
-                            value.type === "FourCardCollection" ? <FourCardCollection key={"ProductFourCardCollection" + i} title={value.data.title} data={value.data.data} />: null
+                            value.type === "FourCard" ? <FourCard key={"ProductFourCard" + i} title={value.data.title} data={value.data.data} />: null
                         }
                     </>
                 }): <Loader />

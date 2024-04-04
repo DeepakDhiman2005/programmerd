@@ -5,6 +5,9 @@ import React, {useEffect, useState} from "react";
 import Blogposts from "../Blogposts";
 import Loader from "../Loader";
 import InputSearch from "../Search/InputSearch";
+import BlogCard from "../Cards/BlogCard";
+import RightClickInfoIndex from "./Editors/RightClickInfoIndex";
+import PopupDetailsCard from "../PopUpElements/PopupDetailsCard";
 
 const DashBoardBlogPosts = ({value=function(){}}) => {
     // useState
@@ -12,6 +15,9 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
     const [EditorData, setEditorData] = useState(false);
     const [BlogApi, setBlogApi] = useState(false);
     const [BlogItemSearch, setBlogItemSearch] = useState("");
+    
+    const [PopUpDetailsDisplay, setPopUpDetailsDisplay] = useState(false);
+    const [DetailsMenu, setDetailsMenu] = useState([]);
 
     const ClickEditor = () => {
         // setEditor(true);
@@ -32,10 +38,27 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
 
     // api
     const blogapi = async () => {
-        const response = await fetch("/api/blogs");
+        const response = await fetch("/api/blogupload");
         const data = await response.json();
         // console.log(data);
         setBlogApi(data);
+    }
+
+    // function
+    const RightClickWindow = (e) => {
+        // console.log(e)
+        if(e.type === "Edit"){
+            // console.log(e.redux)
+            value({editor: true, data: e.redux})
+        }else if(e.type === "Details"){
+            setPopUpDetailsDisplay(true);
+            setDetailsMenu([
+                { key: "Date", value: e.redux.date },
+                { key: "Type", value: e.redux.type },
+                { key: "Method", value: e.redux.method },
+                { key: "ID", value: e.redux._id }
+            ])
+        }
     }
 
     useEffect(()=>{
@@ -43,6 +66,10 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
     }, []);
 
     return <>
+        <PopupDetailsCard display={PopUpDetailsDisplay} list={DetailsMenu} CloseDetails={(e)=>{
+            setPopUpDetailsDisplay(false);
+        }} />
+
         <div className="mt-4 mb-4 flex flex-col justify-center items-start">
             <section className="flex justify-between w-full items-center">
                 <div className="text-lg cursor-pointer hover:text-purple-700">
@@ -95,9 +122,18 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
                 }
                 {/* blogs */}
                 {
-                    BlogApi ? <Blogposts search={BlogItemSearch} value={(e)=>{
-                        setEditorData(e);
-                    }}  bloglist={BlogApi} />: <div className="flex w-full justify-center items-center mt-20 mb-20">
+                    BlogApi ? <>
+                        {/* <Blogposts search={BlogItemSearch} value={(e)=>{ setEditorData(e); }}  bloglist={BlogApi} /> */}
+                        {
+                            BlogApi.map((data, i)=>{
+                                let content = data.data;
+                                // console.log(content);
+                                return <RightClickInfoIndex redux={data} value={RightClickWindow} className={"w-full flex justify-start items-center"}>
+                                    <BlogCard key={"BlogCardInDashBoard"+i} title={content.title} desc={content.desc} date={content.date} />
+                                </RightClickInfoIndex>
+                            })
+                        }
+                    </>: <div className="flex w-full justify-center items-center mt-20 mb-20">
                         <Loader />
                     </div>
                 }

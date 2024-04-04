@@ -11,11 +11,12 @@ import ConfirmCard from "@/components/ConfirmCard";
 import Dropdown from "@/components/Dropdown";
 import DisplayCarousel from "@/components/Carousels/DisplayCarousel";
 import ImageRender from "@/components/ImageRender";
-import FourCardCollectionEditor from "./productEdit/FourCardCollectionEditor";
 import DisplayCarouselEidtor from "./productEdit/DisplayCarouselEditor";
 import CardEditor from "./productEdit/CardEditor";
-import FourCardCollection from "@/components/Cards/FourCardCollection";
 import MessageEmit from "@/components/MessageEmit";
+
+import FourCardEditor from "./productEdit/FourCardEditor";
+import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
 
 const DashBoardProductEditor = ({ data, value=function(){} }) => {
@@ -25,25 +26,31 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
     const [EditorType, setEditorType] = useState(false);
     const [DisplayCarouselArray, setDisplayCarsouelArray] = useState([]);
     const [CardData, setCardData] = useState({title: "", desc: "", href: "", image: {src: ""}});
-    const [FourCard, setFourCard] = useState(false);
+    const [FourCardData, setFourCardData] = useState(false);
     const [MessageDisplay, setMessageDisplay] = useState(false);
 
     const [Uploads, setUploads] = useState(false);
+    const [DefaultData, setDefaultData] = useState(null);
 
     const CreateCard = async () => {
-        const {method, data, date, type} = Uploads;
+        const {method, data, date, type, id} = Uploads;
+        console.log(method, data, date, type)
 
         const formData = new FormData();
         formData.append("method", method);
         formData.append("date", date);
         formData.append("type", type);
+        // console.log(id)
+        if(id !== null){
+            formData.append("id", id);
+        }
 
         if(Uploads.type === "Card"){
             for(let x in data){
                 formData.append(x, data[x]);
             }
         }
-        else if(Uploads.type === "FourCardCollection"){
+        else if(Uploads.type === "FourCard"){
             // console.log(Uploads.data);
             let _data = Uploads.data;
             formData.append("title", _data.title);
@@ -86,11 +93,14 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
     }
 
     useEffect(()=>{
-        console.log(data)
-        // if(data.type){
-        //     // console.log(true)
-        //     setEditorType(data.type);
-        // }
+        // console.log(data)
+        try{
+            if(data.data !== null){
+                // console.log(true)
+                setDefaultData(data.data);
+                setEditorType(data.data.type);
+            }
+        }catch(err){}
     }, [data]);
 
     return <>
@@ -108,8 +118,8 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                         }
                     </DisplayCarousel>
                 </>: 
-                EditorType === "FourCardCollection" ? <>
-                    <FourCardCollection title={FourCard.title} data={FourCard.data} />
+                EditorType === "FourCard" ? <>
+                    <FourCard title={FourCardData.title} data={FourCardData.data} />
                 </>:null
             }
         </PopUpElement>
@@ -127,16 +137,16 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                 setEditorType(e);
             }}>
                 <li>Card</li>
-                <li>FourCardCollection</li>
+                <li>FourCard</li>
                 <li>DisplayCarousel</li>
             </Dropdown>
         </div>
 
         {
             EditorType === "Card" ? <>
-                <CardEditor value={(e)=>{
+                <CardEditor data={DefaultData} value={(e)=>{
                     if(e.submit){
-                        setUploads({ method: "add", data: e.data, date: getCurrentDate(), type: "Card" });
+                        setUploads({ method: e.type, data: e.data, date: getCurrentDate(), type: "Card", id: e.id });
                         setConfirmDisplay(true);
                     }else {
                         setCardData(e.data);
@@ -144,23 +154,23 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                     }
                 }} />
             </>: 
-            EditorType === "FourCardCollection" ?<>
-                <div className="flex justify-center items-center">
-                    <FourCardCollectionEditor value={(e)=>{
+            EditorType === "FourCard" ?<>
+                <div className="flex justify-start items-center">
+                    <FourCardEditor data={DefaultData} value={(e)=>{
                         if(e.submit){
-                            setUploads({ method: "add", data: {title: e.title, data: e.data}, date: getCurrentDate(), type: "FourCardCollection" });
+                            setUploads({ method: e.method, data: e.data, date: getCurrentDate(), type: "FourCard", id: e.id });
                             setConfirmDisplay(true);
                         }else {
-                            setFourCard({data: e.data, title: e.title})
+                            setFourCardData(e.data)
                             setOverView(e.overview);
                         }
                     }} />
                 </div>
             </>: 
             EditorType === "DisplayCarousel" ? <>
-                <DisplayCarouselEidtor value={(e)=>{
+                <DisplayCarouselEidtor data={DefaultData} value={(e)=>{
                     if(e.submit){
-                        setUploads({method: "add", data: e.data, date: getCurrentDate(), type: "DisplayCarousel"});
+                        setUploads({method: e.method, data: e.data, date: getCurrentDate(), type: "DisplayCarousel", id: e.id});
                         setConfirmDisplay(true);
                     }else { 
                         setDisplayCarsouelArray(e.data);

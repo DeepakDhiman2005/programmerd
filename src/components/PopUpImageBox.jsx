@@ -5,14 +5,14 @@ import React, {useEffect, useRef, useState} from "react";
 import { RxCross2 } from "react-icons/rx";
 
 // next
-import Image from "next/image";
+import ImageRender from "./ImageRender";
 
 /**
  * 
  * @param {*} param popup=false, value: function, imageData={src: "", width: 0, height: 0, className: ""}
  * @returns 
  */
-const PopUpImageBox = ({popup=false, value=function(){}, imageData={src: "", width: 0, height: 0, className: "", file: false}}) => {
+const PopUpImageBox = ({popup=false, value=function(){}, imageData={image: null, width: 0, height: 0, className: ""}}) => {
     let file = imageData.file;
     // useState
     const [Img, setImg] = useState(false);
@@ -52,7 +52,7 @@ const PopUpImageBox = ({popup=false, value=function(){}, imageData={src: "", wid
                     </button>
                 </div>
                 <div className="flex w-full justify-center items-center transition-all delay-700 h-[90%]">
-                    <Image src={Img ? Img: (imageData.src ? imageData.src: "/logo.svg")} alt="image" width={imageData.width} height={imageData.height} className={imageData.className ? imageData.className: "border w-[90%] h-[65%] border-solid border-slate-50 rounded-md shadow-md shadow-slate-400 transition-all delay-700" } />
+                    <ImageRender image={imageData.image} width={imageData.width} height={imageData.height} className={imageData.className ? imageData.className: "border w-[90%] h-[65%] border-solid border-slate-50 rounded-md shadow-md shadow-slate-400 transition-all delay-700"} />
                 </div>
             </div>
         </div>

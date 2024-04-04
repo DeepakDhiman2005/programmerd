@@ -1,5 +1,5 @@
 "use client"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 // component
 import Button from "@/components/Button";
@@ -9,9 +9,11 @@ import MyInput from "@/components/MyInput";
 import { CiCirclePlus } from "react-icons/ci";
 import PathSelectorBox from "./PathSelectorBox";
 
-const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
+const DisplayCarouselEidtor = ({ data=null, value=function(){} }) => {
     // useState
     const [DisplayCarouselArray, setDisplayCarsouelArray] = useState([]);
+    const [UID, setUID] = useState(null);
+    const [Method, setMethod] = useState(false);
 
     // onAdd
     const onDisplayCarouselArray = () => {
@@ -59,6 +61,16 @@ const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
         setDisplayCarsouelArray([..._array]);
     }
 
+    useEffect(()=>{
+        try{
+            if(data !== null){
+                setDisplayCarsouelArray([...data.data]);
+                setUID(data._id);
+                setMethod("edit");
+            }
+        }catch(err){}
+    }, [data]);
+
     return <>
         <div className="flex flex-col justify-center items-start">
             <h2 className="text-xl text-slate-800 font-semibold mt-3 mb-3">Display Carousel</h2>
@@ -90,7 +102,7 @@ const DisplayCarouselEidtor = ({ data, value=function(){} }) => {
                 </button>
 
                 <div className="flex justify-start items-center w-full mt-3 mb-3">
-                    <Button color="purple" className="ml-2" onClick={() => { value({data: DisplayCarouselArray, submit: true}) }}>Submit</Button>
+                    <Button color="purple" className="ml-2" onClick={() => { value({data: DisplayCarouselArray, method: Method ? Method: "add", submit: true, id: UID}) }}>Submit</Button>
                     <Button color="blue" className="ml-2" onClick={() => { value({data: DisplayCarouselArray, overview: true}) }}>OverView</Button>
                 </div>
             </div>

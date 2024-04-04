@@ -61,7 +61,7 @@ const TutorialStart = ({params}) => {
                 {
                     title: "Python image",
                     image: {
-                        src: "/images/programming.jpg",
+                        src: "/image/programming.jpg",
                         width: 500,
                         height: 500
                         // className: "w-auto"
@@ -71,7 +71,7 @@ const TutorialStart = ({params}) => {
                     title: "Check my course!",
                     points: ["this is tailwindcss course:"],
                     image: {
-                        src: "/images/image1.jpg",
+                        src: "/image/image1.jpg",
                         width: 600,
                         height: 600
                     }

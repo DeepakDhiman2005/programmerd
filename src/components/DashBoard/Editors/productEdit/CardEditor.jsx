@@ -1,12 +1,12 @@
 "use client"
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 
 // component
 import Dropdown from "@/components/Dropdown";
 import Button from "@/components/Button";
 import ImageSelectBox from "@/components/SelectorBox/ImageSelectBox";
 
-const CardEditor = ({ data, value=function(){}}) => {
+const CardEditor = ({ data=null, value=function(){}}) => {
     // useRef
     const titleRef = useRef({value: ""});
     const linkRef = useRef({value: ""});
@@ -15,6 +15,20 @@ const CardEditor = ({ data, value=function(){}}) => {
     // useState
     const [Img, setImg] = useState(false);
     const [ImageInputType, setImageInputeType] = useState("");
+    const [uniqueID, setuniqueID] = useState(false);
+
+    useEffect(()=>{
+        if(data !== null){
+            const {title, href, desc, image} = data.data;
+            titleRef.current.value = title;
+            linkRef.current.value = href;
+            descRef.current.value  = desc;
+            setImg(image)
+            setuniqueID(data._id);
+            let defineType = image.match("http") || image.match("https");
+            setImageInputeType(defineType ? "Image Link": "Select Image")
+        }
+    }, [data]);
 
     return <>
         <div className="flex flex-col justify-center items-start">
@@ -31,8 +45,8 @@ const CardEditor = ({ data, value=function(){}}) => {
                     <li>Select Image</li>
                 </Dropdown>
                 {
-                    ImageInputType === "Image Link" ? <input type="text" placeholder="Image Link..." className="outline-none cursor-pointer mt-5 mb-5 border-b border-solid border-slate-600 active:border-b-purple-600 w-3/4" onChange={(e) => { setImg(e.target.value) }} /> :
-                        ImageInputType === "Select Image" ? <ImageSelectBox uniqueID={"imageSelect"} value={(e) => { setImg(e.image) }} /> : null
+                    ImageInputType === "Image Link" ? <input defaultValue={typeof Img === "string" ? Img: ""} type="text" placeholder="Image Link..." className="outline-none cursor-pointer mt-5 mb-5 border-b border-solid border-slate-600 active:border-b-purple-600 w-3/4" onChange={(e) => { setImg(e.target.value) }} /> :
+                        ImageInputType === "Select Image" ? <ImageSelectBox defaultValue={Img} uniqueID={"imageSelect"} value={(e) => { setImg(e.image) }} /> : null
                 }
 
             </div>
@@ -43,7 +57,7 @@ const CardEditor = ({ data, value=function(){}}) => {
                     desc: descRef.current.value,
                     href: linkRef.current.value,
                     image: Img
-                }}) }}>Submit</Button>
+                }, type: data !== null ? "edit": "add", id: uniqueID}) }}>Submit</Button>
                 <Button color="red" className="ml-2" onClick={() => { value({overview: true, data: {
                     title: titleRef.current.value,
                     desc: descRef.current.value,

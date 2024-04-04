@@ -15,12 +15,8 @@ export async function GET(response){
     return NextResponse.json(data);
 }
 
-// export async function POST(response){
-    
-//     return NextResponse.json({ message: "Data Submit Successfully!" });
-// }
-
 export async function POST(response){
+
     const resp = await response.json();
     const _query = resp.query.toLowerCase();
     // console.log(_query);

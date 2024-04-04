@@ -14,7 +14,7 @@ import { RxCross2 } from "react-icons/rx";
 import DashBoardHome from "./DashBoardHome";
 
 const DashBoardMonitor = ({ slug }) => {
-    const [Editor, setEditor] = useState({editor: false, data: null});
+    const [Editor, setEditor] = useState({editor: false, data: null, type: ""});
 
     return <>
         <div className="w-3/4 ml-3 bg-white p-4 border border-solid border-slate-50 rounded-md shadow-md shadow-slate-300">
@@ -33,7 +33,9 @@ const DashBoardMonitor = ({ slug }) => {
             {
                 slug === "blogs" ? <>
                     {
-                        Editor.editor ? <DashBoardBlogEditor data={Editor} /> : <DashBoardBlogPosts value={(e) => {
+                        Editor.editor ? <DashBoardBlogEditor data={Editor} sendblog={(e)=>{
+                            setEditor(e)
+                        }} /> : <DashBoardBlogPosts value={(e) => {
                             setEditor(e);
                         }} />
                     }

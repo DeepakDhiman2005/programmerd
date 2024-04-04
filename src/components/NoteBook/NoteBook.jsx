@@ -7,6 +7,7 @@ import StringToNumber from "../Functions/StringToNumber";
 // component
 import NoteInputField from "./NoteInputField";
 import NoteNumberField from "./NoteNumberField";
+import { ALPHAID } from "../Functions/UNIQUEID";
 
 const NoteBook = ({unique="", data=false, value=function(){}}) => {
     // useState

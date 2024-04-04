@@ -24,24 +24,6 @@ const Blogs = (props) => {
         setSearchBlogCard("");
     }
 
-    const JsonDataList = [
-        {
-            title: "What is Computer?",
-            desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit repudiandae quo iusto illum quod ipsa, labore nesciunt asperiores quis itaque distinctio beatae consequatur vero. Fugiat dolorem obcaecati temporibus repellendus esse recusandae aut asperiores, maiores quaerat ea aperiam incidunt, fugit quidem?",
-            date: "November 20, 2023"
-        },
-        {
-            title: "What is Python?",
-            desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit repudiandae quo iusto illum quod ipsa, labore nesciunt asperiores quis itaque distinctio beatae consequatur vero. Fugiat dolorem obcaecati temporibus repellendus esse recusandae aut asperiores, maiores quaerat ea aperiam incidunt, fugit quidem?",
-            date: "November 12, 2023"
-        },
-        {
-            title: "How to Learn Web Development?",
-            desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit repudiandae quo iusto illum quod ipsa, labore nesciunt asperiores quis itaque distinctio beatae consequatur vero. Fugiat dolorem obcaecati temporibus repellendus esse recusandae aut asperiores, maiores quaerat ea aperiam incidunt, fugit quidem?",
-            date: "November 25, 2022"
-        }
-    ];
-
     const blogapi = async () => {
         const response = await fetch("/api/blogs", { method: "GET" });
         const data = await response.json();
