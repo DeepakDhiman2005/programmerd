@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -140,8 +140,13 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 let article = { method: Method ? Method: "add", data: blog, date: getCurrentDate(), type: "blog", id: UID };
                 // console.log(article)
 
-                let resp = await axios.post("/api/blogupload/", article);   
-                // console.log(resp.data);
+                // let resp = await axios.post("/api/blogupload/", article);  
+                let resp = await fetch("/api/blogupload/", {
+                    mathod: "POST",
+                    body: JSON.stringify(article)
+                });
+                let dt = await resp.json();
+                // console.log(dt);
                 if(BlobAccess){
                     let blobresp = await axios.postForm("/api/blob/", ImgContent);
                 }
