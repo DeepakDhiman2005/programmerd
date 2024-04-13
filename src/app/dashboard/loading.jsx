@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
+// import LoadingBar from "react-top-loading-bar";
 
 // next
 import Router from "next/router";
@@ -13,16 +14,12 @@ export default function Loading(){
 
     useEffect(()=>{
         Router.events.on("routeChangeStart", ()=>{
-            setIsLoading(45);
+            setIsLoading(40);
         });
         Router.events.on("routeChangeComplete", ()=>{
-            let delay = setInterval(() => {
-                setIsLoading(80);
-                clearInterval(delay)
-                setIsLoading(100);
-            }, 1200);
+            setIsLoading(100);
         });
     }, [Router]);
 
-    return <TopLoader width={IsLoading} />
+    return <TopLoader color="purple" progress={IsLoading} />
 }

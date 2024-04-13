@@ -1,16 +1,18 @@
 "use client"
 import React from "react";
 
-// next
-
-const TopLoader = ({color="", width=false}) => {
+const TopLoader = ({color="", progress=null}) => {
     return <>
         {
-            color === "purple" ? <span className={"w-full bg-purple-700 h-[4px] transition-all fixed top-0 left-0 z-[500] overflow-hidden"} style={{width: width ? width+"%": "100%"}}></span>: 
-            color === "red" ? <span className={"w-full bg-red-700 h-[4px] transition-all fixed top-0 left-0 z-[500] overflow-hidden"} style={{width: width ? width+"%": "100%"}}></span>: 
-            color === "green" ? <span className={"w-full bg-green-700 h-[4px] transition-all fixed top-0 left-0 z-[500] overflow-hidden"} style={{width: width ? width+"%": "100%"}}></span>:
-            color === "blue" ? <span className={"w-full bg-blue-700 h-[4px] transition-all fixed top-0 left-0 z-[500] overflow-hidden"} style={{width: width ? width+"%": "100%"}}></span>: 
-            <span className={"w-full bg-purple-700 h-[4px] transition-all fixed top-0 left-0 z-[500] overflow-hidden"} style={{width: width ? width+"%": "100%"}}></span>
+            <div className="fixed top-0 h-[3px] flex justify-start items-center left-0 w-full z-[500]">
+                {
+                    color === "purple" ? <span className={"bg-purple-700 h-full transition-all"} style={{width: (progress+"%")}}></span>: 
+                    color === "red" ? <span className={"bg-red-700 h-full transition-all"} style={{width: (progress+"%")}}></span>:
+                    color === "blue" ? <span className={"bg-green-700 h-full transition-all"} style={{width: (progress+"%")}}></span>:
+                    color === "orange" ? <span className={"bg-orange-700 h-full transition-all"} style={{width: (progress+"%")}}></span>: 
+                    <span className={"bg-purple-700 h-full transition-all"} style={{width: (progress+"%")}}></span>
+                }
+            </div>
         }
     </>
 }

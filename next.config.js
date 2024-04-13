@@ -16,7 +16,19 @@ const nextConfig = {
               hostname: "**.pixabay.com",
               port: '',
               pathname: '/*/**'
-            }
+            },
+            {
+              protocol: "https",
+              hostname: "**.geeksforgeeks.org",
+              port: "",
+              pathname: "/*/**"
+            },
+            {
+              protocol: "https",
+              hostname: "**.com",
+              port: "",
+              pathname: "/*/**"
+            },
           ],
     },
     env: {

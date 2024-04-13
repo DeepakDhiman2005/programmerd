@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -74,6 +74,8 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                     content[i].title = data.data;
                 } else if (data.type === "description") {
                     content[i].desc = data.data;
+                } else if (data.type === "link") {
+                    content[i].link = data.data;
                 } else if (data.type === "code") {
                     content[i].code = [];
                     data.data.map((data) => {
@@ -87,12 +89,12 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 } else if(data.type === "image") {
                     content[i].image = {
                         image: data.data,
-                        width: 200,
-                        height: 100
+                        width: 500,
+                        height: 200
                     }
                 } else if(data.type === "video"){
                     content[i].video = {
-                        file: data.data
+                        video: data.data
                     };
                 }
             })
@@ -123,30 +125,41 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                             // console.log(data.image)
                             BlobAccess = true;
                             let unqiueName =  Date.now() + "-" + Math.random()*1000 + "-" + data.image.image.name;
-                            _array.push({
-                                image: unqiueName,
+                            _array.push({image: {
+                                image: "/uploads/blogs/"+unqiueName,
                                 width: data.image.width,
                                 height: data.image.height
-                            });
+                            }});
                             ImgContent.push({name: unqiueName, image: data.image.image});
+                        }
+                    }else if(data.video){
+                        if(typeof data.video.video === "string"){
+                            _array.push(data);
+                        }else {
+                            BlobAccess = true;
+                            let unqiueName =  Date.now() + "-" + Math.random()*1000 + "-" + data.video.video.name;
+                            _array.push({video: {
+                                video: "/uploads/blogs/"+unqiueName,
+                            }});
+                            ImgContent.push({name: unqiueName, video: data.video.video});
                         }
                     }else {
                         _array.push(data);
                     }
                 })
                 blog.content = _array;
-                // console.log(ImgContent);
+                console.log(ImgContent);
 
                 let article = { method: Method ? Method: "add", data: blog, date: getCurrentDate(), type: "blog", id: UID };
-                // console.log(article)
+                console.log(article)
 
-                // let resp = await axios.post("/api/blogupload/", article);  
-                let resp = await fetch("/api/blogupload/", {
-                    mathod: "POST",
-                    body: JSON.stringify(article)
-                });
-                let dt = await resp.json();
-                // console.log(dt);
+                let resp = await axios.post("/api/blogupload/", article);  
+                // let resp = await fetch("/api/blogupload/", {
+                //     mathod: "POST",
+                //     body: JSON.stringify(article)
+                // });
+                // let dt = await resp.json();
+                // console.log(resp.data);
                 if(BlobAccess){
                     let blobresp = await axios.postForm("/api/blob/", ImgContent);
                 }
@@ -162,14 +175,16 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                     }, 1500);
                 }
             }
-        } catch (err) { }
+        } catch (err) {
+            console.log(err)
+        }
         // console.log(_title, _desc, _date)
     }
 
     const onDropDown = (e) => {
         let _text = e.toLowerCase();
         setMultiContentCall(MultiContentCall + 1);
-        if (_text === "title" || _text === "description") {
+        if (_text === "title" || _text === "description" || _text === "link") {
             setContentArray([...ContentArray, { type: _text, data: "", id: MultiContentCall + 1 }]);
         }
         else if (_text === "points" || _text === "code") {
@@ -189,6 +204,8 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 _array.push({ type: "title", data: content[i].title, id: i + 1 });
             }else if(content[i].desc){
                 _array.push({ type: "desc", data: content[i].desc, id: i + 1 });
+            }else if(content[i].link){
+                _array.push({ type: "link", data: content[i].link, id: i + 1 });
             }else if(content[i].points){
                 _array.push({ type: "points", data: content[i].points.map((point, i)=>{ return {number: i+1, text: point} }), id: i + 1 });
             }else if(content[i].code){
@@ -196,7 +213,7 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
             }else if(content[i].image){
                 _array.push({ type: "image", data: content[i].image.image, id: i + 1 })
             }else if(content[i].video){
-                _array.push({ type: "image", data: content[i].video, id: i + 1 })
+                _array.push({ type: "video", data: content[i].video.video, id: i + 1 })
             }
         }
         setMultiContentCall(_array.length);
@@ -234,7 +251,7 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 _array.push({type: data.type, data: data.data, id: i+1-onetime});
             }
         })
-        console.log(_array);
+        // console.log(_array);
         if(_array.length === 0){
             // console.log(true);
             setMultiContentCall(0);
@@ -325,6 +342,7 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                         <Dropdown value={onDropDown} className="flex justify-center items-center">
                             <li>Title</li>
                             <li>Description</li>
+                            <li>Link</li>
                             <li>Code</li>
                             <li>Points</li>
                             <li>Image</li>

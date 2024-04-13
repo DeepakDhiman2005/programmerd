@@ -14,23 +14,30 @@ import { IoMdSettings } from "react-icons/io"; // settings
 import { FaYoutube } from "react-icons/fa"; // youtube
 import { MdOutlinePlaylistAdd } from "react-icons/md"; // playlist
 
+// next
+import { useRouter } from "next/navigation";
+
 const DashBoardSideBar = (props) => {
+   // router
+   const router = useRouter();
+
     // function
    const DashClick = (e) => {
         try{
          let tagName = e.target.tagName;
          if(tagName.toLowerCase() === "li"){
             let get_h2 = e.target.querySelector('h2').innerText;
-            props.value(get_h2);
+            // props.value(get_h2);
+            router.push("/dashboard/visit/"+get_h2.toLowerCase());
             // DashTitle !== "" ? props.value(get_h2): null;
          }
          else if(tagName.toLowerCase() === "h2"){
             let get_h2 = e.target.innerText;
-            props.value(get_h2);
+            router.push("/dashboard/visit/"+get_h2.toLowerCase());
          }
          else if(tagName.toLowerCase() === "svg"){
             let get_h2 = e.target.parentNode.querySelector('h2').innerText;
-            props.value(get_h2);
+            router.push("/dashboard/visit/"+get_h2.toLowerCase());
          }
         }catch(err){ }
       // console.log(DashTitle)

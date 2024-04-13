@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -12,6 +13,8 @@ import Loader from "../Loader";
 import DisplayCarousel from "../Carousels/DisplayCarousel";
 import PopupDetailsCard from "../PopUpElements/PopupDetailsCard";
 import FourCard from "../Cards/FourCardCollection/FourCard";
+
+import TopLoader from "../TopLoader";
 
 const DashBoardProducts = ({ getData, value = function () { } }) => {
     // useState
@@ -26,14 +29,43 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
 
     const [PopUpDetailsDisplay, setPopUpDetailsDisplay] = useState(false);
     const [DetailsMenu, setDetailsMenu] = useState([]);
+    const [ReduxValue, setReduxValue] = useState(null);
+
+    const [IsLoading, setIsLoading] = useState(0);
 
     // function
     const func = async () => {
         // console.log(LineHighLight);
+        setIsLoading(45);
         const response = await fetch("/api/products");
+        setIsLoading(65);
         const data = await response.json();
+        setIsLoading(85);
         // console.log(data);
         setData(data);
+        setIsLoading(100);
+        let delay = setInterval(() => {
+            clearInterval(delay);
+            setIsLoading(0);
+        }, 500);
+    }
+
+    const HideEvent = async (e) => {
+        let data = e;
+        if(data.method === "hide"){
+            data.method = "edit";
+        }else {
+            data.method = "hide";
+        }
+        const resp = await axios.post("/api/producthideordel/", data);
+        console.log(resp.data);
+    }
+
+    const DeleteEvent = async (e)  => {
+        let data = e;
+        data.method = "delete";
+        const resp = await axios.post("/api/producthideordel/", data);
+        console.log(resp.data);
     }
 
     const RightClick = (e) => {
@@ -42,10 +74,15 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
             value({ editor: true, data: e.redux, type: e.children.type.name });
         } else if (type === "delete") {
             // console.log("delete");
-            setConfirmMessage("Are Your Sure Delete of This Card");
+            setConfirmMessage("Are You Sure? - Delete");
             setConfirmDisplay(true);
         } else if (type === "hide") {
-
+            if (e.redux.method === "hide") {
+                setConfirmMessage("Are You Sure? - Not Hide");
+            } else {
+                setConfirmMessage("Are You Sure? - Hide");
+            }
+            setConfirmDisplay(true);
         } else if (type === "details") {
             setPopUpDetailsDisplay(true);
             setDetailsMenu([
@@ -56,57 +93,65 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
             ])
             // console.log({ data: e.children, type: e.children.type.name });
         }
+        setReduxValue(e.redux);
     }
 
     const onClickButton = (e) => {
-        try{
+        try {
             let key = e.target.tagName.toLowerCase();
             let text = "";
-            if(key === "h2"){
+            if (key === "h2") {
                 text = e.target.innerText;
-            }else if(key === "span"){
+            } else if (key === "span") {
                 let _text = e.target.parentNode;
                 text = _text.querySelector("h2").innerText;
-            }else if(key === "li"){
+            } else if (key === "li") {
                 text = e.target.querySelector("h2").innerText;
             }
             text = text.split(" ")[0].toLowerCase();
             setHighLight(text);
-        }catch(err){}
+        } catch (err) { }
     }
 
     useEffect(() => {
-        if(Data){
+        if (Data) {
             let data = Data;
             let card = 0;
             let four = 0;
             let carousel = 0;
-            for(let i=0; i<data.length; i++){
-                if(data[i].type === "Card"){
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].type === "Card") {
                     card += 1;
-                }else if(data[i].type === "DisplayCarousel"){
+                } else if (data[i].type === "DisplayCarousel") {
                     carousel += 1;
-                }else if(data[i].type === "FourCard"){
+                } else if (data[i].type === "FourCard") {
                     four += 1;
                 }
             }
             setCardCount(card);
             setFourCardCount(four);
             setDisplayCarouselCount(carousel);
-        }else{
+        } else {
             func();
         }
     }, [Data]);
 
     return <>
+        <TopLoader progress={IsLoading} />
         <ConfirmCard display={ConfirmDisplay} message={ConfirmMessage} value={(e) => {
             // console.log(e);
-            if (e) {
-                setConfirmDisplay(false);
-            } else { setConfirmDisplay(false); }
+            setConfirmDisplay(false);
+            if(e){
+                if (ConfirmMessage.match(/Hide/)) {
+                    HideEvent(ReduxValue);
+                }
+                else if(ConfirmMessage.match(/Delete/)){
+                    DeleteEvent(ReduxValue);
+                }
+            }
         }} />
 
-        <PopupDetailsCard display={PopUpDetailsDisplay} list={DetailsMenu} CloseDetails={(e)=>{
+        <PopupDetailsCard display={PopUpDetailsDisplay} list={DetailsMenu} CloseDetails={(e) => {
             setPopUpDetailsDisplay(false);
         }} />
 
@@ -151,55 +196,55 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
                                     {
                                         LineHighLight === "card" ? <>
                                             {
-                                                Data.map((_data)=>{
+                                                Data.map((_data) => {
                                                     // console.log(CardData)
                                                     let data = _data.data;
                                                     return _data.type === "Card" ? <>
                                                         <RightClickInfoIndex redux={_data} value={(e) => { RightClick(e) }}>
-                                                            <Card key={data.id} title={data.title} desc={data.desc} button={"View"} image={data.image.match(new RegExp("http://")) || data.image.match(new RegExp("https://")) ? data.image: `/uploads/products/${data.image}`} href={data.href} />
+                                                            <Card key={data.id} title={data.title} desc={data.desc} button={"View"} image={data.image.match(new RegExp("http://")) || data.image.match(new RegExp("https://")) ? data.image : `/uploads/products/${data.image}`} href={data.href} />
                                                         </RightClickInfoIndex>
-                                                    </>: null
-                                                })           
-                                            }
-                                        </>:
-                                        LineHighLight === "displaycarousel" ? <>
-                                            {
-                                                Data.map((_data, i)=>{
-                                                    let data = _data.data;
-                                                    return _data.type === "DisplayCarousel" ? <RightClickInfoIndex className={"w-full"} redux={_data} value={(e) => { RightClick(e) }}>
-                                                        <DisplayCarousel unique={`displaycarouselfetch${i+1}`}>
-                                                            {
-                                                                data.map(({href, id, image})=>{
-                                                                    return <a href={href} target="_blank" className="w-full h-full">
-                                                                        <Image src={image ? image.replace("./public", ""): "/logo.svg"} alt="image" width={1000} height={1000} className="cursor-pointer w-full h-full" />
-                                                                    </a>
-                                                                })
-                                                            }
-                                                        </DisplayCarousel>
-                                                    </RightClickInfoIndex>: null
+                                                    </> : null
                                                 })
                                             }
-                                        </>:
-                                        LineHighLight === "fourcard" ? <>
-                                            {
-                                                Data.map((_data, i)=>{
-                                                    let data = _data.data;
-                                                    return _data.type === "FourCard" ? <>
-                                                        <RightClickInfoIndex redux={_data} value={(e) => { RightClick(e) }}>
-                                                            <FourCard key={"ProductFourCard" + i} title={data.title} data={data.data} />
-                                                        </RightClickInfoIndex>
-                                                    </>: null
-                                                })
-                                            }
-                                        </>: <div className="flex justify-center items-center w-full mt-10 mb-10">
-                                            <h2 className="text-xl font-bold">No Data</h2>
-                                        </div> 
-                                    }    
+                                        </> :
+                                            LineHighLight === "displaycarousel" ? <>
+                                                {
+                                                    Data.map((_data, i) => {
+                                                        let data = _data.data;
+                                                        return _data.type === "DisplayCarousel" ? <RightClickInfoIndex className={"w-full"} redux={_data} value={(e) => { RightClick(e) }}>
+                                                            <DisplayCarousel unique={`displaycarouselfetch${i + 1}`}>
+                                                                {
+                                                                    data.map(({ href, id, image }) => {
+                                                                        return <a href={href} target="_blank" className="w-full h-full">
+                                                                            <Image src={image ? image.replace("./public", "") : "/logo.svg"} alt="image" width={1000} height={1000} className="cursor-pointer w-full h-full" />
+                                                                        </a>
+                                                                    })
+                                                                }
+                                                            </DisplayCarousel>
+                                                        </RightClickInfoIndex> : null
+                                                    })
+                                                }
+                                            </> :
+                                                LineHighLight === "fourcard" ? <>
+                                                    {
+                                                        Data.map((_data, i) => {
+                                                            let data = _data.data;
+                                                            return _data.type === "FourCard" ? <>
+                                                                <RightClickInfoIndex redux={_data} value={(e) => { RightClick(e) }}>
+                                                                    <FourCard key={"ProductFourCard" + i} title={data.title} data={data.data} />
+                                                                </RightClickInfoIndex>
+                                                            </> : null
+                                                        })
+                                                    }
+                                                </> : <div className="flex justify-center items-center w-full mt-10 mb-10">
+                                                    <h2 className="text-xl font-bold">No Data</h2>
+                                                </div>
+                                    }
                                 </div>
                             </> : <>
                                 <div className="flex justify-center items-center w-full mt-10 mb-10">
                                     <Loader />
-                                </div> 
+                                </div>
                             </>
                         }
                     </div>

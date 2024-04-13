@@ -4,10 +4,6 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 
-export async function GET(response){
-    return NextResponse.json({image: "http://programmerd.com"});
-}
-
 export async function POST(response){
     let data = await response.formData();
     let obj = [];

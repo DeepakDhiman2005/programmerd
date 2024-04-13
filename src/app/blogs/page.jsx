@@ -1,5 +1,5 @@
 "use client"
-import React, {useRef, useState, useEffect, Suspense} from "react";
+import React, {useRef, useState, useEffect} from "react";
 
 // components
 import Blogposts from "@/components/Blogposts";
@@ -10,13 +10,15 @@ import TopLoader from "@/components/TopLoader";
 import { IoIosSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 
-const Blogs = (props) => {
+const Blogs = () => {
     // useRef
     const searchRef = useRef();
 
     // useState
     const [SearchBlogCard, setSearchBlogCard] = useState("");
     const [BlogList, setBlogList] = useState(false);
+
+    const [IsLoading, setIsLoading] = useState(0);
 
     // function
     const SearchValueDeleted = () => {
@@ -25,10 +27,27 @@ const Blogs = (props) => {
     }
 
     const blogapi = async () => {
+        setIsLoading(45);
         const response = await fetch("/api/blogs", { method: "GET" });
         const data = await response.json();
-        // console.log(data);
-        setBlogList(data);
+        setIsLoading(65);
+        
+        let array = [];
+        data.filter((blog)=>{
+            if(blog.method !== "hide"){
+                array.push(blog.data);
+            }
+        })
+        setIsLoading(85);
+        // console.log(array);
+        if(array.length !== 0){
+            setBlogList(array);
+        }
+        setIsLoading(100);
+        let delay = setInterval(()=>{
+            setIsLoading(0);
+            clearInterval(delay);
+        }, 700);
     }
 
     useEffect(()=>{
@@ -36,7 +55,8 @@ const Blogs = (props) => {
         blogapi();
     }, []);
 
-    return <Suspense fallback={<TopLoader/>}>  
+    return <>  
+        <TopLoader progress={IsLoading} />
         <div className="pl-5 pr-5 pb-5 bg-slate-50">
             <div className="w-full flex justify-between items-center flex-col sm:flex-row">
                 {/* title */}
@@ -59,7 +79,7 @@ const Blogs = (props) => {
                 </div>
             }
         </div>
-    </Suspense>
+    </>
 }
 
 export default Blogs;

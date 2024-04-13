@@ -18,6 +18,7 @@ const ImageRender = ({ image="", width = 0, height = 0, className = "", onClick 
         try {
             if(typeof image === "string"){
                 if(image !== ""){
+                    // console.log(image);
                     setImg(image);
                 }else {
                     setImg("/logo.svg");

@@ -13,16 +13,15 @@ export default function Loading(){
 
     useEffect(()=>{
         Router.events.on("routeChangeStart", ()=>{
-            setIsLoading(45);
+            setIsLoading(40);
         });
         Router.events.on("routeChangeComplete", ()=>{
-            let delay = setInterval(() => {
-                setIsLoading(80);
-                clearInterval(delay)
-                setIsLoading(100);
-            }, 1200);
+            setIsLoading(100);
         });
     }, [Router]);
 
-    return <TopLoader width={IsLoading} />
+    // return <LoadingBar height={500} className="bg-purple-700 text-purple-700 z-[500]" color="purple" progress={IsLoading} onLoaderFinished={()=>{
+    //     setIsLoading(0);
+    // }} />
+    return <TopLoader progress={IsLoading} />
 }

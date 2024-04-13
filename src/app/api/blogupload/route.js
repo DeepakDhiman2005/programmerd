@@ -16,7 +16,7 @@ export async function POST(response){
     const resp = await response.json();
     // console.log(resp)
 
-    const { method, id } = resp;
+    const { method } = resp;
 
     if(method === "add"){
         let data = await Blogposts(resp);
@@ -24,9 +24,16 @@ export async function POST(response){
     }
     else if(method === "edit"){
         // console.log("edit");
-        await Blogposts.findByIdAndUpdate({_id : id}, {
+        await Blogposts.findByIdAndUpdate((resp.id || resp._id), {
             $set: resp
         })
+    }
+    else if(method === "hide"){
+        await Blogposts.findByIdAndUpdate(resp._id, { method: "hide" });
+    }
+    else if(method === "delete"){
+        // console.log("delete");
+        await Blogposts.findByIdAndDelete(resp._id);
     }
     return NextResponse.json({ message: "Data Submit Successfully!" });
 }

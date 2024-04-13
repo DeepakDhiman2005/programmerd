@@ -32,7 +32,7 @@ const Article = (props) => {
         }} />
 
         <TopScrollButton />
-        <div className="flex flex-col items-start">
+        <div className="flex w-full flex-col justify-start items-start">
             {
                 _data.content.map((data) => {
                     // console.log(data);
@@ -44,6 +44,9 @@ const Article = (props) => {
                             data.points ? data.points.map((point) => {
                                 return point ? <li>{point}</li> : null
                             }) : null
+                        }
+                        {
+                            data.link ? <a href={data.link} target="_blank" className="cursor-pointer text-center text-blue-600 font-semibold text-sm sm:text-lg">{data.link}</a> : null
                         }
                         {
                             data.code ? <CodeHighlighter type="python" array={data.code} /> : null
@@ -65,8 +68,7 @@ const Article = (props) => {
                             data.audio ? <audio src={data.audio} className="w-full sm:w-1/2 border border-solid border-slate-50 rounded-md shadow-md hover:bg-slate-100 shadow-slate-600 bg-slate-100" controls></audio> : null
                         }
                         {
-                            // data.video ? <video src={data.video.src} loop={data.video.loop ? data.video.loop : false} className="w-full sm:w-3/4 h-auto mt-4 mb-4 border border-solid border-slate-500 rounded-md shadow-lg shadow-slate-600 cursor-pointer" controls></video> : null
-                            data.video ? <VideoRender file={data.video.file} src={data.video.src} loop={data.video.loop} />: null
+                            data.video ? <VideoRender video={data.video.video} loop={data.video.loop} />: null
                         }
                         {
                             data.desc ? <p className="text-lg mt-1 mb-1">{data.desc}</p> : null

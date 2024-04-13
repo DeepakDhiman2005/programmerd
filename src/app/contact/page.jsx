@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 // next
 import Image from "next/image";
@@ -10,8 +10,23 @@ import { FaFacebook } from "react-icons/fa"; // facebook
 import { FaInstagramSquare } from "react-icons/fa"; // instagram
 import { FaYoutube } from "react-icons/fa"; // youtube
 
+// component
+import TopLoader from "@/components/TopLoader";
+
 const Contact = () => {
+    // useState
+    const [IsLoading, setIsLoading] = useState(0);
+
+    useEffect(()=>{
+        setIsLoading(100);
+        let delay = setInterval(() => {
+            clearInterval(delay);
+            setIsLoading(0);
+        }, 500);
+    }, []);
+
     return <>
+        <TopLoader progress={IsLoading} />
         <div className="bg-black h-screen w-full flex flex-col justify-start items-center shadow-md shadow-slate-600">
             {/* <h2 className="text-purple-700">Free Contact For Me!</h2> */}
             <div className="w-full flex justify-center items-center">

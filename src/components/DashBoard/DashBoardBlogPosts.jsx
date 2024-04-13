@@ -1,5 +1,6 @@
 "use client"
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 // component
 import Blogposts from "../Blogposts";
@@ -8,6 +9,8 @@ import InputSearch from "../Search/InputSearch";
 import BlogCard from "../Cards/BlogCard";
 import RightClickInfoIndex from "./Editors/RightClickInfoIndex";
 import PopupDetailsCard from "../PopUpElements/PopupDetailsCard";
+import ConfirmCard from "../ConfirmCard";
+import TopLoader from "../TopLoader";
 
 const DashBoardBlogPosts = ({value=function(){}}) => {
     // useState
@@ -18,6 +21,11 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
     
     const [PopUpDetailsDisplay, setPopUpDetailsDisplay] = useState(false);
     const [DetailsMenu, setDetailsMenu] = useState([]);
+    const [ConfirmDisplay, setConfirmDisplay] = useState(false);
+    const [ConfirmMessage, setConfirmMessage] = useState('');
+    const [ReduxValue, setReduxValue] = useState(null);
+
+    const [IsLoading, setIsLoading] = useState(0);
 
     const ClickEditor = () => {
         // setEditor(true);
@@ -38,10 +46,35 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
 
     // api
     const blogapi = async () => {
+        setIsLoading(35);
         const response = await fetch("/api/blogupload");
+        setIsLoading(75);
         const data = await response.json();
         // console.log(data);
+        setIsLoading(100);
         setBlogApi(data);
+        let delay = setInterval(() => {
+            clearInterval(delay);
+            setIsLoading(0);
+        }, 500);
+    }
+
+    const HideBlog = async (e) => {
+        let data = e;
+        if(data.method === "edit"){
+            data.method = "hide";
+        }else {
+            data.method = "edit";
+        }
+        const resp = await axios.post("/api/blogupload/", data);
+        console.log(resp.data);
+    }
+
+    const DeleteBlog = async (e) => {
+        let data = e;
+        data.method = "delete";
+        const resp = await axios.post("/api/blogupload/", data);
+        console.log(resp.data);
     }
 
     // function
@@ -58,6 +91,18 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
                 { key: "Method", value: e.redux.method },
                 { key: "ID", value: e.redux._id }
             ])
+        }else if(e.type === "Delete"){
+            setReduxValue(e.redux);
+            setConfirmMessage("Are Your Sure? - Delete");
+            setConfirmDisplay(true);
+        }else if(e.type === "Hide") {
+            setReduxValue(e.redux);
+            if(e.redux.method === "hide"){
+                setConfirmMessage("Are Your Sure? - Not Hide");
+            }else {
+                setConfirmMessage("Are Your Sure? - Hide");
+            }
+            setConfirmDisplay(true);
         }
     }
 
@@ -66,8 +111,20 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
     }, []);
 
     return <>
+        <TopLoader progress={IsLoading} />
         <PopupDetailsCard display={PopUpDetailsDisplay} list={DetailsMenu} CloseDetails={(e)=>{
             setPopUpDetailsDisplay(false);
+        }} />
+
+        <ConfirmCard display={ConfirmDisplay} message={ConfirmMessage} value={(e)=>{
+            setConfirmDisplay(false);
+            if(e){
+                if(ConfirmMessage.match(/Delete/)){
+                    DeleteBlog(ReduxValue);
+                }else if(ConfirmMessage.match(/Hide/)){
+                    HideBlog(ReduxValue);
+                }
+            }
         }} />
 
         <div className="mt-4 mb-4 flex flex-col justify-center items-start">

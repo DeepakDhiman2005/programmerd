@@ -17,15 +17,34 @@ import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
 const Products = (props) => {
     const [Data, setData] = useState(false);
+    const [IsLoading, setIsLoading] = useState(0);
+
     // ${process.env.API_KEY}
     const func = async () => {
         try{
-             const response = await fetch("/api/products", { method: "GET" });
+            setIsLoading(45);
+            const response = await fetch("/api/products", { method: "GET" });
             // const data = await axios.get("/api/products");
             const data = await response.json();
-            setData(data);
+            setIsLoading(65);
+            let array = [];
+            data.filter((dt)=>{
+                if(dt.method !== "hide"){
+                    array.push(dt);
+                }
+            });
+
+            setIsLoading(85);
+            setData(array);
+            setIsLoading(100);
+
+            let delay = setInterval(()=>{
+                setIsLoading(0);
+                clearInterval(delay);
+            }, 700);
         }catch(err){
-            console.log(err)
+            // console.log(err)
+            setIsLoading(100);
         }
     }
 
@@ -33,7 +52,8 @@ const Products = (props) => {
         func();
     }, []);
 
-    return <Suspense fallback={<TopLoader/>}>
+    return <>
+        <TopLoader progress={IsLoading} />
         <div className="flex justify-center items-center mt-10 mb-10 flex-col">
             <div className="flex justify-center items-center">
                 <FaTools className="text-purple-700" size={"30px"} />
@@ -82,7 +102,7 @@ const Products = (props) => {
                 <Image src={"https://rukminim2.flixcart.com/image/612/612/xif0q/computer/z/f/f/-original-imagtun66ff6zfjk.jpeg?q=70"} width={500} height={60} className="w-full h-[540px]" />
             </a>
         </div> */}
-    </Suspense>
+    </>
 }
 
 export default Products;

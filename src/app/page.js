@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // next
 import Image from "next/image";
@@ -22,8 +22,10 @@ export default function Home(props) {
 
   // useState
   // const [MarginRem, setMarginRem] = useState("-22rem");
+  const [IsLoading, setIsLoading] = useState(0);
 
   useEffect(() => {
+    setIsLoading(25);
     try{
       if(window.innerWidth <= 490){
         videoRef.current.style.display = "none";
@@ -34,6 +36,7 @@ export default function Home(props) {
       }  
     }catch(err){ }
 
+    setIsLoading(45);
     try{
       let program = "Programmer D";
       let index = 0;
@@ -46,12 +49,14 @@ export default function Home(props) {
       }, 50);
     }catch(err){ }
 
+    setIsLoading(65);
     try{
       let video_collection = ["video1", "video2"];
       let rand = Math.floor(Math.random()*2);
       videoRef.current.src = "/videos/"+video_collection[rand]+".mp4";
     }catch(err){}
 
+    setIsLoading(75);
     try{
       let collection = ["HTML", "CSS", "Javascript", "Java", "Python", "c/c++", "Web Development", "App Development", "Reactjs", "Nextjs", "React Native"];
       let position = 0; let index = 0;
@@ -70,15 +75,22 @@ export default function Home(props) {
           }
         }
       }, 400);
+      setIsLoading(100);
+      let delay = setInterval(() => {
+        setIsLoading(0);
+        clearInterval(delay);
+      }, 500);
+
       return () => clearInterval(TypingInterval);      
     }catch(err){
       console.log(err)
     }
-
   }, [BackgroundImageRef]);
 
   return (
-    <Suspense fallback={<TopLoader />}>
+    <>
+      <TopLoader progress={IsLoading} />
+
       <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
         <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
         <img src="/image/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
@@ -122,6 +134,7 @@ export default function Home(props) {
       </div>
 
       <TopScrollButton />
-    </Suspense>
+
+    </>
   )
 }

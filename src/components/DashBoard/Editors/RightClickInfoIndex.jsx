@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md"; // delete
 import { MdEdit } from "react-icons/md"; // edit
 import { MdOutlineDetails } from "react-icons/md"; // details
 import { BiSolidHide } from "react-icons/bi"; // hide
+import { IoEye } from "react-icons/io5"; // not hide
 
 /**
  * @param redux data store
@@ -115,7 +116,9 @@ const RightClickInfoIndex = ({ redux=null, children, className, value = function
 
             <div className="p-3 flex justify-between items-center cursor-pointer active:bg-slate-100 hover:bg-slate-50 border-b border-solid" onClick={Modes}>
                 <h2 className="ml-3">Hide</h2>
-                <BiSolidHide size={"18px"} className="mr-3 text-slate-700" />
+                {
+                    redux.method === "hide" ? <BiSolidHide size={"18px"} className="mr-3 text-slate-700" />:<IoEye size={"18px"} className="mr-3 text-slate-700" />
+                }
             </div>
 
             <div className="p-3 flex justify-between items-center cursor-pointer active:bg-slate-100 hover:bg-slate-50 border-b border-solid" onClick={Modes}>
