@@ -1,10 +1,11 @@
 "use client"
 import React, { useEffect, useState } from "react";
+// import axios from "axios";
+import axios from "../../../node_modules/axios/index";
 
 // next
 import { useSearchParams } from "next/navigation";
 import TopLoader from "@/components/TopLoader";
-import axios from "axios";
 
 // component
 import BlogCard from "@/components/Cards/BlogCard";
