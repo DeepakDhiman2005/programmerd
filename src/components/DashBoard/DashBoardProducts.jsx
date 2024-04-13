@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -57,15 +57,27 @@ const DashBoardProducts = ({ getData, value = function () { } }) => {
         }else {
             data.method = "hide";
         }
-        const resp = await axios.post("/api/producthideordel/", data);
-        console.log(resp.data);
+        // const resp = await axios.post("/api/producthideordel/", data);
+        // console.log(resp.data);
+        const resp = await fetch("/api/producthideordel/", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        const resv = await resp.json();
+        // console.log(resv);
     }
 
     const DeleteEvent = async (e)  => {
         let data = e;
         data.method = "delete";
-        const resp = await axios.post("/api/producthideordel/", data);
-        console.log(resp.data);
+        // const resp = await axios.post("/api/producthideordel/", data);
+        // console.log(resp.data);
+        const resp = await fetch("/api/producthideordel/", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        const resv = await resp.json();
+        // console.log(resv);
     }
 
     const RightClick = (e) => {
