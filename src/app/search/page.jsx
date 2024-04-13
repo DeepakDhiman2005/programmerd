@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
 // import axios from "axios";
-import axios from "../../../node_modules/axios/index";
 
 // next
 import { useSearchParams } from "next/navigation";
@@ -36,38 +35,48 @@ const SearchPage = (props) => {
 
     // function
     const SearchToDB = async (query) => {
-        setIsLoading(35);
-        const resp = await axios.post("/api/search/", query);
-        // console.log(resp.data);
-        const data = resp.data;
-        let blogArray = [];
-        let productArray = [];
-        setIsLoading(65);
-
-        data.filter((val)=>{
-            let type = val.type.toLowerCase();
-            if(type === "blog"){
-                blogArray.push(val.data);
-            } else {
-                productArray.push(val);
+        try{
+            setIsLoading(35);
+            // const resp = await axios.post("/api/search/", query);
+            // const data = resp.data;
+            const resp = await fetch("/api/search/", {
+                method: "POST",
+                body: JSON.stringify(query)
+            });
+            const data = await resp.json();
+    
+            // console.log(resp.data);
+            let blogArray = [];
+            let productArray = [];
+            setIsLoading(65);
+    
+            data.filter((val)=>{
+                let type = val.type.toLowerCase();
+                if(type === "blog"){
+                    blogArray.push(val.data);
+                } else {
+                    productArray.push(val);
+                }
+            });
+    
+            if(blogArray.length !== 0 || productArray.length !== 0){
+                setDataPerMission(true);
             }
-        });
-
-        if(blogArray.length !== 0 || productArray.length !== 0){
-            setDataPerMission(true);
-        }
-
-        setIsLoading(85);
-        setBlogData([...blogArray]);
-
-        setIsLoading(90);
-        setProductData([...productArray]);
-
-        setIsLoading(100);
-        let delay = setInterval(() => {
-            clearInterval(delay);
+    
+            setIsLoading(85);
+            setBlogData([...blogArray]);
+    
+            setIsLoading(90);
+            setProductData([...productArray]);
+    
+            setIsLoading(100);
+            let delay = setInterval(() => {
+                clearInterval(delay);
+                setIsLoading(0);
+            }, 500);
+        }catch(err){
             setIsLoading(0);
-        }, 500);
+        }
     }
 
     const onClickButton = (e) => {

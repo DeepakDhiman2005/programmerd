@@ -1,6 +1,6 @@
 "use client"
 import React, {useEffect, useState} from "react";
-import axios from "axios";
+// import axios from "axios";
 
 // component
 import Blogposts from "../Blogposts";
@@ -66,15 +66,27 @@ const DashBoardBlogPosts = ({value=function(){}}) => {
         }else {
             data.method = "edit";
         }
-        const resp = await axios.post("/api/blogupload/", data);
-        console.log(resp.data);
+        // const resp = await axios.post("/api/blogupload/", data);
+        // console.log(resp.data);
+        const resp = await fetch("/api/blogupload/", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        const resv = await resp.json();
+        console.log(resv);
     }
 
     const DeleteBlog = async (e) => {
         let data = e;
         data.method = "delete";
-        const resp = await axios.post("/api/blogupload/", data);
-        console.log(resp.data);
+        // const resp = await axios.post("/api/blogupload/", data);
+        // console.log(resp.data);
+        const resp = await fetch("/api/blogupload/", {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        const resv = await resp.json();
+        console.log(resv);
     }
 
     // function
