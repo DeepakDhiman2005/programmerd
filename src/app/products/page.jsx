@@ -15,7 +15,13 @@ import Loader from "@/components/Loader";
 import TopLoader from "@/components/TopLoader";
 import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
-const Products = (props) => {
+async function getProducts(){
+    const response = await fetch("/api/products", { method: "GET" });
+    const data = await response.json();
+    return data;
+}
+
+const Products = async () => {
     const [Data, setData] = useState(false);
     const [IsLoading, setIsLoading] = useState(0);
 
@@ -23,9 +29,10 @@ const Products = (props) => {
     const func = async () => {
         try{
             setIsLoading(45);
-            const response = await fetch("/api/products", { method: "GET" });
+            // const response = await fetch("/api/products", { method: "GET" });
             // const data = await axios.get("/api/products");
-            const data = await response.json();
+            // const data = await response.json();
+            const data = await getProducts();
             setIsLoading(65);
             let array = [];
             data.filter((dt)=>{

@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Suspense } from 'react'
 
 // redux
 import { Providers } from './redux/providers'
@@ -28,7 +29,9 @@ export default function RootLayout({children}) {
           <Navbar />
           <SearchBar />
           <Sidebar />
-          {children}
+          <Suspense>
+            {children}
+          </Suspense>
           <Footer />
         </Providers>
         </body>

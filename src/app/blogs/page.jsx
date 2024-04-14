@@ -10,6 +10,14 @@ import TopLoader from "@/components/TopLoader";
 import { IoIosSearch } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 
+const BlogData = async () => {
+    // Fetch data from external API
+    const response = await fetch("/api/blogs", { method: "GET" });
+    const data = await response.json();
+    // Pass data to the page via props
+    return data;
+}
+
 const Blogs = () => {
     // useRef
     const searchRef = useRef();
@@ -28,8 +36,9 @@ const Blogs = () => {
 
     const blogapi = async () => {
         setIsLoading(45);
-        const response = await fetch("/api/blogs", { method: "GET" });
-        const data = await response.json();
+        // const response = await fetch("/api/blogs", { method: "GET" });
+        // const data = await response.json();
+        const data = await BlogData();
         setIsLoading(65);
         
         let array = [];
