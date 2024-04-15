@@ -11,7 +11,8 @@ import ImageRender from "./ImageRender";
 import VideoRender from "./VideoRender";
 
 /**
- * @param props {title, desc, headers, date, content, images, videos, audio}
+ * @param props `data=[]` || `layer` -> {title, desc, headers, date, content, images, videos, audio} -> json text values data,
+ * `data format` [{layer1...}, {layer2...}, {layer3...}, ...]
  * @returns Component format value
  */
 const Article = (props) => {
@@ -32,7 +33,7 @@ const Article = (props) => {
         }} />
 
         <TopScrollButton />
-        <div className="flex w-full flex-col justify-start items-start">
+        <div key={"Article"} className="flex w-full flex-col justify-start items-start">
             {
                 _data.content.map((data) => {
                     // console.log(data);

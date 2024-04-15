@@ -11,8 +11,9 @@ import BlogCard from "@/components/Cards/BlogCard";
 import Card from "@/components/Card";
 import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
-const SearchPage = (props) => {
+const SearchPage = () => {
     const searchparams = useSearchParams();
+    let query = searchparams.get("query");
     // console.log(searchparams.get("query"))
 
     // useState
@@ -26,7 +27,6 @@ const SearchPage = (props) => {
 
     useEffect(()=>{
         try{
-            let query = searchparams.get("query");
             query = query.toLowerCase();
             query = query.split(" ");
             SearchToDB(query);
@@ -41,7 +41,8 @@ const SearchPage = (props) => {
             // const data = resp.data;
             const resp = await fetch("/api/search/", {
                 method: "POST",
-                body: JSON.stringify(query)
+                body: JSON.stringify(query),
+                cache: "no-store"
             });
             const data = await resp.json();
     
@@ -99,7 +100,9 @@ const SearchPage = (props) => {
 
     return <>
         <TopLoader progress={IsLoading} />
-        <h2 className="text-center mt-7 mb-7 font-bold text-2xl text-slate-900">Result for query: <span className="text-purple-700 font-semibold">{searchparams.get("query")}</span></h2>
+        <h2 className="text-center mt-7 mb-7 font-bold text-2xl text-slate-900">Result for query: <span className="text-purple-700 font-semibold">
+            {searchparams.get("query")}
+        </span></h2>
 
         <div key={"globalSearchBar"} className="flex flex-col justify-center items-center">
             <ul className="list-none flex justify-start w-[90%] items-center">

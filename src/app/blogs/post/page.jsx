@@ -13,6 +13,7 @@ import TopLoader from "@/components/TopLoader";
 
 const SearchBlogPost = () => {
     const searchparams = useSearchParams();
+    const query = searchparams.get("blogpost");
 
     // useState
     const [ArticleData, setArticleData] = useState(false);
@@ -25,7 +26,8 @@ const SearchBlogPost = () => {
         setIsLoading(45);
         const resp = await fetch("/api/blogs/", {
             method: "POST",
-            body: JSON.stringify({ query: searchparams.get("blogpost") })
+            body: JSON.stringify({ query: query }),
+            cache: "no-store"
         });
         setIsLoading(65);
         const data = await resp.json();
@@ -54,7 +56,7 @@ const SearchBlogPost = () => {
             <article className="bg-white shadow-lg border border-solid w-[85%] border-gray-100 rounded-md p-4 flex flex-col justify-center items-center">
                 {/* title */}
                 <h2 className="mb-2 mt-2 ml-3 text-4xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {searchparams.get("blogpost") !== "" ? searchparams.get("blogpost"): "No Result!"}
+                    {query !== "" ? query: "No Result!"}
                 </h2>
                 {/* date */}
                 <div className="flex justify-center items-center mt-4">

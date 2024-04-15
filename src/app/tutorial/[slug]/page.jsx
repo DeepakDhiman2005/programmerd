@@ -1,20 +1,20 @@
-"use client"
-import React, {useState} from "react";
-
-// next
-import { useRouter } from "next/navigation"
-
 // components
-import TutorialContent from "@/components/TutorialsComp/TutorialContent";
-import TutorialSidebar from "@/components/TutorialsComp/TutorialSidebar";
+import TutorialDisplay from "@/components/TutorialsComp/TutorialDisplay";
 
-const TutorialStart = ({params}) => {
-    // useState
-    const [ToConnection, setToConnection] = useState(true);
+export async function generateStaticParams (){
+    // const resp = await getTutorialData();
+    return [{slug: "python"}, {slug: "c"}, {slug: "cpp"}, {slug: "js"}, {slug: "html"}, {slug: "css"}, {slug: "reactjs"}]
+}
 
-    // next
-    const router = useRouter();
+// async function getTutorialData () {
+//     const resp = await fetch("/api/tutorials/", { method: "GET", cache: "no-store" });
+//     const data = await resp.json();
+//     return data;
+// }
 
+const TutorialStart = async ({ params }) => {
+    // const tutorial = await getTutorialData();
+    // console.log(tutorial.data);
     // sidebar data
     let _data = [
         {
@@ -61,7 +61,7 @@ const TutorialStart = ({params}) => {
                 {
                     title: "Python image",
                     image: {
-                        src: "/image/programming.jpg",
+                        image: "/image/programming.jpg",
                         width: 500,
                         height: 500
                         // className: "w-auto"
@@ -71,7 +71,7 @@ const TutorialStart = ({params}) => {
                     title: "Check my course!",
                     points: ["this is tailwindcss course:"],
                     image: {
-                        src: "/image/image1.jpg",
+                        image: "/image/image1.jpg",
                         width: 600,
                         height: 600
                     }
@@ -83,7 +83,7 @@ const TutorialStart = ({params}) => {
                 {
                     title: "Code Writer!",
                     video: {
-                        src: "/videos/video1.mp4",
+                        video: "/videos/video1.mp4",
                         loop: false
                     }
                 }
@@ -92,22 +92,7 @@ const TutorialStart = ({params}) => {
     ]
 
     return <>
-        <div className="flex justify-between items-start bg-slate-50">
-            {/* layer1 */}
-            <TutorialSidebar datalist={_data} toConnection={ToConnection} value={(e)=>{
-                // console.log(e);
-                if(e === false){
-                    setToConnection(e);
-                }else{
-                    // console.log(e);
-                    router.push("/tutorial/"+e)
-                }
-            }} />
-            {/* layer2 */}
-            <TutorialContent title={params.slug === "python" ? _data[0].points[0]: params.slug} datalist={_data2} toConnection={ToConnection} value={(e)=>{
-                setToConnection(e);
-            }} />
-        </div>
+        <TutorialDisplay title={params.slug} keys={_data} values={_data2} />
     </>
 }
 

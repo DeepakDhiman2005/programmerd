@@ -12,7 +12,7 @@ import { RxCross2 } from "react-icons/rx";
 
 const BlogData = async () => {
     // Fetch data from external API
-    const response = await fetch("/api/blogs", { method: "GET" });
+    const response = await fetch("/api/blogs", { method: "GET", cache: "no-store" });
     const data = await response.json();
     // Pass data to the page via props
     return data;

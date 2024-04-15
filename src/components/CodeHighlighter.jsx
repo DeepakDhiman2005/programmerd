@@ -5,12 +5,15 @@ import React, {useEffect, useRef} from "react";
  * @param props = children, type="programming language", stylelist={}
  * children => <li>write code?</li>
  * let stylelist = {
-            _string: "text-amber-500",
-            _func: "text-yellow-300",
-            _key: "text-blue-300",
-            _class: "text-blue-400",
-            _tag: "text-blue-500"
-        }
+ *          _string: "text-amber-500",
+ *           _func: "text-yellow-300",
+ *           _key: "text-blue-300",
+ *           _class: "text-blue-400",
+ *           _tag: "text-blue-500"
+ *       }
+ *   @example <CodeHighlighter type="python" array={ [<li> array define] } > 
+ *           <li>print("Hello world!"); # this is print function</li>
+ *   </CodeHighlighter>
  */
 const CodeHighlighter = ({children, array=false, type="html", stylelist = {
     _string: "text-amber-500",
@@ -19,7 +22,7 @@ const CodeHighlighter = ({children, array=false, type="html", stylelist = {
             _class: "text-blue-400",
             _tag: "text-blue-500",
             _comment: "text-green-600"
-}}) => {
+}}, key=null) => {
     // useRef
     const codeText = useRef(null);
     const buttonRef = useRef(null);
@@ -275,7 +278,7 @@ const CodeHighlighter = ({children, array=false, type="html", stylelist = {
             background-color: red;
         }
     `}</style>
-        <div className="bg-slate-800 p-4 flex mt-5 mb-5 justify-between items-start border border-solid border-slate-600 rounded-lg shadow-md w-full shadow-slate-700">
+        <div key={key} className="bg-slate-800 p-4 flex mt-5 mb-5 justify-between items-start border border-solid border-slate-600 rounded-lg shadow-md w-full shadow-slate-700">
             {/* code side */}
             <div ref={codeText} className="text-md text-white flex flex-col justify-center selection:text-blue-300 items-start list-none overflow-y-scroll code-scroll">
                 {/* <li>python("Hello world!")</li>

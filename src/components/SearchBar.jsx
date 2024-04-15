@@ -137,7 +137,7 @@ const SearchBar = () => {
                 text = arrow.querySelector("h2").innerText;
             }
             // console.log(text);
-            const params = new URLSearchParams(text);
+            const params = new URLSearchParams(searchparams);
             if(text !== ""){
                 params.set("query", text);
                 // console.log(params)

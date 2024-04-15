@@ -1,10 +1,15 @@
-"use client"
-import React from "react";
+// "use client"
+// import React from "react";
 
 // component
 import DashBoardMonitor from "@/components/DashBoard/DashBoardMonitor";
 import TopScrollButton from "@/components/TopScrollButton";
 
+export async function generateStaticParams(){
+    return [{slug: "/"}, {slug: "blogs"}, {slug: "video's"}, 
+    {slug: "affilates"}, {slug: "courses"}, {slug: "tutorials"}, 
+    {slug: "database"}, {slug: "settings"}]
+}
 
 const DashBoardVisitPage = ({ params }) => {
     return <>

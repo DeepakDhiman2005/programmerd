@@ -1,5 +1,5 @@
 "use client"
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 // import axios from "axios";
 
 // icons
@@ -16,7 +16,7 @@ import TopLoader from "@/components/TopLoader";
 import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 
 async function getProducts(){
-    const response = await fetch("/api/products", { method: "GET" });
+    const response = await fetch("/api/products", { method: "GET", cache: "no-store" });
     const data = await response.json();
     return data;
 }
