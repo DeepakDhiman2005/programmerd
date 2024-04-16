@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import LanguageCard from "@/components/Cards/LanguageCard";
 import TopLoader from "@/components/TopLoader";
 
-const Tutorial = (props) => {
+const Tutorial = () => {
     // useState
     const [IsLoading, setIsLoading] = useState(0);
 

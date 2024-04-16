@@ -13,6 +13,9 @@ import ReadingEffect from "@/components/ReadingEffect";
 import TopScrollButton from "@/components/TopScrollButton";
 import TopLoader from "@/components/TopLoader";
 
+// Animations
+import FaLeftAnimation from "@/components/Animations/FaLeftAnimation";
+
 export default function Home(props) {
   // useRef
   const typingRef = useRef({innerText: ''});
@@ -116,7 +119,10 @@ export default function Home(props) {
       </div>
 
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
-        <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />
+        <FaLeftAnimation className="sm:w-[45%] w-3/4 mt-5 mb-5">
+          <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />
+        </FaLeftAnimation>
+
         <TextCard title={"Javascript Full Course in 2024!"} desc={"Welcome to the Programmer D beginner's JavaScript course! In this article we will look at JavaScript from a high level, answering questions such as \"What is it?\" and \"What can you do with it?\""} />
       </div>
 

@@ -14,6 +14,9 @@ import TopLoader from "@/components/TopLoader";
 const SearchBlogPost = () => {
     const searchparams = useSearchParams();
     const query = searchparams.get("blogpost");
+    try{
+        if(query){ window.document.title = query; }
+    }catch(err){}
 
     // useState
     const [ArticleData, setArticleData] = useState(false);
@@ -51,7 +54,7 @@ const SearchBlogPost = () => {
 
     return <>
         <TopLoader progress={IsLoading} />
-        <div className="flex flex-col items-center pt-10 pb-10 bg-slate-50">
+        <div key={query} className="flex flex-col items-center pt-10 pb-10 bg-slate-50">
             {/* main article */}
             <article className="bg-white shadow-lg border border-solid w-[85%] border-gray-100 rounded-md p-4 flex flex-col justify-center items-center">
                 {/* title */}

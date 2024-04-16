@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useRef, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -153,24 +153,25 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 let article = { method: Method ? Method: "add", data: blog, date: getCurrentDate(), type: "blog", id: UID };
                 // console.log(article)
 
-                // let resp = await axios.post("/api/blogupload/", article);  
-                let resp = await fetch("/api/blogupload/", {
-                    mathod: "POST",
-                    body: JSON.stringify(article)
-                });
-                let dt = await resp.json();
+                let resp = await axios.post("/api/blogupload/", article);  
+                // let resp = await fetch("/api/blogupload/", {
+                //     mathod: "POST",
+                //     body: JSON.stringify(article)
+                // });
+                // let dt = await resp.json();
+                // console.log(dt);
                 // console.log(resp.data);
                 if(BlobAccess){
-                    // let blobresp = await axios.postForm("/api/blob/", ImgContent);
-                    let formData = new FormData();
-                    ImgContent.filter((dt, i)=>{
-                        formData.append(dt.name, (dt.image || dt.video));
-                    })
-                    let blobresp = await fetch("/api/blob/", {
-                        method: "POST",
-                        body: formData
-                    });
-                    let resv = await blobresp.json();
+                    let blobresp = await axios.postForm("/api/blob/", ImgContent);
+                    // let formData = new FormData();
+                    // ImgContent.filter((dt, i)=>{
+                    //     formData.append(dt.name, (dt.image || dt.video));
+                    // })
+                    // let blobresp = await fetch("/api/blob/", {
+                    //     method: "POST",
+                    //     body: formData
+                    // });
+                    // let resv = await blobresp.json();
                 }
                 if(resp){
                     const audio = new Audio("/sound/send.mp3");

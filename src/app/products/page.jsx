@@ -29,9 +29,6 @@ const Products = async () => {
     const func = async () => {
         try{
             setIsLoading(45);
-            // const response = await fetch("/api/products", { method: "GET" });
-            // const data = await axios.get("/api/products");
-            // const data = await response.json();
             const data = await getProducts();
             setIsLoading(65);
             let array = [];

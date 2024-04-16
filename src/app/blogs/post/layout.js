@@ -1,3 +1,5 @@
+// next
+
 export const metadata = {
     title: "Blogs - Programmer D"
 }

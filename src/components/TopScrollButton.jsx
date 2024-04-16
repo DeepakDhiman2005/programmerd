@@ -34,7 +34,7 @@ const TopScrollButton = ({container}) => {
     }, []);
 
     return <>
-        <div className="text-slate-800 bg-slate-50 border border-solid border-slate-100 rounded-full p-4 cursor-pointer shadow-md shadow-slate-400 w-auto fixed z-[200] bottom-16 right-16 flex justify-center items-center active:bg-slate-100 active:shadow-slate-600 active:transition-shadow" style={{display: TopButton ? "flex": "none"}} onClick={()=>{
+        <div className="text-slate-800 bg-slate-50 border border-solid border-slate-100 rounded-full p-4 cursor-pointer shadow-md shadow-slate-400 w-auto fixed z-[200] bottom-16 right-16 flex justify-center items-center active:bg-slate-100 active:shadow-slate-600 active:transition-shadow animate-bounce" style={{display: TopButton ? "flex": "none"}} onClick={()=>{
             try{
                 if(container){
                     container.current.scrollTo(0, -1)

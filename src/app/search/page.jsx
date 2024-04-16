@@ -14,6 +14,9 @@ import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 const SearchPage = () => {
     const searchparams = useSearchParams();
     let query = searchparams.get("query");
+    try{
+        window.document.title = query;
+    }catch(err){}
     // console.log(searchparams.get("query"))
 
     // useState
