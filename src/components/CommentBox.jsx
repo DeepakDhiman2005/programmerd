@@ -1,8 +1,9 @@
 "use client"
 import React, {useRef} from "react";
 
-// next 
-import { useParams } from "next/navigation";
+// function
+import { ALPHAID } from "./Functions/UNIQUEID";
+import getCurrentDate from "./Functions/getCurrentDate";
 
 /**
  * value{(e)=> e -> `e` return value }
@@ -13,32 +14,20 @@ import { useParams } from "next/navigation";
  * }
  */
 const CommentBox = (props) => {
-    const params = useParams();
 
     const commentText = useRef(null);
 
-    function getCurrentDateInFormat() {
-        const date = new Date();
-        const year = date.getFullYear(); // Get the year (four digits)
-        const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Get the month (zero-based index, so add 1), pad single digits with leading zero
-        const day = date.getDate().toString().padStart(2, '0'); // Get the day, pad single digits with leading zero
-      
-        // Concatenate the parts with hyphens
-        const formattedDate = `${year}-${month}-${day}`;
-      
-        return formattedDate;
-    }
-
     const PostComment = () => {
         let comment_data = commentText.current.value;
-
-        let _slug = params.slug.match("%20") ? params.slug.replaceAll("%20", " "): params.slug;
-        let _name = "user name"; // change
-        let _comment = comment_data;
-        let _date = getCurrentDateInFormat();
-
-        props.value({name: _name, comment: _comment, date: _date, slug: _slug});
-        commentText.current.value = "";
+        if(comment_data !== ""){
+            let _query = props.query;
+            let _name = ALPHAID("user") + "_pd"; // change
+            let _comment = comment_data;
+            let _date = getCurrentDate();
+    
+            props.value({name: _name, comment: _comment, date: _date, query: _query});
+            commentText.current.value = "";
+        }
     }
 
     return <>

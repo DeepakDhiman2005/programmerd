@@ -7,7 +7,6 @@ import { NextResponse } from "next/server";
 import { db_python } from "@/app/db/tutorials/python";
 
 export async function GET(response){
-    const data = db_python;
-    const slug = [{slug: "python", data: data}]
-    return NextResponse.json(slug);
+    const data = db_python
+    return NextResponse.json(data);
 }

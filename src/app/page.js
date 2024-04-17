@@ -111,11 +111,11 @@ export default function Home(props) {
       </div>
       <h2 className="text-center text-4xl mt-10 mb-10">Recommended Courses</h2>
       <div className="flex justify-around items-center flex-wrap mt-20 mb-20">
-        <Card title="Tailwindcss" image="/image/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
+        <Card link={"/videos/tailwindcss"} title="Tailwindcss" image="/image/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
         
-        <Card title="Chat GPT" image="/image/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
+        <Card link={"/videos/chatgpt"} title="Chat GPT" image="/image/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
 
-        <Card title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
+        <Card link={"/videos/c"} title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">

@@ -24,6 +24,16 @@ const TutorialContent = (props) => {
         }
     }, [props.toConnection])
 
+    // functions
+    const GoNext = () => {
+        // console.log("next")
+        props.value("next");
+    }
+
+    const GoPrevious = () => {
+        props.value("previous");
+    }
+
     return <>
         <div ref={RightContRef} className="h-screen scroll-smooth transition-all p-4 block overflow-y-scroll bg-slate-50 w-full right-0 top-16 bottom-0">
 
@@ -38,15 +48,21 @@ const TutorialContent = (props) => {
 
             {/* layer top */}
             <div className="mt-4 mb-4 flex justify-between items-center">
-                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white">{"<<"} Previous</button>
+                {
+                    props.page ? <>
+                        <button className="text-white mt-3 mb-3 text-sm font-semibold bg-slate-600 cursor-not-allowed p-3 pt-2 pb-2 border border-solid border-slate-700 rounded-sm hover:shadow-lg">{"<<"} Previous</button> 
+                    </>: <>
+                        <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white" onClick={GoPrevious}>{"<<"} Previous</button>   
+                    </>
+                }
 
-                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white">Next {">>"}</button>
+                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white" onClick={GoNext}>Next {">>"}</button>
             </div>
             {/* layer middle */}
             <article className="flex flex-col items-start">
                 {/* title */}
                 <h2 className="text-3xl font-bold mb-4 selection:text-blue-700">{
-                props.title.match("%20") ? props.title.replaceAll("%20", " "): props.title
+                    props.title.replace(props.title[0], props.title[0].toUpperCase())
                 }</h2>
 
                 {/* content */}
@@ -59,9 +75,15 @@ const TutorialContent = (props) => {
 
             {/* layer bottom */}
             <div className="mt-24 mb-24 flex justify-between items-center">
-                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white">{"<<"} Previous</button>
+                {
+                    props.page ? <>
+                        <button className="text-white mt-3 mb-3 text-sm font-semibold bg-slate-600 cursor-not-allowed p-3 pt-2 pb-2 border border-solid border-slate-700 rounded-sm hover:shadow-lg">{"<<"} Previous</button> 
+                    </>: <>
+                        <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white" onClick={GoPrevious}>{"<<"} Previous</button>   
+                    </>
+                }
 
-                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white">Next {">>"}</button>
+                <button className="text-white mt-3 mb-3 text-sm font-semibold bg-purple-600 cursor-pointer p-3 pt-2 pb-2 border border-solid border-purple-700 rounded-sm hover:bg-purple-800 hover:shadow-lg active:bg-purple-400 active:text-purple-600 selection:text-white" onClick={GoNext}>Next {">>"}</button>
             </div>
             <TopScrollButton container={RightContRef} />
         </div>

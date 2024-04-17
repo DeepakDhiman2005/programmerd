@@ -335,7 +335,7 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                 <textarea ref={filedDesc} id="message" rows="4" name="message" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-md border border-gray-300 outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your Your Description..."></textarea>
             </div>
 
-            <section className="flex flex-col justify-start items-start w-full">
+            <section className="flex flex-col relative justify-start items-start w-full">
                 <h2 className="mt-3 mb-3 font-bold text-slate-800 text-xl">Content:</h2>
                 <div className="flex justify-between items-start w-full p-3">
                     {/* layers */}
@@ -348,7 +348,7 @@ const DashBoardBlogEditor = ({ data=null, sendblog=function(){} }) => {
                         {/* <DashBoardBlogContent type={"title"} id={"1"} value={(e)=>{ console.log(e); }} /> */}
                     </div>
                     {/* buttons */}
-                    <div className="mt-3 flex items-center justify-between">
+                    <div className="mt-3 flex items-center absolute right-0 top-0 justify-between">
                         <Dropdown value={onDropDown} className="flex justify-center items-center">
                             <li>Title</li>
                             <li>Description</li>

@@ -1,5 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 // next
 import Image from "next/image";
@@ -22,6 +23,7 @@ const SearchBlogPost = () => {
     const [ArticleData, setArticleData] = useState(false);
     const [AddComment, setAddComment] = useState(null);
     const [_comments, set_comments] = useState(false);
+    const [ReduxData, setReduxData] = useState(null);
 
     const [IsLoading, setIsLoading] = useState(0);
 
@@ -36,14 +38,29 @@ const SearchBlogPost = () => {
         const data = await resp.json();
         setIsLoading(85);
         // console.log(data);
-        setArticleData(data);
-        set_comments(data.comments);
+        setReduxData(data);
+        setArticleData(data.data);
+        set_comments(data.data.comment);
 
         setIsLoading(100);
             let delay = setInterval(() => {
                 clearInterval(delay);
                 setIsLoading(0);
             }, 500);
+    }
+
+    const AddCommontApI = async (redux, comment) => {
+        // console.log(redux, comment);
+        try{
+            if(redux !== null){
+                let updateBlog = redux;
+                updateBlog.method = "edit";
+                updateBlog.data.comment.push(comment);
+                // console.log(updateBlog);
+                const resp = await axios.post("/api/blogupload/", updateBlog);
+                // console.log(resp);
+            }
+        }catch(err){}
     }
 
     useEffect(()=>{
@@ -74,9 +91,14 @@ const SearchBlogPost = () => {
                 </div>
             </article>
             {/* comment box */}
-            <CommentBox value={(e)=>{
-                // console.log("CommentBox Return Object:- ", e);
+            <CommentBox query={query} value={(e)=>{
                 setAddComment(e);
+                let _comment = {
+                    name: e.name,
+                    date: e.date,
+                    comment: e.comment
+                }
+                AddCommontApI(ReduxData, _comment);
             }} />
             {
                 _comments ? <CommentContainer data={_comments} add={AddComment} />: <h2>Loading...</h2>

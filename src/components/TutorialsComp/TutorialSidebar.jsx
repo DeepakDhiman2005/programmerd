@@ -6,7 +6,7 @@ import { PiReadCvLogoLight } from "react-icons/pi";
 import { IoIosArrowBack } from "react-icons/io";
 
 // next
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 /**
  * 
@@ -20,6 +20,7 @@ const TutorialSidebar = (props) => {
 
     // router
     const router = useRouter();
+    const searchparams = useSearchParams();
 
     // variables
     const onOpen = "h-screen w-full p-4 lg:w-1/3 lg:p-4 left-0 fixed lg:relative transition-all bg-slate-800 overflow-y-scroll pb-20";
@@ -55,11 +56,12 @@ const TutorialSidebar = (props) => {
                 {
                     _data.map((data) => {
                         return <>
-                            <h2 className="text-xl mt-2 mb-2 font-bold text-blue-500">{data.key.toUpperCase()}</h2>
+                            <h2 className="text-xl mt-2 mb-2 font-bold text-blue-500">{data.title.toUpperCase()}</h2>
                             {
-                                data.points.map((point) => {
-                                    let title = props.title.match("%20") ? props.title.replaceAll("%20", " "): props.title;
-                                    let color = (point === title ? "text-slate-400": "text-white");
+                                data.page.map((point) => {
+                                    // let title = props.title.match("%20") ? props.title.replaceAll("%20", " "): props.title;
+                                    let title = searchparams.get("query");
+                                    let color = (point.title.toLowerCase() === title ? "text-slate-400": "text-white");
 
                                     return <div className="ml-4 flex justify-center items-center mt-2 mb-2">
                                         <PiReadCvLogoLight color="white" size={"18px"} />
@@ -69,8 +71,10 @@ const TutorialSidebar = (props) => {
                                             props.value("off");
                                             sidebarContRef.current.className = onClose;
 
-                                            router.push("/tutorial/"+text);
-                                        }}>{point}</h2>
+                                            const search = new URLSearchParams(searchparams);
+                                            search.set("query", text);
+                                            router.push(`/tutorial/${props.title}/?${search.toString()}`);
+                                        }}>{point.title}</h2>
                                     </div>
                                 })
                             }

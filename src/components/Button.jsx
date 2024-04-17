@@ -12,6 +12,9 @@ const Button = ({children, color=false, className=false, onClick=function(){}, v
             </>:
             color === "blue" ? <>
                 <button className={"p-2 text-white bg-blue-600 cursor-pointer border border-solid border-blue-600 rounded-md shadow-md shadow-slate-50 hover:bg-blue-700"+" "+className} onClick={onClick} value={value} aria-valuetext={ariaValueText}>{children}</button>
+            </>:
+            color === "white" ? <>
+                <button className={"p-2 text-slate-700 bg-transparent cursor-pointer hover:text-slate-800"+" "+className} onClick={onClick} value={value} aria-valuetext={ariaValueText}>{children}</button>
             </>: <>
                 <button className={"p-2 text-white bg-purple-600 cursor-pointer border border-solid border-purple-600 rounded-md shadow-md shadow-slate-50 hover:bg-purple-700"+" "+className} onClick={onClick} value={value} aria-valuetext={ariaValueText}>{children}</button>
             </>

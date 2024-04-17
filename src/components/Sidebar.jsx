@@ -13,10 +13,10 @@ import { useSelector } from "react-redux";
 // next
 import { useRouter } from "next/navigation";
 
-// custom
-import Footer from "./Footer";
-import Blogposts from "./Blogposts";
-import Card from "./Card";
+// components
+import SideBarProduct from "./SideBarComp/SideBarProduct";
+import SideBarBlogs from "./SideBarComp/SideBarBlogs";
+import SideBarCourses from "./SideBarComp/SideBarCourses";
 
 const Sidebar = () => {
     const RightRef = useRef(null);
@@ -27,61 +27,6 @@ const Sidebar = () => {
 
     // redux
     const SidebarEvent = useSelector(state => state.events.sidebar);
-
-    // data list
-    const JsonDataList = [
-        {
-            _id: 0,
-            title: "How to Learn HTML?",
-            desc: `Learning HTML (HyperText Markup Language) is a great starting point for anyone interested in web development. Here's a step-by-step guide to help you get started:`,
-            date: "March 31, 2023",
-            content: [
-                {
-                    title: "Understand the Basics",
-                    desc: `HTML is the standard markup language for creating web pages.
-                    It consists of a series of elements, which are represented by tags enclosed in angle brackets (< and >).
-                    Each HTML document is structured with an opening <html> tag and a closing </html> tag, with the content enclosed within them.`
-                },
-                {
-                    title: "Practice Writing HTML",
-                    desc: `Start by creating simple HTML documents using a text editor such as Notepad (Windows) or TextEdit (Mac).
-                    Write the basic structure of an HTML document and experiment with different tags and attributes.
-                    View your HTML documents in a web browser to see how they render.`
-                }
-            ],
-            comments: []
-        },
-        {
-            _id: 2,
-            title: "What is Python?",
-            desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit repudiandae quo iusto illum quod ipsa, labore nesciunt asperiores quis itaque distinctio beatae consequatur vero. Fugiat dolorem obcaecati temporibus repellendus esse recusandae aut asperiores, maiores quaerat ea aperiam incidunt, fugit quidem?",
-            date: "November 12, 2023",
-            content: [],
-            comments: []
-        },
-        {
-            _id: 3,
-            title: "Build an Email Validator with HTML CSS and JavaScript",
-            desc: `In this tutorial, we will create an Email Validator using HTML, CSS, and JavaScript. We will build and use this Email Validation API to validate a given email address.`,
-            date: "November 21, 2021",
-            content: [
-                {
-                    title: "Project Demo",
-                    desc: "This is how our final email validator will look like:",
-                },
-                {
-                    title: "HTML Structure of our Email Validator",
-                    desc: `We will use a very basic HTML structure for our email validator.`,
-                    image: {
-                        src: "/logo.svg",
-                        width: 50,
-                        height: 50
-                    }
-                }
-            ],
-            comments: []
-        }
-    ];
 
     // functions
     const GetName = (e) => {
@@ -173,23 +118,16 @@ const Sidebar = () => {
                 <div key={"SideBarLeftPopWindowBottom"} className="flex overflow-y-scroll">
                     {
                         Title === "Blog" ? (
-                            <div key={"BlogCardInSideBar"} className="p-4 w-full">
-                                <h2 className="mb-2 mt-2 ml-5 text-4xl text-start font-semibold tracking-tight text-gray-900 dark:text-white">Coding Articles</h2>
-                                <Blogposts bloglist={JsonDataList} />
-                                <button className="flex items-center justify-between mt-5 mb-5 ml-5 text-white bg-purple-600 dark:bg-purple-400 hover:bg-purple-700 dark:hover:bg-purple-500 px-4 py-2 rounded-md text-md font-medium transition w-fit cursor-pointer" onClick={()=>{
-                                    router.push("/blogs");
-                                }}>more...</button>
-                                <Footer />
-                            </div>
+                            <>
+                                <SideBarBlogs />
+                            </>
                         ): Title === "Courses" ? (
                             <>
-                                <div key={"CoursesCardInSideBar"} className="flex justify-around items-center flex-wrap w-full mt-20 mb-20">
-                                    <Card title="Tailwindcss" image="/image/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
-                                    
-                                    <Card title="Chat GPT" image="/image/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
-
-                                    <Card title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
-                                </div>
+                                <SideBarCourses />
+                            </>
+                        ): Title === "Affilates" ? (
+                            <>
+                                <SideBarProduct />
                             </>
                         ):(
                             "All Courses"

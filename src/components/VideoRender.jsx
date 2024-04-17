@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 
-const VideoRender = ({ video="", loop=false }, key=null) => {
+const VideoRender = ({ video="", loop=false, className="" }, key=null) => {
     // useState
     const [Vid, setVid] = useState("/videos/pdbackplay.mp4");
     const [FrameType, setFrameType] = useState("videos/pdbackplay.mp4");
@@ -33,9 +33,9 @@ const VideoRender = ({ video="", loop=false }, key=null) => {
 
     return <>
         {
-            !FrameType ? <video src={Vid} key={key} loop={loop ? loop : false} className={"w-full sm:w-3/4 h-auto mt-4 mb-4 border border-solid border-slate-500 rounded-md shadow-lg shadow-slate-600 cursor-pointer"} controls></video>:
+            !FrameType ? <video src={Vid} key={key} loop={loop ? loop : false} className={"w-full sm:w-3/4 h-auto mt-4 mb-4 border border-solid border-slate-500 rounded-md shadow-lg shadow-slate-600 cursor-pointer " + className} controls></video>:
 
-            <iframe width="560" height="315" src={Vid} key={key} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className="w-3/4 h-80 rounded-md border border-solid" allowFullScreen></iframe>
+            <iframe width="560" height="315" src={Vid} key={key} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" className={"w-3/4 h-80 rounded-md border border-solid "+className} allowFullScreen></iframe>
         }
     </>
 }

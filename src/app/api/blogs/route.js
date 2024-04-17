@@ -23,15 +23,21 @@ export async function POST(response){
     let get_data = {};
     let array = db_blogs;
 
-    blogs.filter((data)=> {
-        array.push(data.data);
-    })
+    // blogs.filter((data)=> {
+    //     array.push(data.data);
+    // })
 
-    array.filter((data)=>{
+    // array.filter((data)=>{
+    //     if(data.title.toLowerCase().match(_query)){
+    //         get_data = data;
+    //     }
+    // });
+    blogs.filter((blog)=> {
+        let data = blog.data;
         if(data.title.toLowerCase().match(_query)){
-            get_data = data;
+            get_data = blog;
         }
-    });
+    })
     // console.log(get_data);
 
     // console.log(resp.query);
