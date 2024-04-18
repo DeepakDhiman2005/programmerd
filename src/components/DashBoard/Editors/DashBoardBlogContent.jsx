@@ -70,9 +70,9 @@ const DashBoardBlogContent = ({ type, uniqueID = "", defaultValue = null, value 
                     }
                 } else if (type === "video") {
                     if (defaultValue.match("http") || defaultValue.match("https")) {
-                        setImgType("Video Link");
+                        setVidType("Video Link");
                     } else {
-                        setImgType("Video Selector");
+                        setVidType("Video Selector");
                     }
                 }
             }

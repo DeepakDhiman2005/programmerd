@@ -9,7 +9,7 @@ const NoteBook = ({data=false, value=function(){}}) => {
     const [NoteArea, setNoteArea] = useState([]);
 
     useEffect(()=>{
-        if(data){
+        if(data || data !== null){
             let array = [];
             data.map((data, i)=>{
                 array.push({number: i+1, select: false, defaultValue: data.text});
@@ -125,7 +125,7 @@ const NoteBook = ({data=false, value=function(){}}) => {
     }
 
     return <>
-        <div className="flex justify-start flex-col items-center w-full rounded-sm border border-solid border-slate-300 shadow-sm shadow-slate-100 mt-3 mb-3 h-full">
+        <div className="flex justify-start flex-col items-center w-full rounded-sm border border-solid border-slate-300 shadow-sm shadow-slate-100 mt-3 mb-3">
             {
                 NoteArea.map(({defaultValue, select}, i)=>{
                     return <div className="flex justify-start items-center w-full">

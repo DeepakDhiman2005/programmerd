@@ -11,6 +11,7 @@ import Article from "@/components/Article";
 import CommentBox from "@/components/CommentBox";
 import CommentContainer from "@/components/CommentContainer";
 import TopLoader from "@/components/TopLoader";
+import Dropdown from "@/components/Dropdown";
 
 const SearchBlogPost = () => {
     const searchparams = useSearchParams();
@@ -27,6 +28,10 @@ const SearchBlogPost = () => {
 
     const [IsLoading, setIsLoading] = useState(0);
 
+    // lang changer
+    const [TitleChange, setTitleChange] = useState(false);
+    const [LangList, setLangList] = useState([]);
+
     const blogapi = async () => {
         setIsLoading(45);
         const resp = await fetch("/api/blogs/", {
@@ -40,6 +45,7 @@ const SearchBlogPost = () => {
         // console.log(data);
         setReduxData(data);
         setArticleData(data.data);
+        setLangList([...LangList, {lang: "english", article: data.data}]);
         set_comments(data.data.comment);
 
         setIsLoading(100);
@@ -63,6 +69,28 @@ const SearchBlogPost = () => {
         }catch(err){}
     }
 
+    const LanguageChanger = async (e) => {
+        let lang = e.toLowerCase();
+        setArticleData(false);
+        // console.log(lang);
+        let findout = false;
+        LangList.filter((e)=>{
+            if(lang === e.lang){
+                setTitleChange(e.article.title);
+                setArticleData(e.article);
+                findout = true;
+            }
+        });
+
+        if(!findout){
+            let resp = await axios.post("/api/lang/", {lang: lang, article: ArticleData, cache: "no-store"});
+            // console.log(resp.data);
+            setTitleChange(resp.data.article.title);
+            setArticleData(resp.data.article);
+            setLangList([...LangList, {lang: lang, article: resp.data.article}]);
+        }
+    }
+
     useEffect(()=>{
         try{
             blogapi();
@@ -76,17 +104,28 @@ const SearchBlogPost = () => {
             <article className="bg-white shadow-lg border border-solid w-[85%] border-gray-100 rounded-md p-4 flex flex-col justify-center items-center">
                 {/* title */}
                 <h2 className="mb-2 mt-2 ml-3 text-4xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
-                    {query !== "" ? query: "No Result!"}
+                    {
+                        TitleChange !== false ? TitleChange: <>
+                            {query !== "" ? query: "No Result!"}                    
+                        </>
+                    }
                 </h2>
                 {/* date */}
                 <div className="flex justify-center items-center mt-4">
                     <Image src={"/logo.svg"} alt="logo" width={40} height={40} className="select-none cursor-pointer" />
                     <p className="ml-1 text-sm"> - {ArticleData.date ? ArticleData.date: "MM:DD:YY"}</p>
                 </div>
+                {/* lanauge change button */}
+                <div className="flex justify-end items-center w-full">
+                    <Dropdown title="Language" value={LanguageChanger} className="flex justify-center items-center">
+                        <li>English</li>
+                        <li>Hindi</li>
+                    </Dropdown>
+                </div>
                 {/* main content */}
                 <div className="mt-10 mb-10 text-lg w-full text-start flex flex-col justify-start items-center font-semibold tracking-tight text-gray-700 dark:text-white">
                     {
-                        ArticleData ? <Article data={ArticleData} /> : <p>Loading...</p>
+                        ArticleData ?  <Article data={ArticleData} />: <p>Loading...</p>
                     }
                 </div>
             </article>

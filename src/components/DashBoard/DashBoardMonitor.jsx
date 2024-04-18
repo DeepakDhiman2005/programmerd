@@ -2,16 +2,18 @@
 import React, { useState } from "react";
 
 // components
+import DashBoardHome from "./DashBoardHome";
 import DashBoardBlogPosts from "./DashBoardBlogPosts";
 import DashBoardProducts from "./DashBoardProducts";
+import DashBoardTutorials from "./DashBoardTutorials";
 
 // editor components
 import DashBoardBlogEditor from "./Editors/DashBoardBlogEditor";
 import DashBoardProductEditor from "./Editors/DashBoardProductEditor";
+import DashBoardTutorialEditor from "./Editors/DashBoardTutorialEditor";
 
 // icons
 import { RxCross2 } from "react-icons/rx";
-import DashBoardHome from "./DashBoardHome";
 
 const DashBoardMonitor = ({ slug }) => {
     const [Editor, setEditor] = useState({editor: false, data: null, type: ""});
@@ -52,6 +54,14 @@ const DashBoardMonitor = ({ slug }) => {
                         }} />
                     }
                 </> : null
+            }
+            {
+                slug === "tutorials" ? <>
+                    {
+                        Editor.editor ? <DashBoardTutorialEditor data={Editor} />: 
+                        <DashBoardTutorials value={(e)=>{ setEditor(e) }} />
+                    }
+                </>: null
             }
         </div>
     </>
