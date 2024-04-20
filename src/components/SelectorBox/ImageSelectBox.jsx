@@ -23,7 +23,6 @@ const ImageSelectBox = ({ uniqueID = "", value = function () { }, defaultValue =
         try {
             if (defaultValue.type && defaultValue.name && defaultValue.size) {
                 let imagePath = defaultValue;
-                // console.log(imagePath);
                 const reader = new FileReader();
                 reader.onload = function (event) {
                     const imageUrl = event.target.result;
@@ -49,7 +48,7 @@ const ImageSelectBox = ({ uniqueID = "", value = function () { }, defaultValue =
     }
 
     return <>
-        <label className={"flex justify-center items-center bg-slate-50 border border-dotted border-slate-100 rounded-md mt-3 mb-2 shadow-sm shadow-slate-300 w-full cursor-pointer"+className} htmlFor={"image" + uniqueID}>
+        <label className={"flex justify-center items-center bg-slate-50 border border-dotted border-slate-100 rounded-md mt-3 mb-2 shadow-sm shadow-slate-300 w-full cursor-pointer"+" "+className} htmlFor={"image" + uniqueID}>
             {
                 Img ? <>
                     <Image src={Img ? Img : "/logo.svg"} width={1000} height={1000} className="rounded-md hover:shadow-md hover:shadow-slate-800" alt="image" />

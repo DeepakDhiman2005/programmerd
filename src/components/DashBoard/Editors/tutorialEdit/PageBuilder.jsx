@@ -1,11 +1,11 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // components
 import ListPopIndexBox from "@/components/Inputs/ListPopIndexBox";
 import ContentEditor from "@/components/ContentEditor/ContentEditor";
 
-const PageBuilder = () => {
+const PageBuilder = ({defaultValue=null, value=function(){}}) => {
     // useState
     const [SelectType, setSelectType] = useState([]);
 
@@ -40,9 +40,18 @@ const PageBuilder = () => {
                 }
             }
         });
-        console.log(array);
+        // console.log(array);
         setSelectType([...array]);
     }
+
+    useEffect(() => {
+        try{
+            value(SelectType);
+            if(defaultValue !== null){
+                setSelectType([...defaultValue]);
+            }
+        }catch(err){}
+    }, [SelectType, defaultValue]);
 
     return <>
         <div className="w-full bg-white p-3 border border-solid rounded-md flex flex-col justify-start items-start">
@@ -58,7 +67,7 @@ const PageBuilder = () => {
             }
         </div>
 
-        <ListPopIndexBox text={"Add Page"} value={AddPage}>
+        <ListPopIndexBox text={"Add Content Type"} value={AddPage}>
             <li>Title</li>
             <li>Description</li>
             <li>Link</li>

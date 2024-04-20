@@ -8,9 +8,9 @@ import Image from "next/image";
 const ProductCard = (props) => {
     return <>
         <div className="w-full mt-6 mb-6 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={props.style}>
-            <a>
+            <a className="flex justify-center items-center">
                 {/* <img className="p-8 rounded-t-lg" src="/docs/images/products/apple-watch.png" alt="product image" /> */}
-                <Image src={props.image} className="rounded-t-lg" width={1000} height={50} alt="image" />
+                <Image src={props.image} className="rounded-t-lg mt-2 mb-2 w-[90%]" width={500} height={50} alt="image" />
             </a>
             <div className="px-5 pb-8">
                 <a>
@@ -38,7 +38,7 @@ const ProductCard = (props) => {
                 </div>
                 <div className="flex items-center justify-between">
                     <span className="text-3xl font-bold text-gray-900 dark:text-white">{props.price}</span>
-                    <a className="text-white bg-slate-800 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 cursor-pointer">View</a>
+                    <a href={props.href ? props.href: null} target="_blank" className="text-white bg-slate-800 hover:bg-slate-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-slate-600 dark:hover:bg-slate-700 dark:focus:ring-slate-800 cursor-pointer">View</a>
                 </div>
             </div>
         </div>

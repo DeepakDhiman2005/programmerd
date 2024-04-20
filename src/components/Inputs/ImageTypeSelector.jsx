@@ -47,7 +47,7 @@ const ImageTypeSelector = ({ defaultValue = null, value=function(){} }) => {
 
     return <>
         <div className="border border-solid rounded-md flex flex-col w-full justify-start items-start">
-            <Dropdown title={"Image Type"} className="flex justify-center items-center w-full" value={(e) => { setImgType(e) }}>
+            <Dropdown key={"Dropdown"+uniqueID} title={"Image Type"} className="flex justify-center items-center w-full" value={(e) => { setImgType(e) }}>
                 <li>Image Link</li>
                 <li>Image Selector</li>
             </Dropdown>

@@ -11,7 +11,7 @@ import Button from "./Button";
  * @param {*} children {<li>, <li>, ...} tags <Dropdown> ... </Dropdown>
  * @returns value = value(e){ ... }
  */
-const Dropdown = ({children, title="", color="", className="", value=function(){}}) => {
+const Dropdown = ({children, title="", color="", className="", value=function(){}}, key=null) => {
     // useState
     const [ShowArrow, setShowArrow] = useState(false);
 
@@ -38,7 +38,7 @@ const Dropdown = ({children, title="", color="", className="", value=function(){
     }
 
     return <>
-        <div className="flex flex-col justify-center items-center">
+        <div key={null} className="flex flex-col justify-center items-center">
             <Button color={color} className={className} onClick={onDropDown}>
                 <h2>{title !== "" ? title: "Types"}</h2>
                 {
@@ -50,8 +50,8 @@ const Dropdown = ({children, title="", color="", className="", value=function(){
                 {
                     children.length ? <>
                         {
-                            children.map((data)=>{
-                                return <li className="p-3 text-lg font-semibold text-slate-800 cursor-pointer border-b border-solid border-slate-100 w-full active:bg-slate-200 active:text-slate-700 active:transition-all hover:bg-slate-100" onClick={onClickDropList}>{data.props.children}</li>
+                            children.map((data, i)=>{
+                                return <li key={`${key}${i}`} className="p-3 text-lg font-semibold text-slate-800 cursor-pointer border-b border-solid border-slate-100 w-full active:bg-slate-200 active:text-slate-700 active:transition-all hover:bg-slate-100" onClick={onClickDropList}>{data.props.children}</li>
                             })
                         }
                     </>: <li className="p-3 text-lg font-semibold text-slate-800 cursor-pointer border-b border-solid border-slate-100 w-full active:bg-slate-200 active:text-slate-700 active:transition-all hover:bg-slate-100" onClick={onClickDropList}>{children.props.children}</li>

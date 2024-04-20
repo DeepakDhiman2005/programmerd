@@ -4,18 +4,22 @@ import React, {useEffect, useState} from "react";
 // component
 import NoteBookPad from "./NoteBookPad";
 
-const NoteBook = ({data=false, value=function(){}}) => {
+const NoteBook = ({data=false, range=null, value=function(){}}) => {
     // useState
     const [NoteArea, setNoteArea] = useState([]);
 
     useEffect(()=>{
-        if(data || data !== null){
-            let array = [];
-            data.map((data, i)=>{
-                array.push({number: i+1, select: false, defaultValue: data.text});
-            })
-            setNoteArea([...array]);
-        }else {
+        try{
+            if(data || data !== null){
+                let array = [];
+                data.map((data, i)=>{
+                    array.push({number: i+1, select: false, defaultValue: data.text});
+                })
+                setNoteArea([...array]);
+            }else {
+                setNoteArea([...NoteArea, {number: 1, select: true, defaultValue: ''}]);
+            }
+        }catch(err){
             setNoteArea([...NoteArea, {number: 1, select: true, defaultValue: ''}]);
         }
     }, [data]);
@@ -23,24 +27,26 @@ const NoteBook = ({data=false, value=function(){}}) => {
     // functions
     const fromTextArea = (e) => {
         if(e.event === "Enter"){
-            let array = [];
-            let j=1;
-            let val = [];
-            NoteArea.map((data, i) => {
-                if(i === e.number-1){
-                    array.push({number: i+j, select: false, defaultValue: data.defaultValue});
-                    val.push({text: data.defaultValue, number: i+1});
-                    j+=1;
-                    array.push({number: i+(j), select: true, defaultValue: ''});
-                    val.push({text: '', number: i+1});
-                }else {
-                    array.push({number: i+j, select: false, defaultValue: data.defaultValue});
-                    val.push({text: data.defaultValue, number: i+1});
-                }
-            });
-            // console.log(array)
-            value(val);
-            setNoteArea([...array]);
+            if(NoteArea.length !== range){
+                let array = [];
+                let j=1;
+                let val = [];
+                NoteArea.map((data, i) => {
+                    if(i === e.number-1){
+                        array.push({number: i+j, select: false, defaultValue: data.defaultValue});
+                        val.push({text: data.defaultValue, number: i+1});
+                        j+=1;
+                        array.push({number: i+(j), select: true, defaultValue: ''});
+                        val.push({text: '', number: i+1});
+                    }else {
+                        array.push({number: i+j, select: false, defaultValue: data.defaultValue});
+                        val.push({text: data.defaultValue, number: i+1});
+                    }
+                });
+                // console.log(array)
+                value(val);
+                setNoteArea([...array]);
+            }
         }
         else if(e.event === "ArrowUp") {
             let array = [];

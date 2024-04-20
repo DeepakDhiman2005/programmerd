@@ -44,7 +44,7 @@ const DashBoardMonitor = ({ slug }) => {
                 </> : null
             }
             {
-                slug === "affilates" ? <>
+                slug === "affiliates" ? <>
                     {
                         Editor.editor ? <DashBoardProductEditor data={Editor} value={(e)=>{
                             setEditor({editor: false, data: e});

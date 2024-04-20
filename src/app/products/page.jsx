@@ -14,6 +14,9 @@ import DisplayCarousel from "@/components/Carousels/DisplayCarousel";
 import Loader from "@/components/Loader";
 import TopLoader from "@/components/TopLoader";
 import FourCard from "@/components/Cards/FourCardCollection/FourCard";
+import AdsInsertCard from "@/components/Cards/AdsInsertCard";
+
+import ProductTopBar from "@/components/ProductComp/ProductTopBar";
 
 async function getProducts(){
     const response = await fetch("/api/products", { method: "GET", cache: "no-store" });
@@ -21,7 +24,7 @@ async function getProducts(){
     return data;
 }
 
-const Products = async () => {
+const Products = () => {
     const [Data, setData] = useState(false);
     const [IsLoading, setIsLoading] = useState(0);
 
@@ -58,6 +61,8 @@ const Products = async () => {
 
     return <>
         <TopLoader progress={IsLoading} />
+        <ProductTopBar />
+
         <div className="flex justify-center items-center mt-10 mb-10 flex-col">
             <div className="flex justify-center items-center">
                 <FaTools className="text-purple-700" size={"30px"} />
@@ -87,25 +92,15 @@ const Products = async () => {
                         {
                             value.type === "FourCard" ? <FourCard key={"ProductFourCard" + i} title={value.data.title} data={value.data.data} />: null
                         }
+                        {
+                            value.type === "Ads" ? <div className="w-[90%]">
+                                <AdsInsertCard data={value.data} key={"AdsInsertCard" + i} />
+                            </div>: null
+                        }
                     </>
                 }): <Loader />
             }
         </div>
-
-        {/* <DisplayCarousel>
-            <Image src={"https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/9a7a08792fde010f.jpg?q=20"} width={1000} height={1000} alt="image" className="cursor-pointer w-full h-full" />
-            <Image src={"https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/23ccb7c379c477c8.jpg?q=20"} width={1000} height={1000} alt="image" className="cursor-pointer w-full h-full" />
-            <Image src={"https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/97c710b1b8b764df.png?q=20"} width={1000} height={1000} alt="image" className="cursor-pointer w-full h-full" />
-            <Image src={"https://rukminim2.flixcart.com/fk-p-flap/1600/270/image/d3a2f1f5dfa35719.png?q=20"} width={1000} height={1000} alt="image" className="cursor-pointer w-full h-full" />
-        </DisplayCarousel> */}
-        
-        {/* <div className="flex justify-start items-center mt-5">
-            <FourCardCollection title={"Best Computer Parts"} data={FourCards} />
-
-            <a href="https://fktr.in/7yipOsA" target="_blank" className="w-full h-auto rounded-sm m-2 border border-solid shadow-sm shadow-slate-300 cursor-pointer">
-                <Image src={"https://rukminim2.flixcart.com/image/612/612/xif0q/computer/z/f/f/-original-imagtun66ff6zfjk.jpeg?q=70"} width={500} height={60} className="w-full h-[540px]" />
-            </a>
-        </div> */}
     </>
 }
 

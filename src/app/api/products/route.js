@@ -150,6 +150,31 @@ export async function POST(response) {
                 await data.save();
             }
         }
+        else if(obj.type === "Ads"){
+            if (obj.method === "edit") {
+                // console.log(obj)
+                const result = await Products.updateOne({ _id: _id }, {
+                    $set: obj
+                })
+                _id = false;
+            }
+            else if (obj.method === "add") {
+                if (obj.data.image) {
+                    // console.log(true)
+                    if (typeof obj.data.image === "string") { }
+                    else {
+                        let image = obj.data.image;
+                        let img = await image.arrayBuffer();
+                        let bufferimg = Buffer.from(img);
+                        let imagePath = Date.now() + "-" + Math.random() * 1000 + "-" + image.name;
+                        await fs.writeFileSync(`./public/uploads/products/${imagePath}`, bufferimg);
+                        obj.data.image = imagePath;
+                    }
+                }
+                let data = await Products({ method: obj.method, date: obj.date, type: obj.type, data: obj.data });
+                await data.save();
+            }
+        }
         else {
             console.log("type not match!");
         }

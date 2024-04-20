@@ -1,5 +1,5 @@
 "use client"
-import React from "react";
+import React, { useRef, useState } from "react";
 
 // icons
 import { MdSpaceDashboard } from "react-icons/md"; // dashboard
@@ -14,6 +14,9 @@ import { IoMdSettings } from "react-icons/io"; // settings
 import { FaYoutube } from "react-icons/fa"; // youtube
 import { MdOutlinePlaylistAdd } from "react-icons/md"; // playlist
 
+import { FaArrowLeft } from "react-icons/fa6"; // left
+import { FaArrowRight } from "react-icons/fa6"; // right
+
 // next
 import { useRouter } from "next/navigation";
 
@@ -21,78 +24,121 @@ const DashBoardSideBar = (props) => {
    // router
    const router = useRouter();
 
-    // function
+   // useRef
+   const sideRef = useRef(null);
+
+   // useState
+   const [ShowText, setShowText] = useState(true);
+
+   // function
    const DashClick = (e) => {
         try{
          let tagName = e.target.tagName;
+         let valuetext = "";
          if(tagName.toLowerCase() === "li"){
-            let get_h2 = e.target.querySelector('h2').innerText;
-            // props.value(get_h2);
-            router.push("/dashboard/visit/"+get_h2.toLowerCase());
-            // DashTitle !== "" ? props.value(get_h2): null;
+            valuetext = e.target.ariaValueText;
          }
          else if(tagName.toLowerCase() === "h2"){
-            let get_h2 = e.target.innerText;
-            router.push("/dashboard/visit/"+get_h2.toLowerCase());
+            valuetext = e.target.parentNode.ariaValueText;
          }
          else if(tagName.toLowerCase() === "svg"){
-            let get_h2 = e.target.parentNode.querySelector('h2').innerText;
-            router.push("/dashboard/visit/"+get_h2.toLowerCase());
+            valuetext = e.target.parentNode.ariaValueText;
          }
+         else if(tagName.toLowerCase() === "path"){
+            valuetext = e.target.parentNode.parentNode.ariaValueText;
+         }
+         // console.log(valuetext)
+         router.push("/dashboard/visit/"+valuetext);
         }catch(err){ }
-      // console.log(DashTitle)
    }
 
-    return <>
-        <div className="bg-white border border-solid w-3/12 border-slate-50 rounded-md shadow-md shadow-slate-400 list-none">
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <MdSpaceDashboard size={"25px"} className="text-slate-800 mr-4" />
-               <h2>DashBoard</h2>
+   const MiniMizeEvent = () => {
+      sideRef.current.className = "bg-white border border-solid w-auto transition-all border-slate-50 rounded-md shadow-md shadow-slate-400 list-none";
+      setShowText(false);
+   }
+
+   const MaximizeEvent = () => {
+      sideRef.current.className = "bg-white border border-solid w-3/12 transition-all border-slate-50 rounded-md shadow-md shadow-slate-400 list-none";
+      setShowText(true);
+   }
+
+   return <>
+        <div ref={sideRef} className="bg-white border border-solid w-3/12 transition-all border-slate-50 rounded-md shadow-md shadow-slate-400 list-none">
+            <li className="flex justify-start items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500">
+               {
+                  ShowText ? <FaArrowLeft size={"20px"} className="text-slate-800" onClick={MiniMizeEvent} />:
+                  <FaArrowRight size={"20px"} className="text-slate-800" onClick={MaximizeEvent} />
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <FaBlog size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Blogs</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="dashboard">
+               <MdSpaceDashboard size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">DashBoard</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <MdVideoLibrary size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Video's</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="blogs">
+               <FaBlog size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Blogs</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <FaBuysellads size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Affilates</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="video's">
+               <MdVideoLibrary size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Video's</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <FaBook size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Courses</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="affiliates">
+               <FaBuysellads size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Affiliates</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <IoFileTrayStacked size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Tutorials</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="courses">
+               <FaBook size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Courses</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <FaDatabase size={"25px"} className="text-slate-800 mr-4" />
-               <h2>DataBase</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="tutorials">
+               <IoFileTrayStacked size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Tutorials</h2>: null
+               }
             </li>
 
-            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick}>
-               <IoMdSettings size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Settings</h2>
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="database">
+               <FaDatabase size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">DataBase</h2>: null
+               }
+            </li>
+
+            <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500" onClick={DashClick} aria-valuetext="settings">
+               <IoMdSettings size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Settings</h2>: null
+               }
             </li>
 
             <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500">
-               <FaYoutube size={"25px"} className="text-red-600 mr-4" />
-               <h2>Youtube</h2>
+               <FaYoutube size={"25px"} className="text-red-600" />
+               {
+                  ShowText ? <h2 className="ml-4">Youtube</h2>: null
+               }
             </li>
 
             <li className="flex justify-state items-center cursor-pointer w-full active:bg-slate-50 rounded-md p-4 selection:text-blue-500">
-               <MdOutlinePlaylistAdd size={"25px"} className="text-slate-800 mr-4" />
-               <h2>Video's PlayList</h2>
+               <MdOutlinePlaylistAdd size={"25px"} className="text-slate-800" />
+               {
+                  ShowText ? <h2 className="ml-4">Video's PlayList</h2>: null
+               }
             </li>
         </div>
     </>

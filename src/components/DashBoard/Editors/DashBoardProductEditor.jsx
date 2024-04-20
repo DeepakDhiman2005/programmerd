@@ -14,10 +14,12 @@ import ImageRender from "@/components/ImageRender";
 import DisplayCarouselEidtor from "./productEdit/DisplayCarouselEditor";
 import CardEditor from "./productEdit/CardEditor";
 import MessageEmit from "@/components/MessageEmit";
+import AdsInsertCard from "@/components/Cards/AdsInsertCard";
 
 import FourCardEditor from "./productEdit/FourCardEditor";
 import FourCard from "@/components/Cards/FourCardCollection/FourCard";
-
+import AdsCardEditor from "./productEdit/AdsCardEditor";
+import HostingCardEditor from "./productEdit/HostingCardEditor";
 
 const DashBoardProductEditor = ({ data, value=function(){} }) => {
     // useState
@@ -28,6 +30,7 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
     const [CardData, setCardData] = useState({title: "", desc: "", href: "", image: {src: ""}});
     const [FourCardData, setFourCardData] = useState(false);
     const [MessageDisplay, setMessageDisplay] = useState(false);
+    const [AdsData, setAdsData] = useState({});
 
     const [Uploads, setUploads] = useState(false);
     const [DefaultData, setDefaultData] = useState(null);
@@ -69,6 +72,11 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                 formData.append(`href${i+1}`, data[i].href);
                 formData.append(`id${i+1}`, data[i].id);
                 formData.append(`image${i+1}`, data[i].image);
+            }
+        }
+        else if(Uploads.type === "Ads"){
+            for(let x in data){
+                formData.append(x, data[x]);
             }
         }
 
@@ -120,7 +128,10 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                 </>: 
                 EditorType === "FourCard" ? <>
                     <FourCard title={FourCardData.title} data={FourCardData.data} />
-                </>:null
+                </>:
+                EditorType === "Ads" ? <>
+                    <AdsInsertCard data={AdsData} />
+                </>: null
             }
         </PopUpElement>
 
@@ -132,13 +143,15 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
         <MessageEmit success={true} display={MessageDisplay} message="Data submit Successfully!" position={"center"} value={(e)=>{ setMessageDisplay(e); }} />
 
         <div className="flex justify-between items-center w-full">
-            <h2 className="text-lg text-slate-800 font-semibold">Affilate Editor</h2>
+            <h2 className="text-lg text-slate-800 font-semibold">Affiliate Editor</h2>
             <Dropdown color="green" className="flex justify-center items-center" value={(e)=>{
                 setEditorType(e);
             }}>
                 <li>Card</li>
                 <li>FourCard</li>
                 <li>DisplayCarousel</li>
+                <li>Ads</li>
+                <li>Hosting</li>
             </Dropdown>
         </div>
 
@@ -177,6 +190,20 @@ const DashBoardProductEditor = ({ data, value=function(){} }) => {
                         setOverView(e.overview);
                     }
                 }} />
+            </>:
+            EditorType === "Ads" ? <>
+                <AdsCardEditor data={DefaultData} value={(e)=>{
+                    if(e.submit){
+                        setUploads({method: e.method, data: e.data, date: getCurrentDate(), type: "Ads", id: e.id});
+                        setConfirmDisplay(true);
+                    }else {
+                        setAdsData(e.data);
+                        setOverView(e.overview);
+                    }
+                }} />
+            </>: 
+            EditorType === "Hosting" ? <>
+                <HostingCardEditor />
             </>: null
         }
     </>

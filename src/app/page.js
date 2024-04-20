@@ -128,8 +128,9 @@ export default function Home(props) {
 
       <h2 className="text-center text-4xl mt-10 mb-5">My Gear</h2>
       <div className="flex justify-around items-center flex-wrap mt-10 mb-20 overflow-x-hidden">
-        <ProductCard image={"/image/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
-        <ProductCard image={"/image/image1.jpg"} title={"This is tailwindcss full beginner to advance course!"} price={"$599"} />
+        <ProductCard image={"https://rukminim2.flixcart.com/image/312/312/xif0q/computer/p/c/4/-original-imagmxurypdzh2zb.jpeg?q=70"} title={"Infinix Inbook Y1 Plus Intel Core i5 10th Gen 1035G1"} price={"₹25,990"} href={"https://fktr.in/V1404F3"} />
+
+        <ProductCard image={"https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/l/e/r/-original-imagzfesc9ksa4vg.jpeg?q=70"} title={"Frontech KB-0014 Wired USB Gaming Keyboard  (Black)"} price={"₹1,716"} href={"https://fktr.in/ft3eYuC"} />
       </div>
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
