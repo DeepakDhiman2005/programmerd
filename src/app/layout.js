@@ -10,6 +10,7 @@ import Navbar from '@/components/Navbar'
 import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
 import SearchBar from '@/components/SearchBar'
+import Ads from '@/components/Ads'
 
 // next
 // import Script from "next/script";
@@ -26,6 +27,8 @@ export default function RootLayout({children}) {
     <html lang="en">
       <head>
         <link rel="icon" href="/logo.svg" type='image/svg' sizes='any' />
+        {/* <meta name="google-adsense-account" content="ca-pub-2256609026395082" /> */}
+        <Ads />
       </head>
       <body className={inter.className}>
         <Providers>

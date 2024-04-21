@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 // next
 import Image from "next/image";
 import Script from "next/script";
+import { useRouter } from 'next/navigation';
 
 // Components
 import Card from "@/components/Card";
@@ -16,42 +17,9 @@ import TopLoader from "@/components/TopLoader";
 
 // Animations
 import FaLeftAnimation from "@/components/Animations/FaLeftAnimation";
-import Ads from "@/components/Ads";
-
-import { useRouter } from 'next/navigation';
-
-class AdCodeWithoutRouter extends React.Component {
-  renderAds() {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  }
-
-  componentDidMount() {
-    this.renderAds();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.router.asPath !== prevProps.router.asPath) {
-      this.renderAds();
-    }
-  }
-
-  render() {
-    return (
-      <div className="container mx-auto text-center" aria-hidden={true}>
-        <ins className="adsbygoogle"
-        style={{display: "block", width: "100%"}}
-        data-ad-client="ca-pub-2256609026395082"
-        data-ad-slot="9162336199"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-        <script dangerouslySetInnerHTML={{ __html: '(window.adsbygoogle = window.adsbygoogle || []).push({});' }}></script>
-      </div>
-    );
-  }
-}
+import AdBanner from "@/components/AdBanner";
 
 export default function Home(props) {
-  const router = useRouter();
   // useRef
   const typingRef = useRef({innerText: ''});
   const welcomeTypingRef = useRef({innerText: ''});
@@ -63,15 +31,6 @@ export default function Home(props) {
   const [IsLoading, setIsLoading] = useState(0);
 
   useEffect(() => {
-    // try{
-    //   var ads = document.getElementsByClassName('adsbygoogle').length;
-    //   for (var i = 0; i < ads; i++) {
-    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
-    //   }
-    // }catch(err){
-    //   // console.log(err)
-    // }
-
     setIsLoading(25);
     try{
       if(window.innerWidth <= 490){
@@ -162,6 +121,12 @@ export default function Home(props) {
         <Card link={"/videos/c"} title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
+      <div className="flex justify-center items-center">
+          <div className="bg-slate-100 w-[90%]">
+            <AdBanner />
+          </div>
+        </div>
+
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
         <FaLeftAnimation className="sm:w-[45%] w-3/4 mt-5 mb-5">
           <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />
@@ -179,31 +144,17 @@ export default function Home(props) {
 
 
       {/* // _app.js */}
-        <Script
+        {/* <Script
         async
-          id="adsbygoogle-init"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           crossOrigin="anonymous"
           src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
-        />
-
-{/* <Script
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-  strategy="afterInteractive"
-/> */}
-      {/* ads */}
-      {/* <Ads /> */}
-      {/* <ins className="adsbygoogle"
-        style={{display: "block"}}
-        data-ad-client="ca-pub-2256609026395082"
-        data-ad-slot={"9162336199"}
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-
-     <script dangerouslySetInnerHTML={{ __html: "(window.adsbygoogle = window.adsbygoogle || []).push({});" }} /> */}
-     <AdCodeWithoutRouter router={router} />
-
+        /> */}
+        <div className="flex justify-center items-center">
+          <div className="bg-slate-100 w-[90%]">
+            <AdBanner />
+          </div>
+        </div>
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}

@@ -10,7 +10,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ctrl/react-adsense": "^1.7.0",
     "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
