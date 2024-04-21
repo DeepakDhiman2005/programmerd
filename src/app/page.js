@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 // next
 import Image from "next/image";
+import Script from "next/script";
 
 // Components
 import Card from "@/components/Card";
@@ -132,6 +133,14 @@ export default function Home(props) {
 
         <ProductCard image={"https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/l/e/r/-original-imagzfesc9ksa4vg.jpeg?q=70"} title={"Frontech KB-0014 Wired USB Gaming Keyboard  (Black)"} price={"₹1,716"} href={"https://fktr.in/ft3eYuC"} />
       </div>
+
+      {/* // _app.js */}
+      <Script
+        id="adsbygoogle-init"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
+      />
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}
