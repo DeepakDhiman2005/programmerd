@@ -16,8 +16,42 @@ import TopLoader from "@/components/TopLoader";
 
 // Animations
 import FaLeftAnimation from "@/components/Animations/FaLeftAnimation";
+import Ads from "@/components/Ads";
+
+import { useRouter } from 'next/navigation';
+
+class AdCodeWithoutRouter extends React.Component {
+  renderAds() {
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  }
+
+  componentDidMount() {
+    this.renderAds();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.router.asPath !== prevProps.router.asPath) {
+      this.renderAds();
+    }
+  }
+
+  render() {
+    return (
+      <div className="container mx-auto text-center" aria-hidden={true}>
+        <ins className="adsbygoogle"
+        style={{display: "block", width: "100%"}}
+        data-ad-client="ca-pub-2256609026395082"
+        data-ad-slot="9162336199"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+        <script dangerouslySetInnerHTML={{ __html: '(window.adsbygoogle = window.adsbygoogle || []).push({});' }}></script>
+      </div>
+    );
+  }
+}
 
 export default function Home(props) {
+  const router = useRouter();
   // useRef
   const typingRef = useRef({innerText: ''});
   const welcomeTypingRef = useRef({innerText: ''});
@@ -29,6 +63,15 @@ export default function Home(props) {
   const [IsLoading, setIsLoading] = useState(0);
 
   useEffect(() => {
+    // try{
+    //   var ads = document.getElementsByClassName('adsbygoogle').length;
+    //   for (var i = 0; i < ads; i++) {
+    //     (window.adsbygoogle = window.adsbygoogle || []).push({});
+    //   }
+    // }catch(err){
+    //   // console.log(err)
+    // }
+
     setIsLoading(25);
     try{
       if(window.innerWidth <= 490){
@@ -134,13 +177,33 @@ export default function Home(props) {
         <ProductCard image={"https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/l/e/r/-original-imagzfesc9ksa4vg.jpeg?q=70"} title={"Frontech KB-0014 Wired USB Gaming Keyboard  (Black)"} price={"₹1,716"} href={"https://fktr.in/ft3eYuC"} />
       </div>
 
+
       {/* // _app.js */}
-      <Script
-        id="adsbygoogle-init"
-        strategy="afterInteractive"
-        crossOrigin="anonymous"
-        src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
-      />
+        <Script
+        async
+          id="adsbygoogle-init"
+          strategy="lazyOnload"
+          crossOrigin="anonymous"
+          src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
+        />
+
+{/* <Script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+  strategy="afterInteractive"
+/> */}
+      {/* ads */}
+      {/* <Ads /> */}
+      {/* <ins className="adsbygoogle"
+        style={{display: "block"}}
+        data-ad-client="ca-pub-2256609026395082"
+        data-ad-slot={"9162336199"}
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+
+     <script dangerouslySetInnerHTML={{ __html: "(window.adsbygoogle = window.adsbygoogle || []).push({});" }} /> */}
+     <AdCodeWithoutRouter router={router} />
+
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}

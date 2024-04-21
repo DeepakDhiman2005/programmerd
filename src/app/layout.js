@@ -11,6 +11,9 @@ import Sidebar from '@/components/Sidebar'
 import Footer from '@/components/Footer'
 import SearchBar from '@/components/SearchBar'
 
+// next
+// import Script from "next/script";
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
