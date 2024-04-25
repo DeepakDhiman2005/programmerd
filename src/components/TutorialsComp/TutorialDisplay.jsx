@@ -15,7 +15,12 @@ const TutorialDisplay = ({title=""}) => {
     const [ToConnection, setToConnection] = useState("");
     const [SideData, setSideData] = useState([]);
     const [SidePage, setSidePage] = useState([]);
+    const [EndPageTitle, setEndPageTitle] = useState("");
+
     const [FirstPage, setFirstPage] = useState(false);
+    const [PageEnd, setPageEnd] = useState(false);
+
+    const [ThrowMessage, setThrowMessage] = useState("");
 
     const [IsLoading, setIsLoading] = useState(0);
 
@@ -28,29 +33,41 @@ const TutorialDisplay = ({title=""}) => {
     const getTutorial = async () => {
         try{
             setIsLoading(35);
-            const resp = await axios.get("/api/tutorials/", { cache: "no-store" });
+            const resp = await axios.post("/api/tutorials/", title, { cache: "no-store" });
             // console.log(resp.data);
             setSideData(resp.data);
             setIsLoading(85);
-            resp.data.filter((tutorial, i)=>{
-                let page = tutorial.page;
-                page.filter((data, j)=>{
-                    let title = data.title.toLowerCase();
-                    if(title === query){
-                        if(i === 0 && j === 0){
-                            setFirstPage(true);
-                        }else{ setFirstPage(false); }
-                        setSidePage(data);
+            if(resp.data !== null){
+                setThrowMessage("");
+                resp.data.filter((tutorial, i)=>{
+                    let page = tutorial.page;
+                    page.filter((data, j)=>{
+                        let title = data.title.toLowerCase();
+                        if(title === query){
+                            // console.log(title)
+                            if(i === 0 && j === 0){
+                                setFirstPage(true);
+                            }else{ setFirstPage(false); }
+                            setSidePage(data);
+                        }
+                    })
+                    if(i === resp.data.length-1){
+                        try{
+                            setEndPageTitle(page[page.length-1].title);
+                        }catch(er){}
                     }
                 })
-            })
+            }else {
+                setThrowMessage(title + ": The Tutorial is not avaliable!");
+                setSideData([]);
+            }
             setIsLoading(100);
             
             let delay = setInterval(() => {
                 clearInterval(delay);
                 setIsLoading(0);
             }, 500);
-        }catch(err){}
+        }catch(err){ }
     }
 
     const ChangePage = (e) => {
@@ -64,7 +81,7 @@ const TutorialDisplay = ({title=""}) => {
                     if(onetime){
                         setSidePage(data);
                         search.set("query", data.title);
-                        router.push(`/tutorial/${title}/?${search.toString()}`);
+                        router.push(`/tutorial/${title}/?${search.toString().toLowerCase()}`);
                         onetime = false;
                     }else {
                         let title = data.title.toLowerCase();
@@ -83,7 +100,7 @@ const TutorialDisplay = ({title=""}) => {
                     if(tit === query){
                         setSidePage(store);
                         search.set("query", store.title.toLowerCase());
-                        router.push(`/tutorial/${title}/?${search.toString()}`);
+                        router.push(`/tutorial/${title}/?${search.toString().toLowerCase()}`);
                     }else {
                         store = data;
                     }
@@ -107,6 +124,11 @@ const TutorialDisplay = ({title=""}) => {
         }
         try{
             window.document.title = query + " - in tutorial";
+            if(query.toLowerCase() === EndPageTitle.toLowerCase()){
+                setPageEnd(true);
+            }else {
+                setPageEnd(false);
+            }
         }catch(err){}
     }, [pathname, query]);
 
@@ -118,7 +140,7 @@ const TutorialDisplay = ({title=""}) => {
 
             {/* layer2 */}
             {
-                SidePage.length !== 0 ? <TutorialContent page={FirstPage} title={query} datalist={SidePage} toConnection={ToConnection} value={(e)=>{ 
+                SidePage.length !== 0 ? <TutorialContent page={FirstPage} pageEnd={PageEnd} title={query} datalist={SidePage} toConnection={ToConnection} value={(e)=>{ 
                     if(e === "next" || e === "previous"){
                         ChangePage(e);
                     }else{
@@ -126,7 +148,7 @@ const TutorialDisplay = ({title=""}) => {
                     }
                 }} />: <div className="mt-5 mb-5 w-full flex justify-center items-center">
                     {/* <Loader /> */}
-                    <h2 className="mt-5 mb-5">Result Not Found!</h2>
+                    <h2 className="mt-5 mb-5">{ThrowMessage !== "" ? ThrowMessage: "Result not found!"}</h2>
                 </div>
             }
         </div>

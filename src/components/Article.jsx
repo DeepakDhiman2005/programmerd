@@ -4,6 +4,12 @@ import React, {useState} from "react";
 // component
 import CodeHighlighter from "./CodeHighlighter";
 
+// next
+import Link from "next/link";
+
+// icons
+import { GoLinkExternal } from "react-icons/go";
+
 // custom
 import PopUpImageBox from "./PopUpImageBox";
 import TopScrollButton from "./TopScrollButton";
@@ -43,7 +49,13 @@ const Article = (props) => {
                         }
                         {
                             data.points ? data.points.map((point) => {
-                                return point ? <li>{point}</li> : null
+                                if(point.match(/.+:.+/)){
+                                    let p = point.split(":");
+                                    return <li><span className="text-slate-800 font-bold">{p[0]}:</span>{p[1]}</li>
+                                }else {
+                                    return point ? <li>{point}</li> : null
+                                }
+                                // return point ? <li>{point}</li> : null
                             }) : null
                         }
                         {
@@ -73,6 +85,18 @@ const Article = (props) => {
                         }
                         {
                             data.desc ? <p className="text-lg mt-1 mb-1">{data.desc}</p> : null
+                        }
+                        {
+                            data.b ? <p className="text-lg mt-1 mb-1 font-bold text-slate-800">{data.b}</p> : null
+                        }
+                        {
+                            data.redirect ? <Link href={data.redirect.href ? data.redirect.href: null} className="text-purple-600 underline underline-offset-2 flex justify-center items-center hover:text-blue-700">
+                                {data.redirect.text}
+                                <GoLinkExternal size={"14px"} className="ml-1" />
+                            </Link>: null
+                        }
+                        {
+                            data.html ? <iframe srcDoc={data.html} title="Embedded Content" width="100%" height={"300px"} className="border border-solid border-slate-800 rounded-md p-2"></iframe>: null
                         }
                     </>
                 })

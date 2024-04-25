@@ -72,7 +72,7 @@ const TutorialSidebar = (props) => {
                                             sidebarContRef.current.className = onClose;
 
                                             const search = new URLSearchParams(searchparams);
-                                            search.set("query", text);
+                                            search.set("query", text.toLowerCase());
                                             router.push(`/tutorial/${props.title}/?${search.toString()}`);
                                         }}>{point.title}</h2>
                                     </div>
