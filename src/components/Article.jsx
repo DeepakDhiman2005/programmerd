@@ -88,6 +88,9 @@ const Article = (props) => {
                             data.desc ? <p className="text-lg mt-1 mb-1">{data.desc}</p> : null
                         }
                         {
+                            data.para ? <p className="text-lg mt-1 mb-1">{data.para}</p> : null
+                        }
+                        {
                             data.b ? <p className="text-lg mt-1 mb-1 font-bold text-slate-800">{data.b}</p> : null
                         }
                         {

@@ -128,5 +128,105 @@ export const db_blogs = [
         ],
         comment: []
     }
+   },
+   {
+    method: "add",
+    type: "blog",
+    date: "26-04-2024",
+    data: {
+        title: "How to become a logo designer in 2024?",
+        desc: "How to become a logo designer in 2024. what is salary of a logo designer in india. benefites of logo designer. Explore, complete roadmap of logo designer in 2024.",
+        date: "26-04-2024",
+        content: [
+            {desc: "How to become a logo designer in 2024. what is salary of a logo designer in india. benefites of logo designer. Explore, complete roadmap of logo designer in 2024."},
+            {desc: "If you want to become a logo designer and have doubts related to logo designer then follow this blog."},
+
+            {title: "What is logo designer."},
+            {desc: "A logo designer is a professional who specializes in creating visual symbols or emblems that represent a company, organization, product, or brand. Logo designers typically possess a blend of artistic skill, creativity, and understanding of branding principles. They work closely with clients to understand their vision, values, and target audience, then use their design expertise to craft a logo that effectively communicates those elements. Logo designers may work independently as freelancers or as part of a design agency. Their work is crucial as logos serve as a key component of a brand's identity, helping to establish recognition and create a memorable impression on customers."},
+            
+            {title: "Is graphic(logo) design in high demand?"},
+            {desc: "Yes, graphic(logo) design is in high demand due to the increasing need for visual communication in various industries, such as advertising, marketing, and media."},
+            {desc: "Increasing Demand: With the rise of startups, small businesses, and e-commerce platforms, there is a growing demand for professional logo designers. Established companies also frequently rebrand or update their logos, providing ongoing opportunities."},
+            {desc: "The logo design industry in India is competitive despite the many chances it presents; thus, logo designers need to have some familiarity with web design to get paid well for their creative skills. It will improve their chances of obtaining an elevated position in the design business."},
+            {image: {
+                image: "/image/blogs/growth_chart.jpg",
+                width: 1000, height: 1000,
+            }},
+            {title: "Salary of logo designer in india?"},
+            {desc: "The average salary for Logo Design is ₹66,212 per month in the India. The average additional cash compensation for a Logo Design in the India is ₹48,000, with a range from ₹36,000 - ₹60,000."},
+            {desc: "A Freelance graphic designer charges around ₹15000 — ₹75,000 For Logo design in India. if we talk about Beginner Freelance Designer or Junior Freelance Designer they make around ₹1000 to ₹10000 for a logo design project."},
+            {title: "What is Freelancing?"},
+            {desc: "reelancing is a form of self-employment where individuals offer their skills, services, or expertise to clients on a project-by-project basis, rather than being employed by a single employer on a long-term basis. Freelancers, also known as independent contractors or gig workers, work independently and often remotely, providing services such as writing, graphic design, programming, consulting, and many others."},
+            {desc: "Key aspects of freelancing include:"},
+            {
+                points: [
+                    `Flexibility: Freelancers have the freedom to choose their own projects, set their own schedules, and work from anywhere with an internet connection.`,
+                    `Independence: Freelancers are their own bosses, responsible for managing their workload, finances, and client relationships.`,
+                    `Variety: Freelancers often work on a diverse range of projects for different clients, which can be intellectually stimulating and offer opportunities for skill development.`,
+                    `Income variability: Freelancers may experience fluctuations in income as project availability and rates vary. It's important for freelancers to manage their finances wisely and plan for lean periods.`,
+                    `Client management: Freelancers are responsible for finding and communicating with clients, negotiating contracts, and ensuring client satisfaction.`
+                ]
+            },
+            {
+                desc: "Freelancing can offer both opportunities and challenges, but for many people, it provides a way to pursue their passions, have greater control over their work-life balance, and achieve professional and financial independence."
+            },
+            {
+                product: {
+                    image: "https://m.media-amazon.com/images/I/71mYXU5s7ML._AC_SX679_.jpg",
+                    by: "amazon",
+                    score: "9.2",
+                    title: "KLIEGOU Mens Hipster Hiphop Tees - Fashion Print T-Shirts",
+                    href: "https://amzn.to/4bcO9GV"
+                }
+            },
+            {title: "How to become a logo designer?"},
+            {desc: "Becoming a logo designer involves a combination of education, practice, building a portfolio, and networking. Here's a step-by-step guide to help you get started:"},
+            {
+                points: [
+                    `Learn Graphic Design Fundamentals: Begin by gaining a solid understanding of basic design principles such as color theory, typography, composition, and branding. You can learn these fundamentals through online courses, tutorials, books, or formal education programs.`,
+                    `Master Design Software: Become proficient in design software such as Adobe Illustrator, Adobe Photoshop, or other graphic design tools commonly used in the industry. Practice using these tools to create digital designs and vector graphics.`,
+                    `Study Logo Design Specifically: While learning graphic design fundamentals, focus on understanding the specific principles and techniques used in logo design. Analyze successful logos to understand what makes them effective and memorable.`,
+                    `Practice Regularly: Set aside time each day or week to work on logo design projects. Practice designing logos for fictional companies or personal projects to build your skills and creativity.`,
+                    `Build a Strong Portfolio: As you gain experience, create a portfolio showcasing your best logo designs. Include a variety of styles, concepts, and projects to demonstrate your versatility and skills to potential clients or employers.`
+                ]
+            },
+            {desc: `Becoming a successful logo designer takes time, dedication, and a commitment to continuous learning and improvement. By following these steps and staying persistent, you can establish yourself as a skilled and sought-after logo designer in the industry.`},
+            {title: "Bounce Point:"},
+            {desc: "If you want to create a logo online without money then you can use Canva."},
+            {
+                redirect: {
+                    text: "https://canva.com",
+                    href: "https://www.canva.com/join/dfq-kxv-xlv",
+                    target: "_blank"
+                }
+            },
+            {title: "What is Canva?"},
+            {desc: "Canva is a free-to-use online graphic design tool. Use it to create social media posts, presentations, posters, videos, logos and more."},
+            {desc: "You may have heard rumours that Canva is the easiest-to-use design platform in the world. Good news – the rumours are true! Canva allows you to create incredible designs without having to use complicated design software. Get familiar with these five super easy design tools will set you up to start designing in Canva."},
+            {
+                image: {
+                    image: "/image/blogs/canva.png",
+                    width: 1000, height: 1000
+                }
+            },
+            {b: "How to use of canva.com"},
+            {desc: "follow this points:"},
+            {
+                points: [
+                    "sign up to email on canva.com",
+                    "Click on: `Create a design` Button",
+                    "Select of `Logo` option",
+                    "and start of logo designing!"
+                ]
+            },
+            {
+                image: {
+                    image: "/image/blogs/canva2.png",
+                    width: 1000, height: 1000
+                }
+            },
+        ],
+        comment: []
+    }
    }
 ];
