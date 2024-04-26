@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 // next
 import { useSearchParams } from "next/navigation";
@@ -8,8 +8,7 @@ import TopLoader from "@/components/TopLoader";
 
 // component
 import BlogCard from "@/components/Cards/BlogCard";
-import Card from "@/components/Card";
-import FourCard from "@/components/Cards/FourCardCollection/FourCard";
+import ProductDetailCard from "@/components/Cards/ProductDetailCard";
 
 const SearchPage = () => {
     const searchparams = useSearchParams();
@@ -40,28 +39,23 @@ const SearchPage = () => {
     const SearchToDB = async (query) => {
         try{
             setIsLoading(35);
-            // const resp = await axios.post("/api/search/", query);
-            // const data = resp.data;
-            const resp = await fetch("/api/search/", {
-                method: "POST",
-                body: JSON.stringify(query),
-                cache: "no-store"
-            });
-            const data = await resp.json();
+            const resp = await axios.post("/api/search/", query);
+            const data = resp.data;
     
-            // console.log(resp.data);
+            // console.log(data);
             let blogArray = [];
             let productArray = [];
             setIsLoading(65);
     
-            data.filter((val)=>{
-                let type = val.type.toLowerCase();
-                if(type === "blog"){
+            data.map((val)=>{
+                if(val.type && val.type === "blog"){
                     blogArray.push(val.data);
                 } else {
                     productArray.push(val);
                 }
             });
+            // console.log(blogArray);
+            // console.log(productArray);
     
             if(blogArray.length !== 0 || productArray.length !== 0){
                 setDataPerMission(true);
@@ -80,6 +74,7 @@ const SearchPage = () => {
             }, 500);
         }catch(err){
             setIsLoading(0);
+            console.log(err)
         }
     }
 
@@ -140,16 +135,24 @@ const SearchPage = () => {
                                 LineHighLight === "blogs" ? BlogData.map(({title, desc, date}, i)=>{
                                     return <BlogCard title={title} desc={desc} date={date} key={"BlogCardSearch"+i}  />
                                 }):
-                                LineHighLight === "products" ? ProductData.map((value, i)=>{
-                                    return  <>
-                                        {
-                                            value.type === "Card" ? <Card key={"Card"+value.data.id} title={value.data.title} desc={value.data.desc} button={"View"} image={value.data.image.match(new RegExp("http://")) || value.data.image.match(new RegExp("https://")) ? value.data.image: `/uploads/products/${value.data.image}`} href={value.data.href} />:
-
-                                            value.type === "FourCard" ? <FourCard key={"ProductFourCard" + i} title={value.data.title} data={value.data.data} />:
-                                            null
+                                LineHighLight === "products" ? <div className="flex w-full flex-wrap justify-around items-center">
+                                {
+                                    ProductData.map((value, i)=>{
+                                        let data = {
+                                            title: value.title,
+                                            by: value.by,
+                                            image: value.image,
+                                            href: value.href,
+                                            score: value.score
                                         }
-                                    </>
-                                }): <h2 className="p-4 text-xl font-bold ml-1">No Data</h2>
+                                        return  <>
+                                            {
+                                                <ProductDetailCard data={data} />
+                                            }
+                                        </>
+                                    })
+                                }
+                                </div>: <h2 className="p-4 text-xl font-bold ml-1">No Data</h2>
                             }
                         </div>
                     </>: <>

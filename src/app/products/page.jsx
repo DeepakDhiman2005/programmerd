@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from "react";
-// import axios from "axios";
+import axios from "axios";
 
 // icons
 import { FaTools } from "react-icons/fa";
@@ -17,11 +17,16 @@ import FourCard from "@/components/Cards/FourCardCollection/FourCard";
 import AdsInsertCard from "@/components/Cards/AdsInsertCard";
 
 import ProductTopBar from "@/components/ProductComp/ProductTopBar";
+import ProductDetailCard from "@/components/Cards/ProductDetailCard";
 
+// async function getProducts(){
+//     const response = await fetch("/api/products", { method: "GET", cache: "no-store" });
+//     const data = await response.json();
+//     return data;
+// }
 async function getProducts(){
-    const response = await fetch("/api/products", { method: "GET", cache: "no-store" });
-    const data = await response.json();
-    return data;
+    const resp = await axios.get("/api/products/", { method: "GET", cache: "no-store" });
+    return resp.data;
 }
 
 const Products = () => {
@@ -34,15 +39,16 @@ const Products = () => {
             setIsLoading(45);
             const data = await getProducts();
             setIsLoading(65);
-            let array = [];
-            data.filter((dt)=>{
-                if(dt.method !== "hide"){
-                    array.push(dt);
-                }
-            });
+            // console.log(data)
+            // let array = [];
+            // data.filter((dt)=>{
+            //     if(dt.method !== "hide"){
+            //         array.push(dt);
+            //     }
+            // });
 
             setIsLoading(85);
-            setData(array);
+            setData(data);
             setIsLoading(100);
 
             let delay = setInterval(()=>{
@@ -74,29 +80,39 @@ const Products = () => {
         <div className="flex flex-wrap justify-around items-center mt-20 mb-20">
             {
                 Data ? Data.map((value, i)=>{
+                    // return <>
+                    //     {
+                    //         value.type === "Card" ? <Card key={"Card"+value.data.id} title={value.data.title} desc={value.data.desc} button={"View"} image={value.data.image.match(new RegExp("http://")) || value.data.image.match(new RegExp("https://")) ? value.data.image: `/uploads/products/${value.data.image}`} href={value.data.href} /> : null
+                    //     }
+                    //     {
+                    //         value.type === "DisplayCarousel" ? <DisplayCarousel key={"ProductDisplayCarousel" + i} unique={`displaycarouselfetch${i+1}`}>
+                    //             {
+                    //                 value.data.map(({href, id, image}, i)=>{
+                    //                     return <a key={"ProductAOnDisplayCarousel" + i} href={href} target="_blank" className="w-full h-full">
+                    //                         <Image src={image ? image.replace("./public", ""): "/logo.svg"} alt="image" width={1000} height={1000} className="cursor-pointer w-full h-full" />
+                    //                     </a>
+                    //                 })
+                    //             }
+                    //         </DisplayCarousel>: null
+                    //     }
+                    //     {
+                    //         value.type === "FourCard" ? <FourCard key={"ProductFourCard" + i} title={value.data.title} data={value.data.data} />: null
+                    //     }
+                    //     {
+                    //         value.type === "Ads" ? <div className="w-[90%]">
+                    //             <AdsInsertCard data={value.data} key={"AdsInsertCard" + i} />
+                    //         </div>: null
+                    //     }
+                    // </>
+                    let data = {
+                        title: value.title,
+                        image: value.image,
+                        score: value.score,
+                        by: value.by,
+                        href: value.href
+                    }
                     return <>
-                        {
-                            value.type === "Card" ? <Card key={"Card"+value.data.id} title={value.data.title} desc={value.data.desc} button={"View"} image={value.data.image.match(new RegExp("http://")) || value.data.image.match(new RegExp("https://")) ? value.data.image: `/uploads/products/${value.data.image}`} href={value.data.href} /> : null
-                        }
-                        {
-                            value.type === "DisplayCarousel" ? <DisplayCarousel key={"ProductDisplayCarousel" + i} unique={`displaycarouselfetch${i+1}`}>
-                                {
-                                    value.data.map(({href, id, image}, i)=>{
-                                        return <a key={"ProductAOnDisplayCarousel" + i} href={href} target="_blank" className="w-full h-full">
-                                            <Image src={image ? image.replace("./public", ""): "/logo.svg"} alt="image" width={1000} height={1000} className="cursor-pointer w-full h-full" />
-                                        </a>
-                                    })
-                                }
-                            </DisplayCarousel>: null
-                        }
-                        {
-                            value.type === "FourCard" ? <FourCard key={"ProductFourCard" + i} title={value.data.title} data={value.data.data} />: null
-                        }
-                        {
-                            value.type === "Ads" ? <div className="w-[90%]">
-                                <AdsInsertCard data={value.data} key={"AdsInsertCard" + i} />
-                            </div>: null
-                        }
+                        <ProductDetailCard data={data} />
                     </>
                 }): <Loader />
             }

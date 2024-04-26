@@ -26,6 +26,7 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
     // useRef
     const codeText = useRef(null);
     const buttonRef = useRef(null);
+    const bodyRef = useRef(null);
 
     // function
     const CopyEvent = async () => {
@@ -250,13 +251,23 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
         let _array = [];
         try {
             if (array.type) {
+                _array = array.code;
                 if (array.type === "none") {
-                    _array = array.code;
                     let tags = "";
                     _array.map((data) => {
                         tags += `${data}`
                     });
                     codeText.current.innerText = tags;
+                }
+                else if(array.type === "css") {
+                    highlighter(_array, "html", stylelist);
+                }
+                if(_array.length > 12){
+                    bodyRef.current.style.overflowY = "scroll";
+                    bodyRef.current.style.height = "400px";
+                    buttonRef.current.style.position = "sticky";
+                    buttonRef.current.style.right = 0;
+                    buttonRef.current.style.top = 0;
                 }
             } else {
                 if (type === "none" || type === "") {
@@ -284,6 +295,14 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
                     } else {
                         highlighter(_array, type, stylelist);
                     }
+
+                    if(_array.length > 12){
+                        bodyRef.current.style.overflowY = "scroll";
+                        bodyRef.current.style.height = "400px";
+                        buttonRef.current.style.position = "sticky";
+                        buttonRef.current.style.right = 0;
+                        buttonRef.current.style.top = 0;
+                    }
                 }
             }
         } catch (err) { }
@@ -291,13 +310,13 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
 
     return <>
         <style jsx>{`
-        .code-srcoll{
-            background-color: red;
+        .code-scroll::-webkit-scrollbar{
+            background-color: transparent;
         }
     `}</style>
-        <div key={key} className="bg-slate-800 p-4 flex mt-5 mb-5 justify-between items-start border border-solid border-slate-600 rounded-lg shadow-md w-full shadow-slate-700">
+        <div key={key} ref={bodyRef} className="bg-slate-800 p-4 flex mt-5 mb-5 justify-between items-start border border-solid border-slate-600 rounded-lg shadow-md w-full shadow-slate-700 code-scroll relative">
             {/* code side */}
-            <div ref={codeText} className="text-md text-white flex flex-col justify-center selection:text-blue-300 items-start list-none overflow-y-scroll code-scroll">
+            <div ref={codeText} className="text-md text-white flex flex-col justify-center selection:text-blue-300 items-start list-none">
                 {/* <li>python("Hello world!")</li>
                 <li>Input("Enter your Name: ")</li>
                 <li>import math</li>
@@ -308,7 +327,7 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
                 {children}
             </div>
             {/* copy button side */}
-            <button ref={buttonRef} className="bg-slate-700 border border-solid border-slate-700 rounded-md transition-shadow shadow-md shadow-slate-600 cursor-pointer p-1 text-slate-50 hover:bg-slate-800" onClick={CopyEvent}>Copy</button>
+            <button ref={buttonRef} className="bg-slate-700 border border-solid border-slate-700 rounded-md transition-shadow shadow-md shadow-slate-600 cursor-pointer p-1 text-slate-50 hover:bg-slate-800 z-30" onClick={CopyEvent}>Copy</button>
         </div>
     </>
 }

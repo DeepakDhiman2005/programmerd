@@ -2,6 +2,9 @@
 import React, { useEffect, useState} from "react";
 import axios from "axios";
 
+// next
+import { usePathname } from "next/navigation";
+
 // api
 const getProductApI = async () => {
     const resp = await axios.get("/api/products/", { cache: "no-store" });
@@ -9,28 +12,44 @@ const getProductApI = async () => {
 }
 
 // components
-import Card from "../Card";
-import FourCard from "../Cards/FourCardCollection/FourCard";
+import ProductDetailCard from "../Cards/ProductDetailCard";
 import Loader from "../Loader";
 
 const SideBarProduct = () => {
     // useState
-    const [Affilates, setAffilates] = useState(false);
+    const [Affiliates, setAffiliates] = useState(false);
+
+    // next
+    const pathname = usePathname();
 
     const ApI = async () => {
         const products = await getProductApI();
-        setAffilates(products);
+        let ran = Math.floor(Math.random()*(products.length - 4));
+        // console.log(ran);
+        // console.log(products.slice(0, 3));
+        let array = [products[ran], products[ran !== 0 ? ran-1: ran], products[ran+1]];
+        // setAffilates(products.slice(0, 3));
+        setAffiliates(array);
     }
 
     useEffect(()=>{
         ApI();
-    }, []);
+    }, [pathname]);
+
     return <>
-        <div className="flex justify-center w-full items-center h-full flex-wrap">
+        <div className="flex justify-around w-full items-center h-full flex-wrap">
             {
-                Affilates ? Affilates.map((product)=>{
-                    let data = product.data;
-                    return product.type === "FourCard" ? <FourCard title={data.title} data={data.data} />: null
+                Affiliates ? Affiliates.map((value)=>{
+                    let data = {
+                        title: value.title,
+                        image: value.image,
+                        score: value.score,
+                        by: value.by,
+                        href: value.href
+                    }
+                    return <>
+                        <ProductDetailCard data={data} />
+                    </>
                 }): <div className="flex justify-center w-full h-full items-center mt-5 mb-5">
                     <Loader />
                 </div>

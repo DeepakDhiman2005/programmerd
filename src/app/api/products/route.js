@@ -5,14 +5,36 @@ import { NextResponse } from "next/server"
 import ConnectMongo from "@/util/ConnectMongo";
 import { Products } from "@/util/mongo";
 
+// database
+import { db_books } from "@/app/db/products/books";
+import { db_cpu } from "@/app/db/products/cpu";
+import { db_game } from "@/app/db/products/game";
+import { db_keyboard } from "@/app/db/products/keyboard";
+import { db_laptops } from "@/app/db/products/laptops";
+import { db_mobiles } from "@/app/db/products/mobiles";
+import { db_ps5 } from "@/app/db/products/ps5";
+import { db_smartwatch } from "@/app/db/products/smartwatch";
+import { db_speaker } from "@/app/db/products/speaker";
+import { db_tv } from "@/app/db/products/t_v";
+
 // server
 import fs from "fs";
 
 export async function GET(response) {
-    await ConnectMongo();
-    let data = await Products.find();
+    // await ConnectMongo();
+    // let data = await Products.find();
+    const cpu = db_cpu.data.slice(0, 3);
+    const speaker = db_speaker.data.slice(0, 3);
+    const keyboard = db_keyboard.data.slice(0, 3);
+    const game = db_game.data.slice(0, 3);
+    const laptops = db_laptops.data.slice(0, 3);
+    const mobiles = db_mobiles.data.slice(0, 3);
+    const smartwatch = db_smartwatch.data.slice(0, 3);
+    const books = db_books.data.slice(0, 3);
+    const ps5 = db_ps5.data.slice(0, 3);
+    const tv = db_tv.data.slice(0, 3);
     // retrieve the current response
-    return NextResponse.json(data);
+    return NextResponse.json([...cpu, ...speaker, ...keyboard, ...game, ...laptops, ...mobiles, ...smartwatch, ...books, ...ps5, ...tv]);
 }
 
 export async function POST(response) {

@@ -121,7 +121,7 @@ export default function Home(props) {
         <Card link={"/videos/c"} title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center overflow-hidden">
           <div className="bg-slate-100 w-[90%]">
             <AdBanner />
           </div>
@@ -150,7 +150,7 @@ export default function Home(props) {
           crossOrigin="anonymous"
           src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
         /> */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center overflow-hidden">
           <div className="bg-slate-100 w-[90%]">
             <AdBanner />
           </div>
