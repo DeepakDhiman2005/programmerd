@@ -10,18 +10,20 @@ import { Blogposts } from "@/util/mongo";
 
 export async function GET(response){
     await ConnectMongo();
-    const blogs = await Blogposts.find();
-    return NextResponse.json(blogs);
+    let blogs = await Blogposts.find();
+    blogs = blogs.concat(db_blogs);
+    return NextResponse.json(blogs.reverse());
 }
 
 export async function POST(response){
     await ConnectMongo();
-    const blogs = await Blogposts.find();
+    let blogs = await Blogposts.find();
     const resp = await response.json();
     const _query = resp.query.toLowerCase();
     // console.log(_query);
     let get_data = {};
     let array = db_blogs;
+    blogs = [...blogs, ...db_blogs];
 
     // blogs.filter((data)=> {
     //     array.push(data.data);

@@ -15,6 +15,7 @@ import PopUpImageBox from "./PopUpImageBox";
 import TopScrollButton from "./TopScrollButton";
 import ImageRender from "./ImageRender";
 import VideoRender from "./VideoRender";
+import ProductDetailCard from "./Cards/ProductDetailCard";
 
 /**
  * @param props `data=[]` || `layer` -> {title, desc, headers, date, content, images, videos, audio} -> json text values data,
@@ -90,13 +91,22 @@ const Article = (props) => {
                             data.b ? <p className="text-lg mt-1 mb-1 font-bold text-slate-800">{data.b}</p> : null
                         }
                         {
-                            data.redirect ? <Link href={data.redirect.href ? data.redirect.href: null} className="text-purple-600 underline underline-offset-2 flex justify-center items-center hover:text-blue-700">
+                            data.redirect ? <Link href={data.redirect.href ? data.redirect.href: null} target={data.redirect.target ? data.redirect.target: null} className="text-purple-600 underline underline-offset-2 flex justify-center items-center hover:text-blue-700">
                                 {data.redirect.text}
                                 <GoLinkExternal size={"14px"} className="ml-1" />
                             </Link>: null
                         }
                         {
                             data.html ? <iframe srcDoc={data.html} title="Embedded Content" width="100%" height={"300px"} className="border border-solid border-slate-800 rounded-md p-2"></iframe>: null
+                        }
+                        {
+                            data.product ? <ProductDetailCard data={{
+                                title: data.product.title,
+                                by: data.product.by,
+                                score: data.product.score,
+                                href: data.product.href,
+                                image: data.product.image
+                            }} />: null
                         }
                     </>
                 })

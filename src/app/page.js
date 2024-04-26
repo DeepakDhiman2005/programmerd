@@ -121,12 +121,6 @@ export default function Home(props) {
         <Card link={"/videos/c"} title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
-      <div className="flex justify-center items-center overflow-hidden">
-          <div className="bg-slate-100 w-[90%]">
-            <AdBanner />
-          </div>
-        </div>
-
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
         <FaLeftAnimation className="sm:w-[45%] w-3/4 mt-5 mb-5">
           <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />

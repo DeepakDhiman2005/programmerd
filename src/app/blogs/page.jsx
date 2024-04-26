@@ -39,6 +39,7 @@ const Blogs = () => {
         // const response = await fetch("/api/blogs", { method: "GET" });
         // const data = await response.json();
         const data = await BlogData();
+        // console.log(data)
         setIsLoading(65);
         
         let array = [];

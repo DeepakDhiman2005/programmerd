@@ -12,6 +12,7 @@ import CommentBox from "@/components/CommentBox";
 import CommentContainer from "@/components/CommentContainer";
 import TopLoader from "@/components/TopLoader";
 import Dropdown from "@/components/Dropdown";
+import AdBanner from "@/components/AdBanner";
 
 const SearchBlogPost = () => {
     const searchparams = useSearchParams();
@@ -127,6 +128,12 @@ const SearchBlogPost = () => {
                     {
                         ArticleData ?  <Article data={ArticleData} />: <p>Loading...</p>
                     }
+                </div>
+                
+                <div className="flex justify-center items-center overflow-hidden">
+                    <div className="bg-slate-100 w-[90%]">
+                        <AdBanner />
+                    </div>
                 </div>
             </article>
             {/* comment box */}

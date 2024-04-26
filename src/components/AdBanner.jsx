@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect } from "react";
 
+
 const AdBanner = () => {
     useEffect(()=>{
         try {
