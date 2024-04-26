@@ -27,7 +27,7 @@ export default function RootLayout({children}) {
     <html lang="en">
       <head>
         <link rel="icon" href="/logo.svg" type='image/svg' sizes='any' />
-        {/* <meta name="google-adsense-account" content="ca-pub-2256609026395082" /> */}
+        <meta name="google-adsense-account" content="ca-pub-2256609026395082" />
         <Ads />
       </head>
       <body className={inter.className}>
