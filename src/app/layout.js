@@ -14,6 +14,7 @@ import Ads from '@/components/Ads'
 
 // vercel
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 // next
 // import Script from "next/script";
@@ -43,6 +44,7 @@ export default function RootLayout({children}) {
           </Suspense>
           <Footer />
           <Analytics />
+          <SpeedInsights />
         </Providers>
         </body>
     </html>
