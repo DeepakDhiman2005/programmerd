@@ -2,25 +2,25 @@ export const db_mobiles = {
     type: "mobiles",
     data: [
         {
-            image: "https://m.media-amazon.com/images/I/61QVWPfp1pL._AC_UL320_.jpg",
-            title: "Motorola Moto G Power 5G",
+            image: "https://m.media-amazon.com/images/I/61QEsc87ZDL._SX679_.jpg",
+            title: "Motorola G62 5G (6GB, 128GB) (Midnight Gray)",
             score: "9.5",
             by : "amazon",
-            href: "https://amzn.to/3w0tAOW"
+            href: "https://amzn.to/3xVo7tl"
         },
         {
             image: "https://m.media-amazon.com/images/I/61r7cCpQPlL._AC_UL320_.jpg",
             title: "Google Pixel 7a - Unlocked",
             score: "9.6",
             by : "amazon",
-            href: "https://amzn.to/4cZIbuN"
+            href: "https://amzn.to/4dgb6e4"
         },
         {
-            image: "https://m.media-amazon.com/images/I/71-EnPs+uQL._AC_UL320_.jpg",
-            title: "SAMSUNG Galaxy S24 Ultra",
+            image: "https://m.media-amazon.com/images/I/71669TpsvKL._AC_UY218_.jpg",
+            title: "Samsung Galaxy A34 5G (Awesome Violet, 8GB, 256GB Storage)",
             score: "8.7",
             by: "amazon",
-            href: "https://amzn.to/49KFWZi"
+            href: "https://amzn.to/4aUgP7L"
         },
         {
             image: "https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/n/m/f/g34-5g-pb1v0002in-motorola-original-imagwu4rayqhgfjh.jpeg?q=70",

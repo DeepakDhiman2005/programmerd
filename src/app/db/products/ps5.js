@@ -3,38 +3,38 @@ export const db_ps5 = {
     data: [
         {
             image: "https://m.media-amazon.com/images/I/51fM0CKG+HL._AC_UY218_.jpg",
-            title: "PlayStation®5 Digital Edition (slim)",
+            title: "Sony PS5 Console",
             score: "9.6",
             by: "amazon",
-            href: "https://amzn.to/4d6oz83"
+            href: "https://amzn.to/3UfK128"
         },
         {
-            image: "https://m.media-amazon.com/images/I/71ic9iy3vVL._AC_UY218_.jpg",
-            title: "PlayStation 5 Digital Edition ",
+            image: "https://m.media-amazon.com/images/I/715WPVOynNL._AC_UY218_.jpg",
+            title: "EKSA E900 Pro white Gaming Wired Over Ear",
             score: "9.4",
             by: "amazon",
-            href: "https://amzn.to/4d4f2P4"
+            href: "https://amzn.to/3UCo8u7"
         },
         {
-            image: "https://m.media-amazon.com/images/I/61loOpDhuML._AC_UY218_.jpg",
-            title: "PlayStation 5 Digital Edition - CFI-1102B",
+            image: "https://m.media-amazon.com/images/I/71-aBd3EROL._AC_UY218_.jpg",
+            title: "KIWIHOME Cooling Accessories for PS5",
             score: "9.6",
             by: "amazon",
-            href: "https://amzn.to/446LV9E"
+            href: "https://amzn.to/44i0dEs"
         },
         {
-            image: "https://m.media-amazon.com/images/I/31LAGLwju-L._SY300_SX300_QL70_FMwebp_.jpg",
-            title: "https://m.media-amazon.com/images/I/31LAGLwju-L._SY300_SX300_QL70_FMwebp_.jpg",
+            image: "https://m.media-amazon.com/images/I/61iHq6qV0gL._AC_UY218_.jpg",
+            title: "Sony PS5 PlayStation Console+God Of War Ragnarok",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/3xCpYTF"
+            href: "https://amzn.to/4dihpOs"
         },
         {
             image: "https://m.media-amazon.com/images/I/6157+kMT02L._AC_UY218_.jpg",
             title: "EKSA E900Pro Gaming Headset for PC PS5 PS4",
             score: "9.3",
             by: "amazon",
-            href: "https://amzn.to/3Qdl8mq"
+            href: "https://amzn.to/3y4zkrt"
         }
     ]
 }

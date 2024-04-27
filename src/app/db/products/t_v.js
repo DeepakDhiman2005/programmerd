@@ -34,14 +34,14 @@ export const db_tv = {
             title: "32-inch Smart TV Google TV HD 720p with Google Play",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/4b2bZoO"
+            href: "https://amzn.to/3UwUasp"
         },
         {
-            image: "https://m.media-amazon.com/images/I/81pL+uVYD3L._AC_UY218_.jpg",
-            title: "VIZIO 40-inch D-Series Full HD 1080p Smart TV",
+            image: "https://m.media-amazon.com/images/I/71WFucTpZ-L._AC_UY218_.jpg",
+            title: "SKYWALL 101.6 cm (40 inches) Full HD LED Smart TV 40SWFHS (Black)",
             score: "9.5",
             by: "amazon",
-            href: "https://amzn.to/3U1UKwS"
+            href: "https://amzn.to/3w2QEwG"
         }
     ]
 }

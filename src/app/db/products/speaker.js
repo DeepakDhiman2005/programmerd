@@ -6,21 +6,21 @@ export const db_speaker = {
             title: "Amazon Echo Pop",
             score: "8.7",
             by : "amazon",
-            href: "https://amzn.to/44aVCEg"
+            href: "https://amzn.to/3wmltfE"
         },
         {
             image: "https://m.media-amazon.com/images/I/71QIESVX4jL._AC_UL320_.jpg",
             title: "DOSS SoundBox Touch",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/3Jozw7A"
+            href: "https://amzn.to/3wb9b9V"
         },
         {
-            image: "https://m.media-amazon.com/images/I/713TUYjagQL._AC_UY218_.jpg",
-            title: "Bluetooth Speakers, Wireless",
+            image: "https://m.media-amazon.com/images/I/71mfy78-vkL._SX425_.jpg",
+            title: "Nu Republic Party Box 16 Bluetooth Speaker",
             score: "9.3",
             by: "amazon",
-            href: "https://amzn.to/3Jt3JCr"
+            href: "https://amzn.to/3JCTg7n"
         },
         {
             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/tower-speaker/o/c/k/5103-uic-original-imagr2hh7jagvtpb.jpeg?q=70",

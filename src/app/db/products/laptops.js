@@ -23,32 +23,32 @@ export const db_laptops = {
             href: "https://fktr.in/8zK95O6"
         },
         {
-            image: "https://m.media-amazon.com/images/I/61gKkYQn6lL._AC_UY218_.jpg",
+            image: "https://m.media-amazon.com/images/I/51KL3aOZ0tL._SX522_.jpg",
             title: "Acer Aspire 3 A315-24P-R7VH",
             score: "9.4",
             by: "amazon",
-            href: "https://amzn.to/4d4Yt5y"
+            href: "https://amzn.to/4djeIMC"
         },
         {
-            image: "https://m.media-amazon.com/images/I/71pTP-ll4sL._AC_UY218_.jpg",
-            title: "HP 15.6\" Portable Laptop",
+            image: "https://m.media-amazon.com/images/I/41gqNLfnIML._SX450_.jpg",
+            title: "(Refurbished) HP Probook Laptop 450G3 Intel Core i5-6200U Processor , 8 GB Ram & 256 GB SSD, 15.6 inches HD Screen with Numeric Keypad Computer",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/3WeLYy6"
+            href: "https://amzn.to/3Qo2Q1P"
         },
         {
             image: "https://m.media-amazon.com/images/I/81AyiuB2WwL._AC_UY218_.jpg",
-            title: "Lenovo Newest V15 Series",
+            title: "Lenovo V15 G3 (82TTA01EIN) Laptop",
             score: "9.6",
             by : "amazon",
-            href: "https://amzn.to/3xMrv9Z"
+            href: "https://amzn.to/4bbzFXD"
         },
         {
             image: "https://m.media-amazon.com/images/I/61moVuRyfBL._AC_UY218_.jpg",
             title: "Laptop, 15.6 inch Laptop",
             score: "8.7",
             by: "amazon",
-            href: "https://amzn.to/3QaX6II"
+            href: "https://amzn.to/3Ui4tiH"
         }
     ]
 }

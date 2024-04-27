@@ -23,18 +23,25 @@ export const db_cpu = {
             href: "https://fktr.in/ua51527"
         },
         {
-            image: "https://m.media-amazon.com/images/I/51AqEkc2BuL._AC_UY218_.jpg",
-            title: "Intel Core i7-12700KF",
+            image: "https://m.media-amazon.com/images/I/5109QxQi0IL._AC_UY218_.jpg",
+            title: "Intel® Core i5-10400 Processor (12M Cache, up to 4.30 GHz) BGA 437 Socket",
             score: "9.4",
             by: "amazon",
-            href: "https://amzn.to/44atroD"
+            href: "https://amzn.to/3Uydl54"
+        },
+        {
+            image: "https://m.media-amazon.com/images/I/51TZEJj8cPL._AC_UY218_.jpg",
+            title: "CORE I5 4590 (4TH Generation) Processor",
+            score: "9.2",
+            by: "amazon",
+            href: "https://amzn.to/3WdFjo9"
         },
         {
             image: "https://m.media-amazon.com/images/I/51D3DrDmwkL._AC_UY218_.jpg",
             title: "AMD Ryzen 7 5700G 8-Core",
             score: "8.6",
             by: "amazon",
-            href: "https://amzn.to/449w4qX"
+            href: "https://amzn.to/4dduVmn"
         }
     ]
 }

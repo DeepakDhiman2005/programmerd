@@ -40,9 +40,6 @@ const SearchBar = () => {
             title: "What is Programming?"
         },
         {
-            title: "What is CodeWithHarry?"
-        },
-        {
             title: "Python tutorial Beginner to Advance?"
         },
         {

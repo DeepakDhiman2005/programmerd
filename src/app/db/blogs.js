@@ -83,21 +83,22 @@ export const db_blogs = [
             {b: "Limited-time offer"},
             {
                 product: {
-                    title: "Smart Watch Full Touch Smart",
+                    title: "Choiknbo Smart Watch",
                     by : "amazon",
                     score: "9.3",
-                    image: "https://m.media-amazon.com/images/I/717M6fKyHNL._AC_SX522_.jpg",
-                    href: "https://amzn.to/44hkKJm"
+                    image: "https://m.media-amazon.com/images/I/61fqnWbvXHL._AC_UY218_.jpg",
+                    href: "https://amzn.to/4a18az8"
                 }
             },
+            {desc: "Choiknbo Smart Watch, Fitness Tracker SmartWatch for Android/iOS Phones, 1.69\" Full Touch Screen with Heart Rate Sleep, Step Counter, IP68 Waterproof Smart Watches for Man/Women"},
             {desc: "Features of Smart Watches:"},
             {
                 points: [
-                    `Smart Activity Tracking Watch：Smart watch 8 built-in sport modes for the activity of your choice.It tracks things like heart rate, calories burned, and assesses professional data like maximal oxygen uptake, full recovery time, training load, and training effectiveness .`,
-                    `Smart Watch with Text and Call：New design smartwatch in 2024 can be connected to Bluetooth to receive/make calls and Messages, SMS, Facebook, Whatsapp etc(Can't write text messages). notification in real time, you will never miss important information when your phone is not around.`,
-                    `1.7''HD Full Touch Screen:The smart watch uses a 1.7-inch large touch screen color screen with a resolution of 240*280, which can provide better color saturation.Designed with IP67 waterproof rating, it is not afraid of sweat and rain when exercising, and can be worn when swimming or running.`,
-                    `24/7 Health Monitor and Multi-function Watch: This fitness tracking watch has heart rate and blood pressure monitorfunction. It will track your health throughout the day, such as sleep data, heart rate, SpO2. and it also has sedentary and drinking water reminder alarm clock etc. You can live a healthier and more active life with this smart watch for women men.`,
-                    `130+ Watch Face and 7-Day Battery Life: The smartwatch has150+ different styles of UI to choose from, You can also set your favorite photos in your phone as the dial. This smartwatch features a 290mAh battery that lasts up to 7 days under normal usage, keeping you safe on the go and tracking your progress.`
+                    `Heart Rate and Fitness Tracker: This mans womens watch includes more practical functions, Fitness Tracker watch (Pedometer, Calories, Distance), Heart Rate Monitor, Pressure Monitor, Sleep Monitor, Music & Camera Control, Weather Display, Sedentary Reminder, Alarm Clock, Stopwatch.`,
+                    `Call and Mesaages Notificatio: Smart watch for android phones will vibrate to remind you when your smartphone receives call notification, SMS and APP messages (WhatsAPP, Facebook, Messenger, Instagram) so you don't miss every message.`,
+                    `1.69 Inch Full Touch Screen: This smart watch for android compatible features a 1.69 inch TFT-LCD color display for outstanding HD quality. Zinc alloy case and silicone strap, make you more comfortable to wear. You can choose from140 + personalized watch faces, or set your favorite photo from your phone as a watch face.`,
+                    `24 Hours Health Monitoring: This smart watch for man women features real-time heart rate monitoring,pressure monitoring, exercise recording and sleep monitoring, accurately records all-day activities such as steps, calories burned a fitness watch to monitor your health at all times.`,
+                    `IP68 Waterproof: This activity trackers and smartwatche is designed with IP68 waterproof rating, so you can have no worries when washing your hands or swimming in the pool.At the same time, this fitness trackers for women man has 8 sports modes include walking, running. cycling, skipping, badminton, basketball, football, swimming.`
                 ]
             },
             {desc: "Note: Products with electrical plugs are designed for use in the US. Outlets and voltage differ internationally and this product may require an adapter or converter for use in your destination. Please check compatibility before purchasing."},
@@ -172,11 +173,11 @@ export const db_blogs = [
             },
             {
                 product: {
-                    image: "https://m.media-amazon.com/images/I/71mYXU5s7ML._AC_SX679_.jpg",
+                    image: "https://m.media-amazon.com/images/I/818C53+e9qL._SX679_.jpg",
                     by: "amazon",
                     score: "9.2",
-                    title: "KLIEGOU Mens Hipster Hiphop Tees - Fashion Print T-Shirts",
-                    href: "https://amzn.to/4bcO9GV"
+                    title: "LEOTUDE Half Sleeve Oversized Printed T-Shirt for Men, Round Neck Longline Drop Shoulder | Colorful Printed Combo T-Shirt (Pack of 3)",
+                    href: "https://amzn.to/4ddrLz1"
                 }
             },
             {title: "How to become a logo designer?"},

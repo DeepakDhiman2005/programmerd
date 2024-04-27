@@ -2,18 +2,18 @@ export const db_smartwatch = {
     type: "smartwatch",
     data: [
         {
-            image: "https://m.media-amazon.com/images/I/71vozvKx7hL._AC_UY218_.jpg",
-            title : "AMAZTIM Smart Watch",
+            image: "https://m.media-amazon.com/images/I/61+FC2x2CyL._AC_UY218_.jpg",
+            title : "CULTSPORT Ace X1 2.04",
             score: "9.5",
             by: "amazon",
-            href: "https://amzn.to/4b3aGpz"
+            href: "https://amzn.to/49Xems7"
         },
         {
-            image: "https://m.media-amazon.com/images/I/71UJ2wDsRvL._AC_UY218_.jpg",
-            title : "Military Smart Watch for Men 1.96 Inches",
+            image: "https://m.media-amazon.com/images/I/61HYeRyiVZL._AC_UY218_.jpg",
+            title : "Cultsport Ace X 1.96\" AMOLED Smartwatch",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/3UfK51U"
+            href: "https://amzn.to/4bbHDAf"
         },
         {
             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/q/6/w/-original-imagrgynyyyeehn2.jpeg?q=70",
@@ -23,11 +23,11 @@ export const db_smartwatch = {
             href: "https://fktr.in/h09sBHT"
         },
         {
-            image: "https://m.media-amazon.com/images/I/71xm+PqBsYL._AC_SY500_.jpg",
-            title : "TOZO S5 Smart Watch",
+            image: "https://m.media-amazon.com/images/I/51uex-MLs9L._AC_UY218_.jpg",
+            title : "Amazfit GTS 4 Smart Watch",
             score: "9.2",
             by: "amazon",
-            href: "https://amzn.to/3JxmwfG"
+            href: "https://amzn.to/3xWFWs9"
         },
         {
             image: "https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/q/y/a/-original-imagx8nchmehzu5v.jpeg?q=70",
