@@ -12,6 +12,9 @@ import Footer from '@/components/Footer'
 import SearchBar from '@/components/SearchBar'
 import Ads from '@/components/Ads'
 
+// vercel
+import { Analytics } from "@vercel/analytics/react"
+
 // next
 // import Script from "next/script";
 
@@ -39,6 +42,7 @@ export default function RootLayout({children}) {
             {children}
           </Suspense>
           <Footer />
+          <Analytics />
         </Providers>
         </body>
     </html>
