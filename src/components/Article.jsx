@@ -16,6 +16,7 @@ import TopScrollButton from "./TopScrollButton";
 import ImageRender from "./ImageRender";
 import VideoRender from "./VideoRender";
 import ProductDetailCard from "./Cards/ProductDetailCard";
+import HostingDetailsCard from "./Cards/HostingDetailsCard";
 
 /**
  * @param props `data=[]` || `layer` -> {title, desc, headers, date, content, images, videos, audio} -> json text values data,
@@ -110,6 +111,11 @@ const Article = (props) => {
                                 href: data.product.href,
                                 image: data.product.image
                             }} />: null
+                        }
+                        {
+                            data.hosting ? <div className="mt-6 mb-6 w-[95%]">
+                                <HostingDetailsCard data={data.hosting} />
+                            </div>: null
                         }
                     </>
                 })

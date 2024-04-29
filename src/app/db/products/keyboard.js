@@ -35,6 +35,14 @@ export const db_keyboard = {
             score: "9.3",
             by : "flipkart",
             href: "https://fktr.in/WR90FGa"
+        },
+        {
+            
+            image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/e/l/r/hydra-10-5-0-2-4-ghz-rgb-type-c-charging-brown-switch-mechanical-original-imagtyz3zbya4gf3.jpeg?q=70",
+            title: "Portronics POR 1880 Bluetooth, Wireless Gaming Keyboard",
+            by: "flipkart",
+            score: "9.5",
+            href: "https://fktr.in/sVorMF9"
         }
     ]
 }

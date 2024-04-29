@@ -419,5 +419,149 @@ export const db_blogs = [
         ],
         comment: []
     }
+   },
+   {
+    method: "add",
+    date: "29-04-2024",
+    type: "blog",
+    data: {
+        title: "Install Next js in 2024?",
+        desc: "Install Next js in 2024? || complete setup of Next js in VS Code Editor?",
+        date: "29-04-2024",
+        content: [
+            {
+                desc: "In 2024, installing Next.js remains a vital step for developers seeking a robust and efficient framework for building modern web applications. Leveraging the latest advancements in web development, Next.js continues to empower developers with its versatility, performance, and ease of use."
+            },
+            {b: "Follow this blog:"},
+            {
+                redirect:{
+                    text: "Install Next js in 2024? watch Video",
+                    href: "https://youtube.com/shorts/35NMdmAkj9o",
+                    target: "_blank"
+                }
+            },
+            {title: "1. Open VS Code Editor Your PC"},
+            {
+                image: {
+                    image: "/uploads/image/S1714401677650-83532-Screenshot 2024-04-29 201048.png",
+                    width: 800, height: 300
+                }
+            },
+            {
+                points: [
+                    "Mouse: Right Click on folder.",
+                    "Select of `Open with Code`"
+                ]
+            },
+            {
+                image: {
+                    image: "/uploads/image/S1714401859336-59097-Screenshot 2024-04-29 201400.png",
+                    width: 700, height: 300
+                }
+            },
+            {title: "2. Open New Terminal"},
+            {
+                image: {
+                    image: "/uploads/image/S1714402099968-64115-Screenshot 2024-04-29 201753.png",
+                    width: 1000, height: 250
+                }
+            },
+            {title: "3. Add This Code in Terminal"},
+            {code: ["npx create-next-app@latest"]},
+            {b: "press Enter"},
+            {
+                hosting: {
+                    title: "Hostinger",
+                    desc: "Servers in India — Find the perfect Hostinger domain name by using the domain checker. Go live in minutes. Get your website up and running in a few clicks. You have everything you need.",
+                    image: "https://media2.cybernews.com/hostinger.svg",
+                    points: [
+                        "Free Domain, SSL, automated backup",
+                        "Intuitive native hPanel control panel",
+                        "Litespeed Web Server+caching",
+                        "Website builder is included"
+                    ],
+                    score: "9.8",
+                    href: "https://bitli.in/xUCVuaL"
+                }
+            },
+            {b: "In Terminal"},
+            {
+                code: {
+                    type: "normal",
+                    code: [
+                        "What is your project named? my-app",
+                        "Would you like to use TypeScript? <span class=\"text-blue-500\">No</span> / Yes",
+                        "Would you like to use ESLint? <span class=\"text-blue-500\">No</span> / Yes",
+                        "Would you like to use Tailwind CSS? No / <span class=\"text-blue-500\">Yes</span>",
+                        "Would you like to use `src/` directory? No / <span class=\"text-blue-500\">Yes</span>",
+                        "Would you like to use App Router? (recommended) No / <span class=\"text-blue-500\">Yes</span>",
+                        "Would you like to customize the default import alias (@/*)? <span class=\"text-blue-500\">No</span> / Yes",
+                        "What import alias would you like configured? @/*"
+                    ]
+                }
+            },
+            {desc: "Install start of next js."},
+            {title: "4. Write of Code in Terminal"},
+            {code: {
+                type: "normal",
+                code: ["npm run dev"]
+            }},
+            {desc: "(Ctrl + Click) on `http://localhost:3000`"},
+            {desc: "Start Your Next js App."},
+            {
+                redirect:{
+                    text: "Install Next js in 2024? watch Video",
+                    href: "https://youtube.com/shorts/35NMdmAkj9o",
+                    target: "_blank"
+                }
+            },
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/e/l/r/hydra-10-5-0-2-4-ghz-rgb-type-c-charging-brown-switch-mechanical-original-imagtyz3zbya4gf3.jpeg?q=70",
+                    title: "Portronics POR 1880 Bluetooth, Wireless Gaming Keyboard",
+                    by: "flipkart",
+                    score: "9.5",
+                    href: "https://fktr.in/sVorMF9"
+                }
+            },
+            {
+                redirect: {
+                    text: "Check All keyboards",
+                    href: "/products/keyboard/"
+                }
+            },
+            {title: "Thank you, I hope enjoy this blog! 😘!!!"},
+            {b: "Explore:"},
+            {
+                redirect: {
+                    text: "Programmer D YouTube",
+                    href: "https://www.youtube.com/@ProgrammerD7/",
+                    target: "_blank"
+                }
+            },
+            {
+                redirect: {
+                    text: "Programmer D Instagram",
+                    href: "https://www.instagram.com/deepakdhiman4367/",
+                    target: "_blank"
+                }
+            },
+            {b: "Buy Awesome Products This Link:"},
+            {
+                redirect: {
+                    text: "Products",
+                    href: "/products/"
+                }
+            },
+            {b: "Explore All Blogs:"},
+            {
+                redirect: {
+                    text: "Blogs",
+                    href: "/blogs/"
+                }
+            }
+        ],
+        comment: []
+    }
    }
 ];

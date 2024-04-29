@@ -262,6 +262,13 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
                 else if(array.type === "css") {
                     highlighter(_array, "html", stylelist);
                 }
+                else if(array.type === "normal"){
+                    let tags = ``;
+                    _array.map((data)=>{
+                        tags += `<li class="list-none">${data}</li>`;
+                    })
+                    codeText.current.innerHTML = tags;
+                }
                 if(_array.length > 12){
                     bodyRef.current.style.overflowY = "scroll";
                     bodyRef.current.style.height = "400px";
@@ -327,7 +334,7 @@ const CodeHighlighter = ({ children, array = false, type = "html", stylelist = {
                 {children}
             </div>
             {/* copy button side */}
-            <button ref={buttonRef} className="bg-slate-700 border border-solid border-slate-700 rounded-md transition-shadow shadow-md shadow-slate-600 cursor-pointer p-1 text-slate-50 hover:bg-slate-800 z-30" onClick={CopyEvent}>Copy</button>
+            <button ref={buttonRef} className="bg-slate-700 border border-solid border-slate-700 rounded-md transition-shadow shadow-md shadow-slate-600 cursor-pointer p-1 text-slate-50 hover:bg-slate-800 z-10" onClick={CopyEvent}>Copy</button>
         </div>
     </>
 }
