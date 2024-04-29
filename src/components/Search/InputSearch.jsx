@@ -9,7 +9,7 @@ import { RxCross2 } from "react-icons/rx";
  * @param search = write search value
  * caseType: "lower" || "upper"
  */
-const InputSearch = ({search, caseType=""}) => {
+const InputSearch = ({search=function(){}, caseType=""}) => {
     // useRef
     const searchRef = useRef(null);
 

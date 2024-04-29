@@ -151,7 +151,7 @@ export const db_blogs = [
             {desc: "The logo design industry in India is competitive despite the many chances it presents; thus, logo designers need to have some familiarity with web design to get paid well for their creative skills. It will improve their chances of obtaining an elevated position in the design business."},
             {image: {
                 image: "/image/blogs/growth_chart.jpg",
-                width: 1000, height: 1000,
+                width: 500, height: 300,
             }},
             {title: "Salary of logo designer in india?"},
             {desc: "The average salary for Logo Design is ₹66,212 per month in the India. The average additional cash compensation for a Logo Design in the India is ₹48,000, with a range from ₹36,000 - ₹60,000."},
@@ -207,7 +207,7 @@ export const db_blogs = [
             {
                 image: {
                     image: "/image/blogs/canva.png",
-                    width: 1000, height: 1000
+                    width: 500, height: 300
                 }
             },
             {b: "How to use of canva.com"},
@@ -223,9 +223,199 @@ export const db_blogs = [
             {
                 image: {
                     image: "/image/blogs/canva2.png",
-                    width: 1000, height: 1000
+                    width: 500, height: 300
                 }
             },
+        ],
+        comment: []
+    }
+   },
+   {
+    method: "add",
+    date: "28-04-2024",
+    type: "blog",
+    data: {
+        title: "How To Grow YouTube Channel in 2024?",
+        desc: "Looking to boost your YouTube channel's growth in 2024? Our blog has you covered with straightforward strategies that anyone can implement. From optimizing your video titles and thumbnails to leveraging social media for promotion, we'll walk you through step-by-step. Whether you're new to the platform or a seasoned creator, our easy-to-follow tips will help you stand out and attract more viewers. Don't miss out on the latest insights to make your mark on YouTube this year!",
+        date: "28-04-2024",
+        content: [
+            {
+                desc: "Looking to boost your YouTube channel's growth in 2024? Our blog has you covered with straightforward strategies that anyone can implement. From optimizing your video titles and thumbnails to leveraging social media for promotion, we'll walk you through step-by-step. Whether you're new to the platform or a seasoned creator, our easy-to-follow tips will help you stand out and attract more viewers. Don't miss out on the latest insights to make your mark on YouTube this year!"
+            },
+            {title: "In blog cover this points:"},
+            {
+                points:[
+                    "Find Important! \"Video keywords\"",
+                    "Optimize your youtube video",
+                    "Make Attractive Thumbnails",
+                    "Create suspense on video",
+                    "Promote your youtube video",
+                    "Include Bounce Point your video"
+                ]
+            },
+            {
+                image: {
+                    image: "/uploads/image/S1714377043837-354-Screenshot 2024-04-29 131945.png",
+                    width: 700, height: 300
+                }
+            },
+            {title: "1. Find Important! \"Video keywords\""},
+            {desc: "You must know that when we search a video on YouTube, we get many videos related to that video."},
+            {desc: "This video happens because of keywords and keywords are very important to rank the video in the search bar."},
+            {b: "so, how to find video keywords?"},
+            {
+                points: [
+                    "step 1: First of all you have to search the keywords of the content related to your video.",
+                    "step 2: Add those keywords to your video, this will increase the ranking of your video."
+                ]
+            },
+            {b: "For example:"},
+            {
+                image: {
+                    image: "/uploads/image/S1714328715116-26406-Screenshot 2024-04-28 235431.png",
+                    width: 1000, height: 300
+                }
+            },
+            {title: "2. Optimize your youtube video"},
+            {
+                points: [
+                    "Keyword Research: Identify relevant keywords related to your video topic using tools like Google Keyword Planner or YouTube's autocomplete feature. Choose keywords with high search volume and low competition.",
+                    "Title: Craft a compelling and descriptive title that includes your target keyword(s). Keep it concise and engaging to entice viewers to click.",
+                    "Thumbnail: Create an eye-catching thumbnail that accurately represents your video content. Use bright colors, clear images, and readable text to grab viewers' attention while scrolling.",
+                    "Description: Write a detailed description of your video, including your target keywords naturally throughout. Use the first few lines to summarize the video's content and include relevant links, such as your website or social media profiles.",
+                    "Tags: Add relevant tags to your video to help YouTube understand its content and context. Include variations of your target keywords and relevant phrases to improve search visibility.",
+                    "Transcript: Upload a transcript of your video (if applicable) to provide closed captions and improve accessibility. This can also help search engines index your video more accurately.",
+                    "Engagement Features: Encourage viewers to like, comment, and subscribe to your channel within the video and in the video description. Engagement signals can positively impact your video's ranking in search results.",
+                    "End Screens and Cards: Use YouTube's end screens and cards to promote other videos, playlists, or external links relevant to your content. This helps keep viewers engaged with your channel and encourages them to explore more of your content.",
+                    "Optimize Video Length and Quality: Keep your video length appropriate for your audience and content type. Ensure high-quality production values to enhance viewer experience and retention.",
+                    "Promote Your Video: Share your video across your social media channels, embed it on your website or blog, and collaborate with other creators to increase exposure and engagement."
+                ]
+            },
+            {title: "3. Make Attractive Thumbnails"},
+            {desc: "When a viewer is searching for a video, there is a high percent chance that he will click on the video whose thumbnails will be attractive. So you need to create an attractive thumbnail."},
+            {b: "how to make a attractive thumbnails?"},
+            {desc: "First of all you have to see attractive thumbnails which will help you in creating thumbnails."},
+            {desc: "To create and view thumbnails, go to canva.com app."},
+            {
+                redirect: {
+                    text: "https://canva.com",
+                    href: "https://www.canva.com/join/dfq-kxv-xlv",
+                    target: "_blank"
+                }
+            },
+            {
+                points: [
+                    "step 1: sign up on canva.com",
+                    "step 2: Click on `Create a design` Button",
+                    "step 3: Search of youtube thumbnail",
+                    "step 4: Select of youtube thumbnail"
+                ]
+            },
+            {
+                image: {
+                    image: "/uploads/image/S1714329921991-28398-Screenshot 2024-04-29 001448.png",
+                    width: 500, height: 300
+                }
+            },
+            {
+                points: ["step 5: search a youtube thumbnail"]
+            },
+            {
+                image: {
+                    image: "/uploads/image/S1714330085266-18020-Screenshot 2024-04-29 001741.png",
+                    width: 700, height: 300
+                }
+            },
+            {
+                points: ["step 6: start build a attractive thumbnail"]
+            },
+            {title: "Purchase of Headset (71% off) with special price"},
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/0/j/i/nb140-matrix-40-hours-playtime-deep-bass-fast-charging-true-original-imaguafm69b9kbmh.jpeg?q=70",
+                    title: "Aroma NB140 Matrix 40",
+                    by: "flipkart",
+                    score: "8.7",
+                    href: "https://fktr.in/9WpOqct"
+                }
+            },
+            {title: "4. Create suspense on video"},
+            {desc: "If you want to increase the watch video of your video then you need to create suspense in the video."},
+            {b: "How suspense?"},
+            {desc: "You may have noticed this thing in some of any videos that when the video starts then we see some unknown thing or we are told about it which increase our inner suspense or we spend more time on the video."},
+            {desc: "So you also need to bring suspense in your video. To bring more suspense, you will have to explore more videos to see how they are increasing the suspense in the video."},
+
+            {title: "5. Promote your youtube video"},
+            {desc: "You can promote your YouTube videos to get more views. Due to which your video will get a lot of views in a short time."},
+            {b: "How to promote your video."},
+            {desc: "Although there are many options to promote YouTube videos, let us look at some options."},
+            {points: ["step 1: Go to google ads"]},
+            {
+                image: {
+                    image: "/uploads/image/S1714367223073-67923-Screenshot 2024-04-29 103607.png",
+                    width: 700, height: 300
+                }
+            },
+            {points: ["step 2: Sign up to google ads.", "step 3: Create new Campaign"]},
+            {desc: "Start your video promotion."},
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/microphone/v/o/w/wireless-lapel-microphone-for-youtube-vlogging-recording-for-original-imagpx8grmb7znhh.jpeg?q=70",
+                    score: "9.3",
+                    title: "MAK Wireless Lapel for YouTube, Vlogging, Recording for Android/iPhone/PC Microphone",
+                    by: "flipkart",
+                    href: "https://fktr.in/gVuuEi1"
+                }
+            },
+            {title: "6. Include Bounce Point your video"},
+            {desc: "The last part of the video is also most important to increase impressions. When you give a few bounce points to your audience at the end of your video, your audience is also impressed."},
+            {desc: "You can include bounce points like this."},
+            {
+                points: [
+                    "by summarizing the video. (e.g: what happened in the video)",
+                    "provide any free thing. (e.g: free course link, free app link, etc.)",
+                    "Provide any additional information. (e.g: your anthor video, your course, your social media platform, etc.)"
+                ]
+            },
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/312/312/kvpklu80/sports-action-camera/j/u/x/106-wi-fi-4k-waterproof-sports-action-2in1-camera-general-sports-original-imag8jwuyynd6cfb.jpeg?q=70",
+                    score: "9.4",
+                    by: "flipkart",
+                    title: "GRIVISS 4K Action Camera 24 MP 4K HD",
+                    href: "https://fktr.in/jhgwkqu"
+                }
+            },
+            {title: "Thank you, I hope enjoy this blog! 😘!!!"},
+            {b: "Explore:"},
+            {
+                redirect: {
+                    text: "Programmer D YouTube",
+                    href: "https://www.youtube.com/@ProgrammerD7/",
+                    target: "_blank"
+                }
+            },
+            {
+                redirect: {
+                    text: "Programmer D Instagram",
+                    href: "https://www.instagram.com/deepakdhiman4367/",
+                    target: "_blank"
+                }
+            },
+            {b: "Buy Awesome Products This Link:"},
+            {
+                redirect: {
+                    text: "Products",
+                    href: "/products/"
+                }
+            },
+            {b: "Explore All Blogs:"},
+            {
+                redirect: {
+                    text: "Blogs",
+                    href: "/blogs/"
+                }
+            }
         ],
         comment: []
     }

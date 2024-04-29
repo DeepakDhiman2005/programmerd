@@ -14,5 +14,5 @@ export const ALPHAID = (value="") => {
 }
 
 export const UNIQUEID = (value="") => {
-    return value + Date.now() + "-" + Math.floor(Math.random()) * 100000; + "-" + Date.UTC("29", "12", "14", "5", "56", "41");
+    return value[0] + Date.now() + "-" + String(Math.floor(Math.random()*100000)) + "-" + value;
 }

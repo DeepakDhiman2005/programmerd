@@ -28,17 +28,17 @@ const CourseContentDex = () => {
         <div key={"coursevideokey"} className="flex flex-col justify-start mt-3 w-full items-start">
             <ul className="list-none flex justify-start ml-4 items-center">
                 <li key={"SearchBarLiBlog"} className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
-                    <h2 className="mb-2 hover:text-purple-800">OverView</h2>
+                    <h2 className="mb-2 hover:text-purple-800 text-sm sm:text-lg">OverView</h2>
                     {LineHighLight === "overview" ? <span className="bg-purple-700 w-full h-[2px]"></span> : null}
                 </li>
 
                 <li className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
-                    <h2 className="mb-2 hover:text-purple-800">Comments</h2>
+                    <h2 className="mb-2 hover:text-purple-800 text-sm sm:text-lg">Comments</h2>
                     {LineHighLight === "comments" ? <span className="bg-purple-700 w-full h-[2px]"></span> : null}
                 </li>
 
                 <li className="text-lg flex flex-col justify-center items-center text-slate-800 font-semibold mr-4 cursor-pointer" onClick={onClickButton}>
-                    <h2 className="mb-2 hover:text-purple-800">Downloads</h2>
+                    <h2 className="mb-2 hover:text-purple-800 text-sm sm:text-lg">Downloads</h2>
                     {LineHighLight === "downloads" ? <span className="bg-purple-700 w-full h-[2px]"></span> : null}
                 </li>
             </ul>

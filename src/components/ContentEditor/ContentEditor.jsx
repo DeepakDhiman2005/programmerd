@@ -9,6 +9,7 @@ import ImageTypeSelector from "../Inputs/ImageTypeSelector";
 import VideoTypeSelector from "../Inputs/VideoTypeSelector";
 
 import Button from "../Button";
+import ImageSelector from "../Inputs/ImageSelector";
 
 const ContentEditor = ({type="", defaultValue=null, id=1, value=function(){}, onDelete=function(){}}) => {
     const Inputs = (data) => {
@@ -31,6 +32,9 @@ const ContentEditor = ({type="", defaultValue=null, id=1, value=function(){}, on
             type === "link" ? <InputBoxTag defaultValue={defaultValue} title="Link" onChange={(e)=> {Inputs({type: "link", data: e.target.value})}} />: null
         }
         {
+            type === "redirect" ? <InputBoxTag defaultValue={defaultValue} title="Redirect" onChange={(e)=>{Inputs({type: "redirect", data: e.target.value})}} />: null
+        }
+        {
             type === "code" ? <>
                 <h2 className="mr-1">Code</h2>
                 <NoteBook data={defaultValue} value={(e)=> {Inputs({type: "code", data: e})}} />
@@ -43,7 +47,7 @@ const ContentEditor = ({type="", defaultValue=null, id=1, value=function(){}, on
             </> : null
         }
         {
-            type === "image" ? <ImageTypeSelector defaultValue={defaultValue} value={(e)=> {Inputs({type: "image", data: e})}} />: null
+            type === "image" ? <ImageSelector defaultValue={defaultValue} value={(e)=>{ Inputs({type: "image", data: e}) }} />: null
         }
         {
             type === "video" ? <VideoTypeSelector defaultValue={defaultValue} value={(e)=> {Inputs({type: "video", data: e})}} />: null

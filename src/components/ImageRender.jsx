@@ -45,7 +45,7 @@ const ImageRender = ({ image="", width = 0, height = 0, className = "", onClick 
     }, [image]);
 
     return <>
-        <Image src={Img} key={key} width={width} height={height} className={className ? className : "w-3/4 sm:w-1/2 h-auto rounded-md border border-solid border-slate-50 shadow-md shadow-slate-400 cursor-pointer mt-2 mb-3"} alt="image" onClick={onClick} />
+        <Image src={Img} key={key} width={width} height={height} className={className ? className : "rounded-md border border-solid border-slate-50 shadow-md shadow-slate-400 cursor-pointer mt-2 mb-3"} alt="image" onClick={onClick} />
     </>
 }
 

@@ -3,8 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 // next
 import Image from "next/image";
-import Script from "next/script";
-import { useRouter } from 'next/navigation';
 
 // Components
 import Card from "@/components/Card";
@@ -14,15 +12,15 @@ import TextCard from "@/components/Cards/TextCard";
 import ReadingEffect from "@/components/ReadingEffect";
 import TopScrollButton from "@/components/TopScrollButton";
 import TopLoader from "@/components/TopLoader";
+import LanguageCard from "@/components/Cards/LanguageCard";
 
 // Animations
-import FaLeftAnimation from "@/components/Animations/FaLeftAnimation";
 import AdBanner from "@/components/AdBanner";
 
 export default function Home(props) {
   // useRef
-  const typingRef = useRef({innerText: ''});
-  const welcomeTypingRef = useRef({innerText: ''});
+  const typingRef = useRef({ innerText: '' });
+  const welcomeTypingRef = useRef({ innerText: '' });
   const videoRef = useRef(null);
   const BackgroundImageRef = useRef(null);
 
@@ -31,39 +29,43 @@ export default function Home(props) {
   const [IsLoading, setIsLoading] = useState(0);
 
   useEffect(() => {
-    setIsLoading(25);
     try{
-      if(window.innerWidth <= 490){
+      window.document.body.style.overflowY = "auto";
+    }catch(er){}
+
+    setIsLoading(25);
+    try {
+      if (window.innerWidth <= 490) {
         videoRef.current.style.display = "none";
         BackgroundImageRef.current.style.display = "block";
-      }else{
+      } else {
         videoRef.current.style.display = "block";
         BackgroundImageRef.current.style.display = "none";
-      }  
-    }catch(err){ }
+      }
+    } catch (err) { }
 
     setIsLoading(45);
-    try{
+    try {
       let program = "Programmer D";
       let index = 0;
       let TypingInterval = setInterval(() => {
-        if(index >= program.length){
+        if (index >= program.length) {
           clearInterval(TypingInterval)
-        }else{
+        } else {
           welcomeTypingRef.current.innerText = program.substring(0, index += 1);
         }
       }, 50);
-    }catch(err){ }
+    } catch (err) { }
 
     setIsLoading(65);
-    try{
+    try {
       let video_collection = ["video1", "video2"];
-      let rand = Math.floor(Math.random()*2);
-      videoRef.current.src = "/videos/"+video_collection[rand]+".mp4";
-    }catch(err){}
+      let rand = Math.floor(Math.random() * 2);
+      videoRef.current.src = "/videos/" + video_collection[rand] + ".mp4";
+    } catch (err) { }
 
     setIsLoading(75);
-    try{
+    try {
       let collection = ["HTML", "CSS", "Javascript", "Java", "Python", "c/c++", "Web Development", "App Development", "Reactjs", "Nextjs", "React Native"];
       let position = 0; let index = 0;
 
@@ -71,7 +73,7 @@ export default function Home(props) {
         if (position >= collection.length) {
           index = 0; position = 0;
           typingRef.current.innerText = "";
-        }else{
+        } else {
           if (index >= collection[position].length) {
             index = 0;
             position += 1;
@@ -87,8 +89,8 @@ export default function Home(props) {
         clearInterval(delay);
       }, 500);
 
-      return () => clearInterval(TypingInterval);      
-    }catch(err){
+      return () => clearInterval(TypingInterval);
+    } catch (err) {
       console.log(err)
     }
   }, [BackgroundImageRef]);
@@ -99,7 +101,7 @@ export default function Home(props) {
 
       <div className="flex flex-col justify-center items-center w-full home-intro relative scroll-smooth transition-all">
         <video ref={videoRef} src={"/videos/video1.mp4"} className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" autoPlay muted loop></video>
-        <img src="/image/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{display: "none"}} />
+        <img src="/image/progbg.png" ref={BackgroundImageRef} alt="" className="w-full min-[485px]:h-full rounded-b-xl h-[20rem]" style={{ display: "none" }} />
         <div className="w-full h-full backdrop-brightness-50 flex flex-col justify-center items-center absolute rounded-b-xl text-center">
           <div className="flex flex-col justify-center items-start">
             <h2 className="text-xl min-[480px]:text-5xl text-white mb-3">Welcome to <span ref={welcomeTypingRef} className="text-purple-500"></span></h2>
@@ -107,7 +109,7 @@ export default function Home(props) {
           </div>
           <div className="flex justify-start items-center">
             <a href="https://www.youtube.com/programmerd7" target="_blank">
-            <button className="inline-block px-7 py-3 mb-1 mt-3 border-2 border-blue-500 text-blue-500 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" role="button" data-mdb-ripple="true" data-mdb-ripple-color="light">Go To Channel</button>
+              <button className="inline-block px-7 py-3 mb-1 mt-3 border-2 border-blue-500 text-blue-500 font-medium text-sm leading-snug uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out" role="button" data-mdb-ripple="true" data-mdb-ripple-color="light">Go To Channel</button>
             </a>
           </div>
         </div>
@@ -115,18 +117,22 @@ export default function Home(props) {
       <h2 className="text-center text-4xl mt-10 mb-10">Recommended Courses</h2>
       <div className="flex justify-around items-center flex-wrap mt-20 mb-20">
         <Card link={"/videos/tailwindcss"} title="Tailwindcss" image="/image/image1.jpg" desc="Tailwindcss Full Courses with Free of cost!" button="Watching" />
-        
+
         <Card link={"/videos/chatgpt"} title="Chat GPT" image="/image/image2.jpg" desc="Chat GPT Full Courses with Free of cost!" button="Watching" />
 
         <Card link={"/videos/c"} title="C Language" image="/image/image3.jpg" desc="C language basic to Advance Full Courses with Free of cost!" button="Watching" />
       </div>
 
       <div className="flex flex-col justify-around items-center flex-wrap mt-10 mb-20 sm:flex-row">
-        <FaLeftAnimation className="sm:w-[45%] w-3/4 mt-5 mb-5">
-          <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} />
-        </FaLeftAnimation>
+        <GiftCard title={"How to Learn Coding?"} desc={"Confused on which course to take? I have got you covered. Browse courses and find out the best course for you."} link={"See our details"} href={"/tutorial"} />
 
-        <TextCard title={"Javascript Full Course in 2024!"} desc={"Welcome to the Programmer D beginner's JavaScript course! In this article we will look at JavaScript from a high level, answering questions such as \"What is it?\" and \"What can you do with it?\""} />
+        <TextCard title={"Javascript Full Course in 2024!"} desc={"Welcome to the Programmer D beginner's JavaScript course! In this article we will look at JavaScript from a high level, answering questions such as \"What is it?\" and \"What can you do with it?\""} href={"https://www.youtube.com/watch?v=ETbRAXf-yno&list=PLcEwZHfa5tvxhj2RexQja7YJIuEdHTw2c"} />
+      </div>
+
+      <h2 className="text-slate-800 text-center text-3xl font-semibold mt-10 mb-10">Tutorials</h2>
+      <div className="flex flex-wrap justify-center items-center pl-5 pr-5">
+        <LanguageCard title="HTML Tutorial" image="/image/program/html.webp" path="html" />
+        <LanguageCard title="CSS Tutorial" image="/image/program/css.webp" path="css" />
       </div>
 
       <h2 className="text-center text-4xl mt-10 mb-5">My Gear</h2>
@@ -138,17 +144,17 @@ export default function Home(props) {
 
 
       {/* // _app.js */}
-        {/* <Script
+      {/* <Script
         async
           strategy="afterInteractive"
           crossOrigin="anonymous"
           src= "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2256609026395082"
         /> */}
-        <div className="flex justify-center items-center overflow-hidden">
-          <div className="bg-slate-100 w-[90%]">
-            <AdBanner />
-          </div>
+      <div className="flex justify-center items-center overflow-hidden">
+        <div className="bg-slate-100 w-[90%]">
+          <AdBanner />
         </div>
+      </div>
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}

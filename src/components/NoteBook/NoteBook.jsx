@@ -13,7 +13,7 @@ const NoteBook = ({data=false, range=null, value=function(){}}) => {
             if(data || data !== null){
                 let array = [];
                 data.map((data, i)=>{
-                    array.push({number: i+1, select: false, defaultValue: data.text});
+                    array.push({number: i+1, select: false, defaultValue: data});
                 })
                 setNoteArea([...array]);
             }else {

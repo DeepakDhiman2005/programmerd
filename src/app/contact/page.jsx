@@ -27,7 +27,7 @@ const Contact = () => {
 
     return <>
         <TopLoader progress={IsLoading} />
-        <div className="bg-black h-screen w-full flex flex-col justify-start items-center shadow-md shadow-slate-600">
+        <div className="bg-black h-screen w-full flex flex-col justify-start relative items-center shadow-md shadow-slate-600">
             {/* <h2 className="text-purple-700">Free Contact For Me!</h2> */}
             <div className="w-full flex justify-center items-center">
                 <Image src={"/image/pdtext.png"} alt="text" width={700} height={100} className=" bg-transparent w-[50%] " />
@@ -47,6 +47,7 @@ const Contact = () => {
                     <IoLogoGithub size={"40px"} className="text-purple-700 ml-2 cursor-pointer hover:text-purple-800 active:shadow-md active:shadow-purple-600" />
                 </a>
             </div>
+            <h2 className="text-sm sm:text-xl absolute top-4 left-4 text-purple-500">Contact us</h2>
         </div>
     </>
 }
