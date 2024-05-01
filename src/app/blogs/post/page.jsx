@@ -17,18 +17,9 @@ export async function generateMetadata(props){
         title: title,
         description: desc,
         openGraph: {
-            image: image
+            images: [image]
         }
     }
-}
-
-export async function generateStaticParams() {
-    // console.log(props)
-    const resp = await getBlogs();
-    // console.log(resp)
-    return resp.map((blog)=>{
-        slug: blog.data.title
-    })
 }
 
 const SearchBlogPost = (props) => {
