@@ -426,8 +426,9 @@ export const db_blogs = [
     type: "blog",
     data: {
         title: "Install Next js in 2024?",
-        desc: "Install Next js in 2024? || complete setup of Next js in VS Code Editor?",
+        desc: "Install Next js in 2024? || complete setup of Next js in VS Code Editor? installing Next.js remains a vital step for developers seeking a robust and efficient framework for building modern web applications.",
         date: "29-04-2024",
+        image: "/uploads/image/S1714401859336-59097-Screenshot 2024-04-29 201400.png",
         content: [
             {
                 desc: "In 2024, installing Next.js remains a vital step for developers seeking a robust and efficient framework for building modern web applications. Leveraging the latest advancements in web development, Next.js continues to empower developers with its versatility, performance, and ease of use."

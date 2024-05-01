@@ -23,7 +23,7 @@ const TutorialSidebar = (props) => {
     const searchparams = useSearchParams();
 
     // variables
-    const onOpen = "h-screen w-full p-4 lg:w-1/3 lg:p-4 left-0 fixed lg:relative transition-all bg-slate-800 overflow-y-scroll pb-20";
+    const onOpen = "h-screen z-40 w-full p-4 lg:w-1/3 lg:p-4 left-0 fixed lg:relative transition-all bg-slate-800 overflow-y-scroll pb-20";
     const onClose = "h-screen w-0 p-0 lg:w-0 lg:p-0 left-0 fixed lg:relative transition-all bg-slate-800 overflow-y-scroll pb-20";
 
     // let _data = [
