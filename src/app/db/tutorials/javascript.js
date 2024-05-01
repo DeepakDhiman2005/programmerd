@@ -1231,7 +1231,605 @@ export const db_js = [
             {
                 title: "Window Object",
                 content: [
-                    {desc:""}
+                    {desc:"The `Window` object in web development represents the browser window. It is the global object in the client-side JavaScript environment, and it represents the web browser window or frame that contains the document being viewed. The Window object provides access to various properties and methods for interacting with the browser window and the document loaded within it."},
+                    {desc: "Some common properties and methods of the Window object include:"},
+                    {
+                        points: [
+                            "window.document: Represents the document loaded in the window.",
+                            "window.location: Provides information about the URL of the current document.",
+                            "window.alert(): Displays an alert dialog box with a specified message and an OK button.",
+                            "window.setTimeout(): Sets a timer which executes a function or specified code after a specified delay.",
+                            "window.open(): Opens a new browser window or tab."
+                        ]
+                    },
+                    {desc:"The `Window` object also contains many other properties and methods for working with browser windows, frames, and their content. It serves as the entry point to interact with the client-side environment in web development."},
+                    {b: "Change innerHTML Value:"},
+                    {code: [`document.getElementById("myElement").innerHTML = "This is my new text";`]},
+                    {b: "Change Website URL:"},
+                    {code: [`window.location.href = "https://www.example.com";`]},
+                    {b: "Alert Message:"},
+                    {code: [`alert("This is an alert message");`]}
+                ]
+            },
+            {
+                title: "History Object",
+                content: [
+                    {desc: "The `History` object in web development represents the browsing history of the window. It allows you to interact with the browser's history stack, enabling you to navigate backward and forward through the user's browsing history."},
+                    {desc:"Here are some key properties and methods of the History object:"},
+                    {
+                        points: [
+                            `history.length: Returns the number of elements in the browsing history.`,
+                            `history.back(): Moves the window one step backward in the history stack. Equivalent to the user clicking the browser's back button.`,
+                            `history.forward(): Moves the window one step forward in the history stack. Equivalent to the user clicking the browser's forward button.`,
+                            `history.go(): Loads a specific page from the session history based on the provided integer parameter. Positive integers move forward, and negative integers move backward.`
+                        ]
+                    },
+                    {b: "Example:"},
+                    {code: [`history.pushState(null, null, "https://www.example.com");`]},
+                    {b: "For Back:"},
+                    {code: [`history.back();`]},
+                    {desc: `By using the 'History' object, you can create custom navigation controls, manipulate the browser's history stack, and provide a more seamless browsing experience for users within your web application. However, it's worth noting that due to security and privacy concerns, modern browsers may limit the functionality of the History object, especially when it comes to accessing the URLs visited by the user.`}
+                ]
+            },
+            {
+                title: "Navigator Object",
+                content: [
+                    {desc:"The Navigator object in web development provides information about the web browser being used, including its name, version, and capabilities. It represents the state and the identity of the user agent (the browser). Developers often use the Navigator object to determine which features are supported by the browser and to provide customized experiences based on the user's environment."},
+                    {desc:"Here are some common properties and methods of the Navigator object:"},
+                    {
+                        points: [
+                            `navigator.userAgent: Returns a string representing the user agent header sent by the browser to the server.`,
+                            `navigator.appName: Returns the name of the browser (deprecated; consider using navigator.userAgent instead).`,
+                            `navigator.appVersion: Returns the version information of the browser (deprecated; consider using navigator.userAgent instead).`,
+                            `navigator.platform: Returns the platform on which the browser is running (e.g., "Win32", "Linux", "MacIntel").`,
+                            `navigator.cookieEnabled: Returns a boolean indicating whether cookies are enabled in the browser.`,
+                            `navigator.language: Returns the preferred language of the user, usually specified in the browser settings.`
+                        ]
+                    },
+                    {desc: "Additionally, the `Navigator` object provides information about various features and APIs supported by the browser, such as geolocation (navigator.geolocation), battery status (navigator.getBattery()), and media devices (navigator.mediaDevices)."},
+                    {desc:"Developers can use this property to detect the browser type and version. For example, the following code can be used to check if the user is using Google Chrome:"},
+                    {code:{
+                        type: "normal",
+                        code: [
+                            `<span class="text-blue-400">if</span> (navigator.userAgent.<span class="text-yellow-300">indexOf</span>("Chrome") !== -1) {`,
+                                `console.<span class="text-yellow-300">log</span>("The user is using Google Chrome!");`,
+                            `}`,                            
+                        ]
+                    }},
+                    {desc: "This property can be useful for providing offline support or showing an offline message to the user."},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `<span class="text-blue-400">if</span> (!<span class="text-blue-300">navigator</span>.onLine) {`,
+                                `console.<span class="text-yellow-300">log</span>("The device is currently offline!");`,
+                            `}`,                            
+                        ]
+                    }},
+                    {b: "Screen:"},
+                    {code: ["console.log(`The screen width is ${screen.width} pixels and the screen height is ${screen.height} pixels`);"]},
+                    {desc: "The navigator object also provides several methods for detecting the device's Geolocation, such as navigator.geolocation.getCurrentPosition() which returns the position of the device based on its GPS coordinates or the IP address."},
+                    {desc: "Developers use the Navigator object to build robust and cross-browser compatible web applications by detecting features and tailoring the user experience accordingly. However, it's essential to handle feature detection gracefully, providing fallbacks for browsers that do not support certain features."}
+                ]
+            },
+            {
+                title: "Screen Object",
+                content: [
+                    {
+                        desc: `The "Screen" object is a feature in various programming languages and frameworks that provides information about the user's screen or display. It typically allows developers to access properties like screen width, height, color depth, pixel density, and orientation. This information can be useful for creating responsive designs, determining how content should be laid out, or adapting the user interface based on the characteristics of the user's screen.`
+                    },
+                    {desc:"In web development, the Screen object is part of the `window` object in JavaScript. Here's a basic example of how you might use it:"},
+                    {code: ["console.log(`The screen resolution is ${screen.width}x${screen.height} pixels`);"]},
+                    {code: ["console.log(`The screen color depth is ${screen.colorDepth} bits`);"]},
+                    {desc: "The screen object also provides the availWidth and availHeight properties, which return the width and height of the available screen area, respectively."},
+                    {code: ["console.log(`The available screen width is ${screen.availWidth} pixels and the available screen height is ${screen.availHeight} pixels`);"]},
+                    {desc:"These properties can be utilized to make decisions about how content is presented to users, such as adjusting layout or image sizes based on the available screen space."}
+                ]
+            },
+            {
+                title: "Document Object",
+                content: [
+                    {desc: "The Document Object represents the HTML document in a web browser. It serves as an interface to interact with the content of a webpage using JavaScript. The Document Object Model (DOM) is a hierarchical representation of the HTML elements on a webpage, and the Document Object provides methods and properties to manipulate this structure."},
+                    {desc: "Here are some common tasks you can perform using the Document Object:"},
+                    {points: [ "Accessing Elements: You can use methods like getElementById, getElementsByClassName, getElementsByTagName, or querySelector to access specific elements within the document."]},
+                    {code: [`var element = document.getElementById("myElement");`]},
+                    {points: [`Modifying Content: You can change the content, attributes, or style of elements within the document.`]},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `element.innerHTML = <span class="text-[#f59e0b]">"New content"</span>;`,
+                            `element.<span class="text-blue-200">style</span>.color = "red";`,
+                            `element.<span class="text-yellow-400">setAttribute</span>(<span class="text-[#f59e0b]">"data-custom"</span>, <span class="text-[#f59e0b]">"value"</span>);`
+                        ]
+                    }},
+                    {points: [`Creating New Elements: You can create new elements dynamically and add them to the document.`]},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-blue-300">var</span> newDiv = document.<span class="text-yellow-400">createElement</span>("div");`,
+                            `newDiv.textContent = <span class="text-[#f59e0b]">"Hello, World!"</span>;`,
+                            `document.body.<span class="text-yellow-400">appendChild</span>(newDiv);`
+                        ]
+                    }},
+                    {points: [`Handling Events: You can attach event listeners to elements to respond to user interactions.`]},
+                    {code: {
+                        type :"normal",
+                        code: [
+                            `element.<span class="text-yellow-400">addEventListener</span>("click", <span class="text-blue-300">function</span>() {`,
+                                `console.<span class="text-yellow-400">log</span>("Element clicked!");`,
+                            `});`
+                        ]
+                    }},
+                    {points: ["Manipulating Styles: You can modify the CSS styles of elements."]},
+                    {code: [
+                        `element.style.backgroundColor = "blue";`, `element.style.fontSize = "20px";`
+                    ]},
+                    {points: ["Accessing Document Information: You can access various properties of the document, such as its title, URL, or size."]},
+                    {code: [
+                        `console.log(document.title);`,
+`console.log(document.URL);`,
+`console.log(document.documentElement.clientWidth);`,
+                    ]},
+                    {desc: "The Document Object provides a powerful interface for interacting with and manipulating the content of webpages, making it a fundamental part of client-side web development with JavaScript."}
+                ]
+            },
+            {
+                title: "getElementbyId",
+                content: [
+                    {desc:"`getElementById` is a method used in JavaScript to select and manipulate an HTML element based on its unique ID attribute. It is often used in conjunction with the document object, which represents the entire HTML document. The syntax is:"},
+                    {desc:"For example, consider the following HTML code:"},
+                    {code: [`<div id="myDiv">This is my div</div>`]},
+                    {desc:`The following JavaScript code can be used to access the element with the ID "myDiv" and change its text:`},
+                    {
+                        code: [
+                            `let myDiv = document.getElementById("myDiv");`,
+                            `myDiv.innerHTML = "This is my new text";`
+                        ]
+                    },
+                    {desc: "This method returns the first element with the specified ID within the document. If no such element exists, it returns `null`. Once you have selected the element using `getElementById`, you can then manipulate its properties, such as its content, style, or attributes, using JavaScript."}
+                ]
+            },
+            {
+                title: "getElementsByClassName",
+                content: [
+                    {desc:"`getElementsByClassName` is another method used in JavaScript to select and manipulate HTML elements, but this time based on their class names. Unlike `getElementById`, which selects a single element (since IDs should be unique within a document), `getElementsByClassName` selects multiple elements that have the same class."},
+                    {desc:"For example, consider the following HTML code:"},
+                    {code: [
+                        `<div class="myClass">This is my div</div>`,
+`<div class="myClass">This is my div</div>`,
+`<div class="myClass">This is my div</div>`
+                    ]},
+                    {desc:`The following JavaScript code can be used to access the elements with the class name "myClass" and change their text:`},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-blue-400">let</span> elements = document.<span class="text-yellow-400">getElementsByClassName</span>("myClass");`,
+`<span class="text-blue-400">for</span> (<span class="text-blue-400">let</span> i = 0; i < elements.length; i++) {`,
+    `elements[i].<span class="text-blue-300">innerHTML</span> = <span class="text-green-300">"This is my new text"</span>;`,
+`}`
+                        ]
+                    }},
+                    {desc: `This method returns a live HTMLCollection (a collection of HTML elements) containing all elements in the document that have the specified class name. If there are no elements with the specified class, it returns an empty HTMLCollection.This method returns a live HTMLCollection (a collection of HTML elements) containing all elements in the document that have the specified class name. If there are no elements with the specified class, it returns an empty HTMLCollection.`},
+                    {desc: `Once you have selected elements using 'getElementsByClassName', you can iterate through the collection to manipulate each element individually, or apply changes to all elements at once using a loop or other JavaScript methods.`}
+                ]
+            },
+            {
+                title :"getElementsByName",
+                content: [
+                    {desc: "`getElementsByName` is a method in JavaScript used to select and manipulate HTML elements based on their name attribute. Unlike getElementById which selects a single element or `getElementsByClassName` which selects multiple elements, `getElementsByName` also selects multiple elements but based on their name attribute."},
+                    {desc: "For example, consider the following HTML code:"},
+                    {code: [
+                        `<input type="text" name="myName" value="">`,
+`<input type="text" name="myName" value="">`,
+`<input type="text" name="myName" value="">`,
+                    ]},
+                    {desc:`The following JavaScript code can be used to access the elements with the name attribute "myName" and change their value:`},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-blue-400">let</span> elements = document.<span class="text-yellow-400">getElementsByName</span>("myName");`,
+`<span class="text-blue-400">for</span> (<span class="text-blue-400">let</span> i = 0; i < elements.length; i++) {`,
+    `elements[i].value = <span class="text-green-300">"This is my new value"</span>;`,
+`}`
+                        ]
+                    }},
+                    {desc:"This method returns a NodeList (a collection of nodes, typically HTML elements) containing all elements in the document that have the specified name attribute. If there are no elements with the specified name, it returns an empty NodeList."},
+                    {desc: "It's worth noting that while `getElementById` and `getElementsByClassName` are commonly used and widely supported, `getElementsByName` is less commonly used because the name attribute is typically associated with form elements like input fields, radio buttons, checkboxes, etc. However, it can still be useful in certain situations, especially when dealing with form submissions or accessing elements within forms."}
+                ]
+            },
+            {
+                title: "getElementsByTagName",
+                content: [
+                    {desc:"`getElementsByTagName` is a method in JavaScript used to select and manipulate HTML elements based on their tag name."},
+                    {desc: "For example, consider the following HTML code:"},
+                    {code: [`<p>This is my paragraph</p>`]},
+                    {code: [`document.getElementsByTagName("tagName");`]},
+                    {desc:"This method returns a live HTMLCollection (a collection of HTML elements) containing all elements in the document that have the specified tag name. If there are no elements with the specified tag name, it returns an empty HTMLCollection."},
+                    {desc:"For example, if you want to select all `<p>` elements in the document, you would use:"},
+                    {code: [`var paragraphs = document.getElementsByTagName("p");`]},
+                    {desc: "You can then iterate through the `paragraphs` collection to manipulate each paragraph individually or apply changes to all paragraphs at once using a loop or other JavaScript methods."}
+                ]
+            },
+            {
+                title: "innerHTML & innerText",
+                content: [
+                    {desc:"`innerHTML` and `innerText` are both properties in JavaScript used to access or modify the content of HTML elements, but they behave differently."},
+                    {points: [`innerHTML: This property allows you to get or set the HTML content inside an element, including any nested HTML elements and their content. When you set innerHTML, you can provide HTML markup as a string, and it will be parsed and inserted into the element. Here's an example:`]},
+                    {
+                        code: [
+                            `var element = document.getElementById("exampleElement");`,
+`console.log(element.innerHTML); //# Get the HTML content`,
+`element.innerHTML = "&lt;p&gt;New content&lt;/p&gt;"; `,
+`//# Set new HTML content`
+                        ]
+                    },
+                    {points: [`innerText: This property gets or sets the text content of an element, excluding any HTML markup. It returns only the visible text within the element and its descendants. When you set innerText, any HTML tags are treated as plain text and displayed as such. Here's an example:`]},
+                    {code:[
+                        `var element = document.getElementById("exampleElement");`,
+`console.log(element.innerText); //# Get the text content`,
+`element.innerText = "New text"; //# Set new text content`,
+                    ]},
+                    {desc: "In summary, `innerHTML` manipulates the HTML content of an element, allowing you to include HTML markup, while `innerText` manipulates the plain text content, disregarding any HTML markup."}
+                ]
+            },
+            {
+                title :"outerHTML",
+                content: [
+                    {desc:"The outerHTML property is a part of the JavaScript HTMLElement object and it allows developers to access and manipulate the entire HTML of an element, including the element's own tags. The outerHTML property returns the entire HTML of an element, as a string of HTML."},
+                    {desc:"For example, consider the following HTML code:"},
+                    {code: [
+                        `<div id="myDiv">`,
+    `<p>This is my paragraph</p>`,
+    `<p>This is my paragraph</p>`,
+`</div>`,
+                    ]},
+                    {desc:`The following JavaScript code can be used to access the <div> element with the ID "myDiv" and change its content:`},
+                    {code: [
+                        `let myDiv = document.getElementById("myDiv");`,
+`myDiv.outerHTML = "&lt;div&gt;&lt;p&gt;This is my new text&lt;/p&gt;&lt;/div&gt;";`,
+                    ]},
+                    {desc:"The outerHTML property is a powerful tool for manipulating the entire HTML of an element. Developers can use it to add, remove, or replace elements, as well as change the text and attributes of existing elements. The main difference between outerHTML and innerHTML is that outerHTML allows you to change the entire element, including its own tags, whereas innerHTML only allows you to change the content within the element."}
+                ]
+            }
+        ]
+    },
+    // sixth
+    {
+        title: "OOPs",
+        page: [
+            {
+                title: "Class",
+                content: [
+                    {desc:"In JavaScript, a class is a blueprint for creating objects that share similar properties and behaviors. It provides a convenient syntax for creating objects with predefined properties and methods."},
+                    {desc:"Here's a basic example of defining a class in JavaScript:"},
+                    {code: [
+                        `class Person {`,
+                            `constructor(name, age) {`,
+                              `this.name = name;`,
+                              `this.age = age;`,
+                            `}`,
+                            `greet() {`,
+                              `console.log(\`Hello, my name is <span class="text-white">\${<span class="text-red-400">this</span>.name}</span> and I'm <span class="text-white">\${<span class="text-red-400">this</span>.age}</span> years old.\`);`,
+                            `}`,
+                          `}`,
+                          `//# Creating an instance of the Person class`,
+                          `const john = new Person("John", 30);`,
+                          `john.greet(); //# Output: Hello, my name is John and I'm 30 years old.`,                 
+                    ]},
+                    {desc:"In this example:"},
+                    {points: [
+                        "Person is a class declaration.",
+"constructor is a special method for initializing objects created with the class. It is called automatically when a new instance of the class is created.",
+"greet is a method defined within the class.",
+"new Person(\"John\", 30) creates a new instance of the Person class with the specified name and age."
+                    ]},
+                    {desc:"JavaScript classes can also have inheritance, allowing one class to inherit properties and methods from another class. Here's an example:"},
+                    {code: {
+                        type :"normal",
+                        code: [
+                            `<span class="text-blue-400">class</span> Student <span class="text-blue-400">extends</span> Person {`,
+                                `constructor(name, age, grade) {`,
+                                `super(name, age);`,
+                                `<span class="text-blue-400">this</span>.grade = grade;`,
+                                `}`,
+                                `<span class="text-yellow-400">study</span>() {`,
+                                `console.<span class="text-yellow-400">log</span>(\`\${<span class="text-red-400">this</span>.name} is studying.\`);`,
+                                `}`,
+                            `}`,
+                            `<span class="text-blue-400">const</span> alice = <span class="text-blue-400">new</span> Student("Alice", 25, "A");`,
+                            `alice.<span class="text-yellow-400">greet</span>(); <span class="text-green-300">// Output: Hello, my name is Alice and I'm 25 years old.</span>`,
+                            `alice.<span class="text-yellow-400">study</span>(); <span class="text-green-300">// Output: Alice is studying.</span>`,
+                        ]
+                    }},
+                    {desc: `In this example, Student is a subclass of Person, inheriting the name and age properties as well as the greet method from the Person class. The super keyword is used to call the constructor of the superclass within the subclass constructor.`}
+                ]
+            },
+            {
+                title: "Objects",
+                content: [
+                    {
+                        desc:"JavaScript objects are created using the {} notation, also known as object literal notation. For example, the following code creates an object that represents a person:"
+                    },
+                    {code:{
+                        type:"normal",
+                        code:[
+                            `<span class="text-blue-400">let</span> person = {`,
+                                `name: <span class="text-green-300">"John"</span>,`,
+                                `age: <span class="text-purple-400">30</span>,`,
+                                `greet: <span class="text-blue-400">function</span>() {`,
+                                    `<span class="text-red-500">return</span> \`Hello, my name is \${<span class="text-blue-400">this</span>.name} and I am \${<span class="text-blue-400">this</span>.age} years old.\`;`,
+                                `}`,
+                            `};`,                            
+                        ]
+                    }},
+                    {desc:"You can access the properties of an object using the dot notation (.) or the bracket notation ([]). For example, you can access the name and age properties of the person object using:"},
+                    {code:{
+                        type:"normal",
+                        code: [
+                        `console.<span class="text-yellow-400">log</span>(person.name); <span class="text-green-400">// "John"</span>`,
+`console.<span class="text-yellow-400">log</span>(person["age"]); <span class="text-green-400">// 30</span>`,
+                    ]}},
+                    {desc:"You can also add, update and delete properties to an object by using the dot notation or the bracket notation."},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `person.address = <span class="text-green-400">"India"</span>;`,
+`person[<span class="text-green-400">"phone"</span>] = <span class="text-green-400">"123-456-7890"</span>;`,
+`<span class="text-blue-400">delete</span> person.age;`,
+                        ]
+                    }},
+                    {desc:"The following code defines a constructor function Person that can be used to create new Person objects:"},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `<span class="text-blue-400">function</span> Person(name, age) {`,
+                                `<span class="text-blue-400">this</span>.name = name;`,
+                                `<span class="text-blue-400">this</span>.age = age;`,
+                                `<span class="text-blue-400">this</span>.greet = <span class="text-blue-400">function</span>() {`,
+                                    `<span class="text-blue-400">return</span> \`Hello, my name is \${<span class="text-blue-400">this</span>.name} and I am \${<span class="text-blue-400">this</span>.age} years old.\`;`,
+                                `}`,
+                            `}`,
+                            `<span class="text-blue-400">let</span> person1 = <span class="text-blue-400">new</span> Person("John", 30);`,
+                            `<span class="text-blue-400">let</span> person2 = <span class="text-blue-400">new</span> Person("Jane", 25);`,         
+                        ]
+                    }},
+                    {desc:"In addition, JavaScript also provides a Object() constructor function that can be used to create an empty object with no properties."}
+                ]
+            },
+            {
+                title: "Constructor",
+                content: [
+                    {
+                        desc:"In JavaScript, constructors are functions that are used to create and initialize objects created within a class. `Constructors` are defined using the constructor keyword within the class definition. When you create a `new` instance of a class using the new keyword, the constructor function is automatically called to initialize the object."
+                    },
+                    {desc:"Here's an example of a constructor in JavaScript:"},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `<span class="text-blue-400">class</span> Person {`,
+                                `<span class="text-blue-400">constructor</span>(name, age) {`,
+                                  `<span class="text-blue-400">this</span>.name = name;`,
+                                  `<span class="text-blue-400">this</span>.age = age;`,
+                                `}`,
+                              `}`,
+                              `<span class="text-green-400">// Creating instances of the Person class</span>`,
+                              `<span class="text-blue-400">const</span> person1 = <span class="text-blue-400">new</span> Person("Alice", 30);`,
+                              `<span class="text-blue-400">const</span> person2 = <span class="text-blue-400">new</span> Person("Bob", 25);`,
+                              `console.<span class="text-blue-400">log</span>(person1.name); <span class="text-green-400">// Output: Alice</span>`,
+                              `console.<span class="text-blue-400">log</span>(person1.age); <span class="text-green-400">// Output: 30</span>`,
+                              `console.<span class="text-blue-400">log</span>(person2.name); <span class="text-green-400">// Output: Bob</span>`,
+                              `console.<span class="text-blue-400">log</span>(person2.age); <span class="text-green-400">// Output: 25</span>`
+                        ]
+                    }},
+                    {desc:"In this example:"},
+                    {
+                        points:[
+                            "We define a `Person` class with a constructor that takes `name` and `age` parameters.",
+"When we create new instances of the `Person` class (`person1` and `person2`), the constructor is called with the specified arguments to initialize the properties of each object.",
+"We then access the `name` and `age` properties of each object and log them to the console."
+                        ]
+                    },
+                    {desc:"Constructors in JavaScript provide a convenient way to initialize object properties and ensure that each instance of a class starts with the correct initial state."}
+                ]
+            },
+            {
+                title:"Static Method",
+                content: [
+                    {desc:"In JavaScript, a static method is a method that belongs to the class itself rather than to instances of the class. This means that you can call a static method directly on the class, without needing to create an instance of the class first. Static methods are defined using the `static` keyword within the class definition."},
+                    {desc:"Here's how you can define and use a static method in JavaScript:"},
+                    {code: [
+                        `class MathUtility {`,
+                            `//# Static method to calculate the square of a number`,
+                            `static square(num) {`,
+                              `return num * num;`,
+                            `}`,
+                          `}`,
+                          `//# Calling the static method directly on the class`,
+                          `console.log(MathUtility.square(5)); //# Output: 25`, 
+                    ]},
+                    {desc:"In this example:"},
+                    {points:[
+                        `We define a MathUtility class with a static method square.`,
+`The square method takes a num parameter and returns the square of that number.`,
+`We call the square method directly on the MathUtility class, passing in the number 5, and log the result to the console.`,
+                    ]},
+                    {desc:"Static methods are often used for utility functions that are related to the class but do not depend on the state of any specific instance of the class. They are called directly on the class itself and are not associated with any particular instance."}
+                ]
+            },
+            {
+                title: "Encapsulation",
+                content: [
+                    {desc:"Encapsulation is a fundamental concept in object-oriented programming (OOP) that refers to the practice of hiding the internal details of an object from other objects and code. In JavaScript, encapsulation is achieved by using closures and access modifiers, such as the private and public keywords."},
+                    {desc:"JavaScript uses closures to implement encapsulation, which allows developers to create private variables and methods that cannot be accessed from outside the object. For example, consider the following code:"},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-blue-400">function</span> Person(name, age) {`,
+                                `<span class="text-blue-400">let</span> privateAge = age;`,
+                                `<span class="text-blue-400">this</span>.name = name;`,
+                                `<span class="text-blue-400">this</span>.getAge = <span class="text-blue-400">function</span>() {`,
+                                    `return privateAge;`,
+                                `}`,
+                            `}`,
+                            `<span class="text-blue-400">let</span> person = <span class="text-blue-400">new</span> Person("John", 30);`,
+                            `console.<span class="text-yellow-400">log</span>(person.name); // "John"`,
+                            `console.<span class="text-yellow-400">log</span>(person.privateAge); // undefined`,
+                            `console.<span class="text-yellow-400">log</span>(person.getAge()); // 30`,
+                        ]
+                    }},
+                    {desc:"In this example, the privateAge variable is defined inside the constructor function and can only be accessed using the getAge method. This means that the internal state of the object is hidden from other objects and code, providing a level of protection and security."}
+                ]
+            },
+            {
+                title:"Inheritance",
+                content: [
+                    {
+                        desc:"Inheritance is a key concept in object-oriented programming (OOP) that allows classes to inherit properties and methods from other classes. It promotes code reuse and establishes a hierarchical relationship between classes, where a subclass (or derived class) inherits characteristics from a superclass (or base class)."
+                    },
+                    {desc:"Here's how inheritance works:"},
+                    {
+                        points: [
+                            `Superclass (Base Class): A superclass is a class that defines properties and methods that are common to multiple related classes. It serves as a blueprint for creating other classes.`,
+`Subclass (Derived Class): A subclass is a class that inherits properties and methods from a superclass. It can also define additional properties and methods or override existing ones.`,
+`Extending: Inheritance is achieved by using the extends keyword in many programming languages. A subclass extends a superclass to inherit its properties and methods.`,
+`Overriding: Subclasses can override inherited methods by providing a new implementation. This allows for customization of behavior in subclasses while still benefiting from the common functionality defined in the superclass.`
+                        ]
+                    },
+                    {desc:"Here's a basic example of inheritance in JavaScript:"},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-green-400">// Superclass (Base Class)</span>`,
+`<span class="text-blue-400">class</span> Animal {`,
+    `<span class="text-blue-400">constructor</span>(name) {`,
+      `this.name = name;`,
+    `}`,
+    `<span class="text-green-400">// Method</span>`,
+    `<span class="text-yellow-400">speak</span>() {`,
+      `console.<span class="text-yellow-400">log</span>(\`\${<span class="text-blue-400">this</span>.name} makes a sound.\`);`,
+    `}`,
+  `}`,
+  `<span class="text-green-400">// Subclass (Derived Class) inheriting from Animal</span>`,
+  `class Dog extends Animal {`,
+    `<span class="text-green-400">// Constructor</span>`,
+    `constructor(name, breed) {`,
+      `super(name); // Call the superclass constructor`,
+      `this.breed = breed;`,
+    `}`,
+    `<span class="text-green-400">// Override method</span>`,
+    `<span class="text-yellow-400">speak</span>() {`,
+      `console.<span class="text-yellow-400">log</span>(\`\${<span class="text-blue-400">this</span>.name} barks.\`);`,
+    `}`,
+    `<span class="text-green-400">// New method</span>`,
+    `<span class="text-yellow-400">fetch</span>() {`,
+      `console.<span class="text-yellow-400">log</span>(\`\${<span class="text-blue-400">this</span>.name} fetches.\`);`,
+    `}`,
+  `}`,
+  `<span class="text-green-400">// Create instances</span>`,
+  `<span class="text-blue-400">const</span> dog = <span class="text-blue-400">new</span> Dog('Buddy', 'Golden Retriever');`,
+  `<span class="text-green-300">// Call methods</span>`,
+  `dog.<span class="text-yellow-400">speak</span>(); <span class="text-green-400">// Output: Buddy barks.</span>`,
+  `dog.<span class="text-yellow-400">fetch</span>(); <span class="text-green-400">// Output: Buddy fetches.</span>  `,
+                        ]
+                    }}
+                ]
+            },
+            {
+                title: "Polymorphism",
+                content:[
+                    {desc: `Polymorphism is another fundamental concept in object-oriented programming (OOP), which allows objects of different classes to be treated as objects of a common superclass. It enables a single interface to represent multiple types of objects and allows methods to behave differently based on the specific type of object they are operating on.`},
+                    {desc:"There are two main types of polymorphism:"},
+                    {
+                        points: [
+                            `Compile-time Polymorphism (Method Overloading): This type of polymorphism occurs when multiple methods in a class have the same name but different parameter lists. The appropriate method to execute is determined by the number and types of arguments passed to it. Compile-time polymorphism is resolved at compile time.`,
+                            `Run-time Polymorphism (Method Overriding): This type of polymorphism occurs when a subclass provides a specific implementation of a method that is already defined in its superclass. The method in the subclass overrides the implementation of the same method in the superclass. Run-time polymorphism is resolved at runtime.`
+                        ]
+                    },
+                    {desc:"Here's a basic example of polymorphism in JavaScript using method overriding:"},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `<span class="text-green-400">// Superclass (Base Class)</span>`,
+`class Animal {`,
+    `<span class="text-green-400">// Method</span>`,
+    `<span class="text-yellow-400">speak</span>() {`,
+      `console.<span class="text-yellow-400">log</span>('The animal makes a sound.');`,
+    `}`,
+  `}`,
+  `<span class="text-green-400">// Subclass (Derived Class) inheriting from Animal</span>`,
+  `<span class="text-blue-400">class</span> Dog <span class="text-blue-400">extends</span> Animal {`,
+    `<span class="text-green-400">// Override method</span>`,
+    `<span class="text-yellow-400">speak</span>() {`,
+      `console.<span class="text-yellow-400">log</span>('The dog barks.');`,
+    `}`,
+  `}`,
+  `<span class="text-green-400">// Subclass (Derived Class) inheriting from Animal</span>`,
+  `<span class="text-blue-400">class</span> Cat <span class="text-blue-400">extends</span> Animal {`,
+    `<span class="text-green-400">// Override method</span>`,
+    `<span class="text-yellow-400">speak</span>() {`,
+      `console.<span class="text-yellow-400">log</span>('The cat meows.');`,
+    `}`,
+  `}`,
+  `<span class="text-green-400">// Create instances</span>`,
+  `<span class="text-blue-400">const</span> dog = new <span class="text-yellow-400">Dog</span>();`,
+  `<span class="text-blue-400">const</span> cat = new <span class="text-yellow-400">Cat</span>();`,
+  `<span class="text-green-400">// Call methods</span>`,
+  `dog.<span class="text-yellow-400">speak</span>(); <span class="text-green-400">// Output: The dog barks.</span>`,
+  `cat.<span class="text-yellow-400">speak</span>(); <span class="text-green-400">// Output: The cat meows.</span>`,
+                        ]
+                    }}
+                ]
+            },
+            {
+                title: "Abstraction",
+                content: [
+                    {
+                        desc:"Abstraction is a fundamental concept in programming that involves simplifying complex systems by hiding unnecessary implementation details while exposing only the essential features. It allows programmers to focus on what an object does rather than how it does it, promoting clarity, reusability, and modularity in code."
+                    },
+                    {desc:"Here are some key points about abstraction:"},
+                    {
+                        points:[
+                            `Hiding Complexity: Abstraction hides the complex implementation details of an object and exposes only the necessary features that are relevant to the user. This helps in managing complexity and making code more understandable.`,
+`Generalization: Abstraction involves identifying common patterns and behaviors across different objects and representing them using a common interface or set of properties and methods. This allows for the creation of generalized solutions that can be applied to various specific cases.`,
+`Encapsulation: Abstraction often goes hand in hand with encapsulation, another OOP principle. Encapsulation hides the internal state of an object and exposes only the necessary functionalities through well-defined interfaces, providing a form of abstraction.`,
+`Levels of Abstraction: Abstraction can occur at multiple levels in software development, from high-level architectural design to low-level implementation details. Each level of abstraction provides a different perspective and level of detail, allowing developers to work at the appropriate level of granularity.`,
+`Promotes Reusability: By providing a simplified and generalized view of objects and systems, abstraction promotes code reuse. Abstracted components can be easily reused in different contexts, leading to more modular and maintainable code.`
+                        ]
+                    },
+                    {desc:"Here's a simple example of abstraction in JavaScript:"},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-green-500">// Abstract class representing a shape</span>`,
+`<span class="text-blue-400">class</span> Shape {`,
+    `<span class="text-green-500">// Abstract method for calculating area (to be overridden by subclasses)</span>`,
+    `calculateArea() {`,
+      `throw <span class="text-blue-400">new</span> Error('Method not implemented');`,
+    `}`,
+  `}`,
+  `<span class="text-green-500">// Subclass representing a specific shape (Rectangle)</span>`,
+  `<span class="text-blue-400">class</span> Rectangle extends Shape {`,
+    `<span class="text-blue-400">constructor</span>(width, height) {`,
+      `super();`,
+      `<span class="text-blue-400">this</span>.width = width;`,
+      `<span class="text-blue-400">this</span>.height = height;`,
+    `}`,
+    `<span class="text-green-500">// Override method to calculate area of rectangle</span>`,
+    `calculateArea() {`,
+      `return <span class="text-blue-400">this</span>.width * <span class="text-blue-400">this</span>.height;`,
+    `}`,
+  `}`,
+  `<span class="text-green-500">// Create an instance of Rectangle</span>`,
+  `<span class="text-blue-400">const</span> rectangle = <span class="text-blue-400">new</span> Rectangle(5, 10);`,
+  `<span class="text-green-500">// Calculate and log the area of the rectangle</span>`,
+  `console.<span class="text-yellow-400">log</span>(rectangle.<span class="text-yellow-400">calculateArea</span>()); <span class="text-green-500">// Output: 50</span>`
+                        ]
+                    }},
+                    {desc:"In this example:"},
+                    {points: [
+                        `Shape is an abstract class that defines a common interface for shapes but does not provide a concrete  implementation for calculating area.`,
+`Rectangle is a subclass of Shape that provides a specific implementation for calculating the area of a rectangle.`,
+`The user interacts with the Rectangle object through the common interface provided by the Shape class, without needing to know the internal details of how the area is calculated. This encapsulates the complexity of calculating the area and promotes abstraction.`,
+                    ]}
                 ]
             }
         ]

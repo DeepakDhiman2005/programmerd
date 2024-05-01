@@ -30,14 +30,6 @@ const ProductPage = ({slug=""}) => {
         }, 700);
     }
     
-    let data = {
-        image: "https://rukminim2.flixcart.com/image/612/612/xif0q/printer/s/v/m/laserjet-pro-mfp-4104dw-printer-hp-original-imaghdw9v36rtqya.jpeg?q=70",
-        title: "HP Printer MF 3010",
-        score: "9.6",
-        by: "flipkart",
-        href: "https://fktr.in/1Tqm2zK"
-    }
-
     useEffect(()=>{
         try{
             getProducts(slug.toLowerCase());

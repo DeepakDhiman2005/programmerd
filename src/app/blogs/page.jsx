@@ -63,6 +63,10 @@ const Blogs = () => {
     useEffect(()=>{
         // console.log("fetch to api...");
         blogapi();
+        if(window.matchMedia){
+            let isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            console.log(isDark)
+        }
     }, []);
 
     return <>  
@@ -70,7 +74,7 @@ const Blogs = () => {
         <div className="pl-5 pr-5 pb-5 bg-slate-50">
             <div className="w-full flex justify-between items-center flex-col sm:flex-row">
                 {/* title */}
-                <h2 className="mb-4 mt-5 ml-3 text-4xl text-start font-semibold tracking-tight text-gray-900 dark:text-white">Welcome to Articles</h2>
+                <h2 className="mb-4 mt-5 ml-3 text-4xl text-start font-semibold tracking-tight text-gray-900 dark:text-gray-900">Welcome to Articles</h2>
 
                 {/* search */}
                 <div className="flex justify-center items-center sm:mr-10 bg-white p-2 border border-solid shadow-lg border-slate-50 rounded-lg">

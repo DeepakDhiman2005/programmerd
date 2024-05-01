@@ -102,7 +102,7 @@ const BlogPage = ({query}) => {
             {/* main article */}
             <article className="bg-white shadow-lg border border-solid w-[85%] border-gray-100 rounded-md p-4 flex flex-col justify-center items-center">
                 {/* title */}
-                <h2 className="mb-2 mt-2 ml-3 text-4xl text-center font-semibold tracking-tight text-gray-900 dark:text-white">
+                <h2 className="mb-2 mt-2 ml-3 text-4xl text-center font-semibold tracking-tight text-gray-900 dark:text-slate-900">
                     {
                         TitleChange !== false ? TitleChange: <>
                             {query !== "" ? query: "No Result!"}                    
@@ -122,7 +122,7 @@ const BlogPage = ({query}) => {
                     </Dropdown>
                 </div>
                 {/* main content */}
-                <div className="mt-10 mb-10 text-lg w-full text-start flex flex-col justify-start items-center font-semibold tracking-tight text-gray-700 dark:text-white">
+                <div className="mt-10 mb-10 text-lg w-full text-start flex flex-col justify-start items-center font-semibold tracking-tight text-gray-700 dark:text-gray-700">
                     {
                         ArticleData ?  <Article data={ArticleData} />: <p>Loading...</p>
                     }
