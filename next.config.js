@@ -35,8 +35,8 @@ const nextConfig = {
     },
     env: {
       MONGO_URI: "mongodb+srv://ProgrammerD:deepak8339@cluster0.tnmxvha.mongodb.net/programmerdData?retryWrites=true&w=majority",
-      // API_KEY: "https://programmerd.vercel.app",
-      API_KEY: "http://localhost:3000",
+      API_KEY: "https://programmerd.vercel.app",
+      // API_KEY: "http://localhost:3000",
       ACCESS_CONTROL_ALLOW_CREDENTIALS: "true",
       ACCESS_CONTROL_ALLOW_ORIGIN: "*",
       ACCESS_CONTROL_ALLOW_METHODS: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
