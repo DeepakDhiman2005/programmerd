@@ -482,7 +482,7 @@ export const db_blogs = [
                         "Website builder is included"
                     ],
                     score: "9.8",
-                    href: "https://bitli.in/xUCVuaL"
+                    href: "https://hostinger.in?REFERRALCODE=1DEEPAK210"
                 }
             },
             {b: "In Terminal"},
@@ -552,6 +552,304 @@ export const db_blogs = [
                 redirect: {
                     text: "Products",
                     href: "/products/"
+                }
+            },
+            {b: "Explore All Blogs:"},
+            {
+                redirect: {
+                    text: "Blogs",
+                    href: "/blogs/"
+                }
+            }
+        ],
+        comment: []
+    }
+   },
+   {
+    method: "add",
+    date: "03-05-2024",
+    type: "blog",
+    data: {
+        title: "Top 10 Awesome keyboards in 2024?",
+        desc: "This keyboards is awesome. Type of keyboards is Gaming, Coding, Person Use, etc. Its sleek design, responsive keys, and comfortable typing experience make it a joy to use for any task. Whether you're typing up a document, chatting with friends, or gaming, this keyboard delivers top-notch performance. Plus, its customizable features allow you to personalize your typing experience to suit your preferences perfectly. Overall, it's hard to find fault with such an impressive piece of technology.",
+        date: "03-05-2024",
+        content: [
+            {desc:"If you are looking for awesome and cool keyboards in 2024 then this blog will be helpful for you."},
+            {desc:"This keyboards is awesome. Type of keyboards is Gaming, Coding, Person Use, etc. Its sleek design, responsive keys, and comfortable typing experience make it a joy to use for any task. Whether you're typing up a document, chatting with friends, or gaming, this keyboard delivers top-notch performance. Plus, its customizable features allow you to personalize your typing experience to suit your preferences perfectly. Overall, it's hard to find fault with such an impressive piece of technology."},
+            {title: "1. Aula F2023 Combo Wired USB Gaming Keyboard"},
+            {
+                product: {
+                    title: "Aula F2023 Combo Wired USB Gaming Keyboard",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/computer-acc-combo/y/n/m/f2023-combo-premium-rgb-backlit-gaming-keyboard-mouse-with-6-original-imagr6v59ybqhyvx.jpeg?q=70",
+                    score: "9.4",
+                    by: "flipkart",
+                    href: "https://fktr.in/RYELsHX"
+                }
+            },
+            {desc:"Introducing the Aula F2023 Keyboard & Mouse Combo: With a convenient phone holder integrated into the keyboard design, you can multitask effortlessly, watching videos while gaming or working. Equipped with a black keycap puller, cleaning and customization are a breeze. The keyboard's 2.0 mm keystroke ensures swift and precise typing, delivering a satisfying tactile experience. Crafted with a high-grade aluminum panel, it boasts IP68 waterproof protection, guarding against spills. Its elegant backlight enhances immersion without distractions, setting it apart from typical keyboards. Paired with the combo, the mouse offers 3600 DPI RGB breathing backlight for an enhanced gaming experience. Elevate your setup with this dynamic duo."},
+            {
+                points: [
+                    "Model Name: F2023 Combo",
+                    "Model Number: F2023 Combo",
+                    "Type: Gaming Keyboard",
+                    "Warranty: 6 Months from Date of Purchase",
+                    "Customer care mail:support@odiozone.com",
+                    "Sales Package: Keyboard Mouse User Manual"
+                ]
+            },
+            {title: "2. ZEBRONICS K4000MW/Multidevice"},
+            {
+                product: {
+                    title: "ZEBRONICS K4000MW/Multidevice connectivity,Compatible",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/g/m/x/-original-imagygccpk9cuz85.jpeg?q=70",
+                    score: "9.3",
+                    href: "https://fktr.in/AfR7sq9",
+                    by: "flipkart"
+                }
+            },
+            {desc:"ZEBRONICS K4000MW/Multidevice connectivity,Compatible with Laptop/Tablet/Smartphone Bluetooth Laptop Keyboard"},
+            {desc:"Introducing the ZEB-K4000MW wireless keyboard, a versatile solution designed to seamlessly sync with laptops, desktops, tablets, and smartphones. Featuring a 2.4GHz wireless connection, it offers freedom of movement coupled with a sleek and minimalist design. Elevate your multitasking capabilities with support for up to two Bluetooth connections, providing a stylish and efficient input solution across a range of devices. Experience convenience and connectivity like never before with the ZEB-K4000MW."},
+            {b: "Model Name:"},
+            {desc:"ZEB-K4000MW / ZEB-EWK 1 with 2 Bluetooth & 2.4 GHz Wireless Connection"},
+            {b: "Warranty:"},
+            {desc:"1 year carry into service centre"},
+            {b: "Features:"},
+            {
+                points: [
+                    "Robust 2.4GHz Wireless Connection: Ensures utmost responsiveness and reliability for uninterrupted usage.",
+                    "12 Multimedia Keys: Seamlessly control volume and media playback with dedicated keys for effortless adjustments.",
+                    "Slim and Minimalist Design: Blends aesthetics with functionality, featuring a compact layout for enhanced portability.",
+                    "Comfortable UV-Coated Keycaps: 78 keys positioned strategically for maximum typing comfort and efficiency, accommodating work and leisure requirements.",
+                    "Regional Inclusivity: Includes a Rupee key, catering to regional needs.",
+                    "Dual Bluetooth Connections: Supports up to two BT connections simultaneously, enabling seamless device switching.",
+                    "LED Indicator: Displays battery status, connectivity, or cap lock for a hassle-free user experience.",
+                    "Plug-and-Play Nano Receiver: Offers a seamless wireless user experience with easy setup.",
+                    "Versatile Compatibility: Integrates effortlessly with laptops, desktops, tablets, and smartphones, adapting to your digital ecosystem."
+                ]
+            },
+            {title: "3. Portronics Hydra 10/5.0 + 2.4 GHz, RGB"},
+            {
+                product: {
+                    title : "Portronics Hydra 10/5.0 + 2.4 GHz, RGB",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/e/l/r/hydra-10-5-0-2-4-ghz-rgb-type-c-charging-brown-switch-mechanical-original-imagtyz3zbya4gf3.jpeg?q=70",
+                    score: "9.6",
+                    by: "flipkart",
+                    href: "https://fktr.in/Rfb1vi6"
+                }
+            },
+            {desc: "Portronics Hydra 10/5.0 + 2.4 GHz, RGB, Type C Charging,Mechanical Bluetooth, Wireless Gaming Keyboard"},
+            {desc: "Introducing Hydra 10 wireless keyboard, your go-to solution for tackling any task with ease. Its 2-way wireless connection via Bluetooth 5.0 or 2.4 GHz USB nano dongle ensures seamless compatibility across devices. Featuring linear red mechanical keys for precise typing and gaming, it reduces finger strain with tactile feedback. With support for up to 4 device pairings, effortlessly switch between devices with Fn + Q/W/E keys. Weighing just 586 grams and boasting a compact 68-key design, it's perfect for on-the-go productivity or gaming. Plus, its RGB-lit keys offer 20 customizable color options, adding a touch of style to your setup. Rechargeable via Type C input, Hydra 10 provides up to 5 days of backup, ensuring uninterrupted gaming excitement."},
+            {
+                points: [
+                    "Model Name: Hydra 10 Mechanical",
+                    "Type: Gaming Keyboard",
+                    "Other Features: RGB Lights 16.8 Million Colours, Type C Charging, Detachable Swift Keys, Multi-Media Shortcut Key Function",
+                    "Warranty: 1 Year"
+                ]
+            },
+            {title: "4. Dezful KB-399M Wired USB Gaming Keyboard"},
+            {
+                product: {
+                    title: "Dezful KB-399M Wired USB Gaming Keyboard",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/d/i/u/kb-399m-dezful-original-imagy2tdg7y5degc.jpeg?q=70",
+                    score: "9.2",
+                    by: "flipkart",
+                    href: "https://fktr.in/qeM0xte"
+                }
+            },
+            {
+                points: [
+                    "Multi-device compatibility: Seamlessly connects to both laptops and desktops, offering versatility for gaming.",
+                    "Customizable RGB backlight: Toggle the RGB backlight on or off using the scroll lock key, allowing you to match your preferred aesthetic.",
+                    "Full RGB backlit function: All 104 keys are illuminated, enhancing visibility and creating an immersive gaming atmosphere.",
+                    "Built-in steel plate: Provides robust protection against accidental falls, ensuring durability and longevity.",
+                    "Braided USB cable: With a length of 154.94 cm (61 inches), the braided USB cable offers long-term endurance and flexibility, perfect for extended gaming sessions."
+                ]
+            },
+            {b: "Other Details"},
+            {
+                points: [
+                    "Model Name: KB-399M",
+                    "Type: Gaming Keyboard",
+                    "Warranty: 1 Year",
+                    "Gaming Features: RGB LIGHTING"
+                ]
+            },
+            {title: "5. Aula T102 Wired USB Gaming Keyboard"},
+            {
+                product: {
+                    title: "Aula T102 Wired USB Gaming Keyboard",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/computer-acc-combo/u/r/l/t102-gaming-keyboard-and-mouse-combo-rgb-backlit-keyboard-and-original-imagqpfcegh9vx5a.jpeg?q=70",
+                    score: "9.3",
+                    by: "flipkart",
+                    href: "https://fktr.in/22dwyh9"
+                }
+            },
+            {b: "Details:"},
+            {points:[
+                "Phone holder design: Conveniently watch videos while gaming or working.",
+                "Black keycap puller: Easily remove keycaps for cleaning or customization.",
+                "2.0 mm keystroke: Fast trigger efficiency for crisp and powerful typing.",
+                "IP68 waterproof protection: Advanced aluminum panel safeguards against spills.",
+                "Elegant backlight: Immersive illumination without distraction.",
+                "Mouse features:",
+                "7200 DPI: High sensitivity for precise cursor control.",
+                "7-color flashing lights: Stylish customization to match your gaming style.",
+                "RGB breathing backlight: Enhances gaming ambiance for a better experience."
+            ]},
+            {b: "Other Details:"},
+            {
+                points: [
+                    "Model Name: T102 Gaming RGB backlit Keyboard with 7200 DPI, 6 buttons Gaming Mouse",
+                    "Model Number: T102",
+                    "Type: Gaming Keyboard",
+                    "Warranty: 1 Year from Date of Purchase"
+                ]
+            },
+            {
+                hosting: {
+                    title: "Hostinger",
+                    desc: "Servers in India — Find the perfect Hostinger domain name by using the domain checker. Go live in minutes. Get your website up and running in a few clicks. You have everything you need.",
+                    image: "https://media2.cybernews.com/hostinger.svg",
+                    points: [
+                        "Free Domain, SSL, automated backup",
+                        "Intuitive native hPanel control panel",
+                        "Litespeed Web Server+caching",
+                        "Website builder is included"
+                    ],
+                    score: "9.8",
+                    href: "https://hostinger.in?REFERRALCODE=1DEEPAK210"
+                }
+            },
+            {title: "6. Aula F2023 / Anti-ghosting"},
+            {
+                product: {
+                    title: "Aula F2023 / Anti-ghosting",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/j/8/w/f2023-aula-original-imagr4m2gjqgfgag.jpeg?q=70",
+                    score: "9.2",
+                    by: "flipkart",
+                    href: "https://fktr.in/hpVDALH"
+                }
+            },
+            {desc: "Aula F2023 / Anti-ghosting, Aluminium body with Mobile holder, Membrane Wired USB Gaming Keyboard"},
+            {desc:"Elevate your gaming and computing experience with the Aula F2023 Gaming Keyboard. Featuring highly responsive keys and durable construction, it ensures seamless typing and long-lasting performance. Choose between mixed color or monochrome lighting for added style and functionality. Enjoy gaming sessions and complete tasks with efficiency and ease."},
+            {
+                points: [
+                    "Model Name: F2023",
+                    "Designed: Laptop, Desktop, Macbook",
+                    "Warranty: 1 Year"
+                ]
+            },
+            {title: "7. Elista ELS WK-711 Wired USB Multi-device Keyboard"},
+            {
+                product: {
+                    title: "Elista ELS WK-711 Wired USB Multi-device Keyboard",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/multi-device-keyboard/h/a/e/els-wk-711-elista-original-imaghgh97zdgjmss.jpeg?q=70",
+                    score: "9.1",
+                    by : "flipkart",
+                    href: "https://fktr.in/q4wg1WQ"
+                }
+            },
+            {b: "Details:"},
+            {points:[
+                "Model Number: ELS WK-711",
+                "Type: Multi-device Keyboard",
+                "Designed For: Laptop, Desktop",
+                "USB Version: USB 2.0",
+                "Warranty: 1 year"
+            ]},
+            {title: "8. Portronics Bubble, POR1677 Bluetooth, Wireless Laptop Keyboard"},
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/laptop-keyboard/j/m/z/bubble-multimedia-2-4ghz-portronics-original-imaggcytbfzgzw9b.jpeg?q=70",
+                    title: "Portronics Bubble, POR1677 Bluetooth, Wireless Laptop Keyboard",
+                    score: '9.2',
+                    by: "flipkart",
+                    href: "https://fktr.in/hGk7oeO"
+                }
+            },
+            {b: "Details"},
+            {
+                points: [
+                    "Model Name: Bubble",
+                    "Model Number: Bubble, POR1677",
+                    "Type: Laptop Keyboard",
+                    "Warranty: 1 Year"
+                ]
+            },
+            {title: "9. EVOFOX Fireblade LED Backlit Wired USB Gaming Keyboard"},
+            {
+                product: {
+                    title: "EVOFOX Fireblade LED Backlit Wired USB Gaming Keyboard",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/f/4/t/evofox-fireblade-led-backlit-amkette-original-imagrzmxfs5ua6pz.jpeg?q=70",
+                    score: "9.5",
+                    by: "flipkart",
+                    href:"https://fktr.in/mpztD4b"
+                }
+            },
+            {desc:"The AMKETTE EvoFox Fireblade USB gaming keyboard helps you shoot down enemies, dominate opponents, and enjoy thrilling gaming sessions. Thanks to its 87 (TKL) Tenkeyless design and up to 1.5 m long braided cable with magnetic ring, it ensures efficient performance and accurate data transmission. Furthermore, this gaming keyboard comes with rainbow backlighting and a breathing effect that helps enhance visibility during your gaming sessions. It also helps uplift the ambience of your gaming setup."},
+            {b: "Details"},
+            {
+                points:[
+                    "Model Name: Fireblade",
+                    "Model Number: Fireblade LED Backlit",
+                    "Type: Gaming Keyboard",
+                    "Designed For: Gaming",
+                    "Technology: Laser Engraved Keys, Backlit Keys with Breathing Effect, USB Plug N’ Play",
+                    "USB Version: USB 2.0, USB 3.0",
+                    "Warranty: 1 year"
+                ]
+            },
+            {title: "10. EVOFOX Warhammer Floating Keycaps"},
+            {
+                product: {
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/z/t/u/evofox-warhammer-floating-keycaps-19-anti-ghosting-keys-and-original-imagnp62hpffhrta.jpeg?q=70",
+                    title: "EVOFOX Warhammer Floating Keycaps",
+                    score:"9.4",
+                    by: "flipkart",
+                    href: "https://fktr.in/NHopOnd"
+                }
+            },
+            {desc:"EVOFOX Warhammer Floating Keycaps, 19 Anti Ghosting Keys and LED Backlit Wired USB Gaming Keyboard"},
+            {b:"Details:"},
+            {
+                points: [
+                    "Model Name: WarHammer",
+                    "Model Number: Warhammer Floating Keycaps, 19 Anti Ghosting Keys and LED Backlit",
+                    "Type: Gaming Keyboard",
+                    "USB Version: USB 2.0, USB 3.0",
+                    "Designed For: Gaming",
+                    "OS (operating system) Support: Windows 10, Windows 8.1, Windows 7, Windows XP, Mac OS, Linux/Ubuntu",
+                    "Warranty: 1 year"
+                ]
+            },
+            {title: "Thank you, I hope enjoy this blog! 😘!!!"},
+            {b: "Explore:"},
+            {
+                redirect: {
+                    text: "Programmer D YouTube",
+                    href: "https://www.youtube.com/@ProgrammerD7/",
+                    target: "_blank"
+                }
+            },
+            {
+                redirect: {
+                    text: "Programmer D Instagram",
+                    href: "https://www.instagram.com/deepakdhiman4367/",
+                    target: "_blank"
+                }
+            },
+            {b: "Buy Awesome Products This Link:"},
+            {
+                redirect: {
+                    text: "Products",
+                    href: "/products/"
+                }
+            },
+            {
+                redirect: {
+                    text: "Keyboards",
+                    href: "/products/keyboard"
                 }
             },
             {b: "Explore All Blogs:"},

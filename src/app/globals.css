@@ -10,11 +10,11 @@
 }
 
 .original-link {
-  @apply block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-[6px] hover:decoration-blue-600 hover:decoration-2;
+  @apply block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:hover:text-slate-50 hover:underline hover:underline-offset-[6px] hover:decoration-blue-600 hover:decoration-2;
 }
 
 .change-link {
-  @apply block py-2 px-3 text-slate-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:text-slate-700 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-slate-700 md:dark:hover:bg-transparent hover:underline hover:underline-offset-[6px] hover:decoration-blue-600 hover:decoration-2;
+  @apply block py-2 px-3 text-slate-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-500 md:p-0 dark:hover:text-slate-50 hover:underline hover:underline-offset-[6px] hover:decoration-blue-600 hover:decoration-2;
 }
 
 @tailwind utilities;

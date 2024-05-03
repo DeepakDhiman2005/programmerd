@@ -1,6 +1,5 @@
 "use client"
 import React, {useEffect, useState} from "react";
-import axios from "axios";
 
 // next
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -10,7 +9,9 @@ import TutorialContent from "@/components/TutorialsComp/TutorialContent";
 import TutorialSidebar from "@/components/TutorialsComp/TutorialSidebar";
 import TopLoader from "../TopLoader";
 
-const TutorialDisplay = ({title=""}) => {
+import { getTutorialData } from "@/fetchapi/getTutorialData";
+
+const TutorialDisplay = ({title="", query}) => {
     // useState
     const [ToConnection, setToConnection] = useState("");
     const [SideData, setSideData] = useState([]);
@@ -28,18 +29,21 @@ const TutorialDisplay = ({title=""}) => {
     const pathname = usePathname();
     const router = useRouter();
     const searchparams = useSearchParams();
-    let query = searchparams.get("query");
+    // let query = searchparams.get("query");
 
     const getTutorial = async () => {
         try{
             setIsLoading(35);
-            const resp = await axios.post("/api/tutorials/", title, { cache: "no-store" });
-            // console.log(resp.data);
-            setSideData(resp.data);
+
+            const tutorial = await getTutorialData();
+            const data = tutorial.filter((tutor)=>tutor.path === title ? tutor.data: null);
+            const resp = data[0].data;
+            setSideData(resp);
             setIsLoading(85);
-            if(resp.data !== null){
+
+            if(resp !== null){
                 setThrowMessage("");
-                resp.data.filter((tutorial, i)=>{
+                resp.filter((tutorial, i)=>{
                     let page = tutorial.page;
                     page.filter((data, j)=>{
                         let title = data.title.toLowerCase();
@@ -51,7 +55,7 @@ const TutorialDisplay = ({title=""}) => {
                             setSidePage(data);
                         }
                     })
-                    if(i === resp.data.length-1){
+                    if(i === resp.length-1){
                         try{
                             setEndPageTitle(page[page.length-1].title);
                         }catch(er){}
@@ -90,6 +94,7 @@ const TutorialDisplay = ({title=""}) => {
                 })
             })
         }
+
         else if(e === "previous"){
             // console.log("previous");
             let store = null;
@@ -123,7 +128,7 @@ const TutorialDisplay = ({title=""}) => {
             window.document.body.style.overflowY = "auto";
         }
         try{
-            window.document.title = query + " - in tutorial";
+            // window.document.title = query + " - in tutorial";
             if(query.toLowerCase() === EndPageTitle.toLowerCase()){
                 setPageEnd(true);
             }else {

@@ -1833,5 +1833,176 @@ export const db_js = [
                 ]
             }
         ]
+    },
+    // seventh
+    {
+        title: "JavaScript Advance",
+        page: [
+            {
+                title: "Javascript JSON",
+                content: [
+                    {
+                        desc:"JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It's often used to exchange data between a server and a web application, as it's language-independent and can be easily understood by most programming languages."
+                    },
+                    {desc:"In JavaScript, you can work with JSON data using built-in functions. Here's a basic example of creating and parsing JSON data in JavaScript:"},
+                    {code: {
+                        type:"normal",
+                        code: [
+                        `<span class="text-green-400">// Creating a JSON object</span>`,
+    `<span class="text-blue-400">var</span> person = {`,
+        `<span class="text-green-300">"name"</span>: <span class="text-green-300">"Programmer D",</span>`,
+        `<span class="text-green-300">"age"</span>: 20,`,
+        `<span class="text-green-300">"city"</span>: <span class="text-green-300">"India"</span>`,
+    `};`,
+    `<span class="text-green-400">// Converting JavaScript object to JSON string</span>`,
+    `<span class="text-blue-400">var</span> jsonStr = JSON.<span class="text-yellow-400">stringify</span>(person);`,
+    `console.<span class="text-yellow-400">log</span>(jsonStr); <span class="text-green-400">// Output: {"name":"Programmer D","age":20,"city":"India"}</span>`,
+    `<span class="text-green-400">// Parsing JSON string to JavaScript object</span>`,
+    `<span class="text-blue-400">var</span> jsonObj = JSON.<span class="text-yellow-400">parse</span>(jsonStr);`,
+    `console.<span class="text-yellow-400">log</span>(jsonObj.name); <span class="text-green-400">// Output: Programmer D </span>`,
+                        ]
+                    }},
+                    {b: "Output:"},
+                    {code: {
+                        type:"normal",
+                        code: [
+                            `<span class="text-red-500">stringify</span>: {"name":"Programmer D","age":20,"city":"India"}`,
+                            `<span class="text-red-500">parse</span>: Programmer D`
+                        ]
+                    }},
+                    {desc:"In this example, we have an object person with properties name, age, and city. We convert this object to a JSON string using JSON.stringify(), and then parse that JSON string back into a JavaScript object using JSON.parse(). JSON strings always use double quotes for property names and string values, and property names must be strings."},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `let person = {person: "Programmer D"}`
+                        ]
+                    }},
+                    {b: "In stringify:"},
+                    {code: [
+                        `var jsonStr = JSON.stringify(person);`,
+                        `console.log(typeof jsonStr); //# string`
+                    ]},
+                    {code: [`Output: string`]},
+                    {b: "In parse:"},
+                    {code: [
+                        `var jsonObj = JSON.parse(jsonStr);`,
+                        `console.log(typeof jsonObj); //# Object`
+                    ]},
+                    {code: [`Output: Object`]},
+                ]
+            },
+            {
+                title: "Debugging",
+                content: [
+                    {
+                        desc:"In JavaScript, debugging follows similar principles, but there are specific techniques and tools tailored for the language. Here's how you can debug JavaScript code effectively:"
+                    },
+                    {
+                        points: [
+                            `Browser Developer Tools: Modern web browsers like Chrome, Firefox, and Safari come with built-in developer tools that include powerful debugging features. You can use the debugger statement or place breakpoints directly in your code to pause execution and inspect variables, call stack, and more.`,
+                            `Console.log() Statements: One of the simplest and most effective ways to debug JavaScript is by using console.log() statements. Insert them at various points in your code to output the values of variables or to track the flow of execution.`,
+                            `Error Messages: JavaScript throws error messages when something goes wrong. Pay close attention to these messages as they often provide valuable information about the nature of the problem and where it occurred.`,
+                            `Use debugger Statement: Similar to other programming languages, JavaScript also has a debugger statement. Placing debugger in your code will cause the browser to pause execution at that point, allowing you to inspect variables and step through code in the browser's developer tools.`,
+                            `Try/Catch Blocks: Use try/catch blocks to catch and handle exceptions gracefully. This can help you identify specific areas of code that are causing errors and implement appropriate error-handling mechanisms.`,
+                            `Browser Extensions: There are browser extensions like "Redux DevTools" for React applications or "Vue.js devtools" for Vue.js applications that provide additional debugging capabilities tailored for specific frameworks or libraries.`,
+                            `Linters: Utilize JavaScript linting tools like ESLint or JSHint to catch potential errors and enforce coding conventions. Fixing these issues proactively can help prevent bugs before they occur.`,
+                            `Code Review: Sometimes a fresh pair of eyes can spot issues that you might have missed. Consider conducting code reviews with peers or using code review tools to identify and address potential problems in your codebase.`,
+                            `Remote Debugging: In cases where issues only occur in specific environments (e.g., mobile devices), you can use remote debugging tools provided by browsers to connect to and debug code running on those devices.`
+                        ]
+                    },
+                    {desc:"By combining these techniques and tools, you can effectively debug JavaScript code and resolve issues efficiently."},
+                    {desc:"Sure! Here's a simple example of JavaScript code with a deliberate bug that we can debug:"},
+                    {code: {
+                        type: "normal",
+                        code: [
+                            `<span class="text-gray-500">// Function to calculate the factorial of a number</span>`,
+`<span class="text-blue-400">function</span> <span class="text-yellow-400">factorial</span>(n) {`,
+    `<span class="text-blue-400">if</span> (n === 0 || n === 1) {`,
+        `return 1;`,
+    `} <span class="text-blue-400">else</span> {`,
+        `return n * <span class="text-yellow-400">factorial</span>(n - 1);`,
+    `}`,
+`}`,
+`<span class="text-gray-500">// Test the factorial function</span>`,
+`console.<span class="text-yellow-400">log</span>(<span class="text-yellow-400">factorial</span>(5)); <span class="text-gray-500">// Should return 120</span>`,
+`console.<span class="text-yellow-400">log</span>(<span class="text-yellow-400">factorial</span>(0)); <span class="text-gray-500">// Should return 1</span>`,
+`console.<span class="text-yellow-400">log</span>(<span class="text-yellow-400">factorial</span>(1)); <span class="text-gray-500">// Should return 1</span>`,
+`console.<span class="text-yellow-400">log</span>(<span class="text-yellow-400">factorial</span>(10)); <span class="text-gray-500">// Should return 3628800</span>`,
+                        ]
+                    }},
+                    {desc:"This code defines a factorial function that calculates the factorial of a given number. However, there's a bug in the code that prevents it from working correctly. Let's debug it together!"}
+                ]
+            },
+            {
+                title: "Regular Expressions",
+                content: [
+                    {desc:"Regular expressions (regex) are patterns used to match character combinations in strings. They're incredibly powerful tools for searching, parsing, and manipulating text. Here's an overview:"},
+                    {title: "1. Basic Syntax:"},
+                    {
+                        points: [
+                            `Regular expressions are typically written between forward slashes (/) in JavaScript. For example: /pattern/.`,
+                            `Characters in the pattern match themselves. For example, /hello/ matches the string "hello".`
+                        ]
+                    },
+                    {title: "2. Metacharacters:"},
+                    {desc:"Metacharacters are characters with a special meaning in regular expressions. Some common metacharacters include:"},
+                    {
+                        points: [
+                            "`.` (period): Matches any single character except newline.",
+"`^` (caret): Matches the beginning of a string.",
+"`$` (dollar sign): Matches the end of a string.",
+"*, +, ?, {}, [], (), etc., each with specific meanings.",
+                        ]
+                    },
+                    {title: "3. Character Classes:"},
+                    {desc: "Character classes allow you to match a specific set of characters. For example:"},
+                    {
+                        points: [
+                            "[aeiou] matches any vowel.",
+                            "[0-9] matches any digit.",
+                            "[^0-9] matches any character that is not a digit."
+                        ]
+                    },
+                    {title :"4. Quantifiers:"},
+                    {desc: "Quantifiers specify how many times a character or group can occur. For example:"},
+                    {
+                        points: [
+                            "`*`: Matches zero or more occurrences.",
+"`+`: Matches one or more occurrences.",
+"`?`: Matches zero or one occurrence.",
+"`{}`: Matches a specific number of occurrences."
+                        ]
+                    },
+                    {title:"5. Anchors:"},
+                    {desc: "Anchors are used to specify the position of a match within a string. For example:"},
+                    {
+                        points: [
+                            "`^` (caret): Matches the beginning of a string.",
+                            "`$` (dollar sign): Matches the end of a string."
+                        ]
+                    },
+                    {title: "6. Modifiers:"},
+                    {desc:"Modifiers are optional flags that alter how a pattern is matched. For example:"},
+                    {
+                        points: [
+                            "`i`: Case-insensitive matching.",
+"`g`: Global matching (matches all occurrences, not just the first).",
+"`m`: Multiline matching (treats beginning and end characters (^ and $) as working across multiple lines)."
+                        ]
+                    },
+                    {title: "7. Grouping and Capturing:"},
+                    {desc: "Parentheses `()` are used to group parts of the pattern together. They also capture the matched text for later use."},
+                    {title: "8. Common Use Cases:"},
+                    {
+                        points: [
+                            `Validating email addresses, phone numbers, or URLs.`,
+`Extracting data from structured text.`,
+`Replacing or manipulating text.`,
+                        ]
+                    },
+                    {desc:"Regular expressions can be complex, but they become more manageable with practice. Online regex testers and cheat sheets can also be valuable resources for learning and experimenting with regular expressions."}
+                ]
+            }
+        ]
     }
 ]

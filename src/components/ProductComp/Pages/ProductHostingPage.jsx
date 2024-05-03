@@ -24,7 +24,7 @@ const ProductHostingPage = () => {
                 "Website builder is included"
             ],
             score: "9.8",
-            href: "https://bitli.in/xUCVuaL"
+            href: "https://hostinger.in?REFERRALCODE=1DEEPAK210"
         },
         {
             title: "2. Bluehost",

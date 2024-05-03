@@ -15,17 +15,20 @@ export async function GET(response){
         {
             title: "HTML Tutorial",
             image: "/image/program/html.webp",
-            path: "html"
+            path: "html",
+            data: db_html
         },
         {
             title: "CSS Tutorial",
             image: "/image/program/css.webp",
-            path: "css"
+            path: "css",
+            data: db_css
         },
         {
             title: "JavaScript Tutorial",
             image: "/image/program/js.webp",
-            path: "js"
+            path: "js",
+            data: db_js
         }
     ]
     return NextResponse.json(cards);

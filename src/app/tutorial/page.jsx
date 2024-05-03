@@ -1,11 +1,11 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 // components
 import LanguageCard from "@/components/Cards/LanguageCard";
 import TopLoader from "@/components/TopLoader";
 import Loader from "@/components/Loader";
+import { getTutorialData } from "@/fetchapi/getTutorialData";
 
 const Tutorial = () => {
     // useState
@@ -14,9 +14,9 @@ const Tutorial = () => {
 
     const getLanguageCards = async () => {
         setIsLoading(45);
-        const resp = await axios.get("/api/tutorials/", { cache: "no-store" });
+        const resp = await getTutorialData();
         setIsLoading(95);
-        setDisplay(resp.data);
+        setDisplay(resp);
         setIsLoading(100);
 
         let delay = setInterval(() => {

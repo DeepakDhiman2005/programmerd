@@ -62,11 +62,7 @@ const Blogs = () => {
 
     useEffect(()=>{
         // console.log("fetch to api...");
-        blogapi();
-        if(window.matchMedia){
-            let isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            console.log(isDark)
-        }
+        blogapi();   
     }, []);
 
     return <>  
