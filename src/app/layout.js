@@ -15,6 +15,7 @@ import Ads from '@/components/Ads'
 // vercel
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import MoneVignetteAds from '@/components/MoneVignetteAds'
 
 // next
 // import Script from "next/script";
@@ -33,6 +34,7 @@ export default function RootLayout({children}) {
         <link rel="icon" href="/logo.svg" type='image/svg' sizes='any' />
         <meta name="google-adsense-account" content="ca-pub-2256609026395082" />
         <meta name="monetag" content="3b97426fb901b6dba3a6bce34a96719d" />
+        <MoneVignetteAds />
         <Ads />
       </head>
       <body className={inter.className}>
