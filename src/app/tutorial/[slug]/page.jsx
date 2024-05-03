@@ -4,11 +4,12 @@ import TutorialDisplay from "@/components/TutorialsComp/TutorialDisplay";
 import { getTutorialData } from "@/fetchapi/getTutorialData";
 
 export async function generateStaticParams (){
-    const resp = await getTutorialData();
-    return resp.map((tutorial)=>{
-        slug: tutorial.path
-    })
+    // const resp = await getTutorialData();
+    // return resp.map((tutorial)=>{
+    //     slug: tutorial.path
+    // })
     // return [{slug: "python"}, {slug: "c"}, {slug: "cpp"}, {slug: "js"}, {slug: "html"}, {slug: "css"}, {slug: "reactjs"}]
+    return [{slug: "html"}, {slug: "css"}, {slug: "js"}]
 }
 
 export async function generateMetadata({params, searchParams}) {
