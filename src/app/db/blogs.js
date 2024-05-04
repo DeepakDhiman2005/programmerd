@@ -7,6 +7,7 @@ export const db_blogs = [
         title: "Best Hosting in 2024?",
         date: "26-04-2024",
         desc: "If you are searching for hosting for your website or business in 2024, then you can take Hostinger hosting.",
+        image: "https://media2.cybernews.com/hostinger.svg",
         content: [
             {desc: "If you are searching for hosting for your website or business in 2024, then you can take Hostinger hosting."},
             {
@@ -573,6 +574,7 @@ export const db_blogs = [
         title: "Top 10 Awesome keyboards in 2024?",
         desc: "This keyboards is awesome. Type of keyboards is Gaming, Coding, Person Use, etc. Its sleek design, responsive keys, and comfortable typing experience make it a joy to use for any task. Whether you're typing up a document, chatting with friends, or gaming, this keyboard delivers top-notch performance. Plus, its customizable features allow you to personalize your typing experience to suit your preferences perfectly. Overall, it's hard to find fault with such an impressive piece of technology.",
         date: "03-05-2024",
+        image: "https://programmerd.in/_next/image/?url=https%3A%2F%2Frukminim2.flixcart.com%2Fimage%2F612%2F612%2Fxif0q%2Fkeyboard%2Fgaming-keyboard%2Fe%2Fl%2Fr%2Fhydra-10-5-0-2-4-ghz-rgb-type-c-charging-brown-switch-mechanical-original-imagtyz3zbya4gf3.jpeg%3Fq%3D70&w=256&q=75",
         content: [
             {desc:"If you are looking for awesome and cool keyboards in 2024 then this blog will be helpful for you."},
             {desc:"This keyboards is awesome. Type of keyboards is Gaming, Coding, Person Use, etc. Its sleek design, responsive keys, and comfortable typing experience make it a joy to use for any task. Whether you're typing up a document, chatting with friends, or gaming, this keyboard delivers top-notch performance. Plus, its customizable features allow you to personalize your typing experience to suit your preferences perfectly. Overall, it's hard to find fault with such an impressive piece of technology."},

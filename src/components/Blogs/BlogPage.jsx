@@ -15,6 +15,7 @@ import CommentContainer from "@/components/CommentContainer";
 import TopLoader from "@/components/TopLoader";
 import Dropdown from "@/components/Dropdown";
 import AdBanner from "@/components/AdBanner";
+import MoneDirectLinkAds from "../Ads/MoneDirectLinkAds";
 
 const BlogPage = ({query}) => {
     // useState
@@ -123,6 +124,7 @@ const BlogPage = ({query}) => {
                 </div>
                 {/* main content */}
                 <div className="mt-10 mb-10 text-lg w-full text-start flex flex-col justify-start items-center font-semibold tracking-tight text-gray-700 dark:text-gray-700">
+                    <MoneDirectLinkAds />
                     {
                         ArticleData ?  <Article data={ArticleData} />: <p>Loading...</p>
                     }

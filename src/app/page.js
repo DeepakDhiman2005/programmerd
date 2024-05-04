@@ -16,6 +16,7 @@ import LanguageCard from "@/components/Cards/LanguageCard";
 
 // Animations
 import AdBanner from "@/components/AdBanner";
+import MoneDirectLinkAds from "@/components/Ads/MoneDirectLinkAds";
 
 export default function Home(props) {
   // useRef
@@ -155,6 +156,8 @@ export default function Home(props) {
           <AdBanner />
         </div>
       </div>
+
+      <MoneDirectLinkAds />
 
       <div className="mt-20 mb-20 flex justify-center items-center border border-solid border-grey-500 bg-black">
         {/* text */}
