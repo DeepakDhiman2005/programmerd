@@ -10,6 +10,7 @@ const MoneDirectLinkAds = () => {
     const [Img, setImg] = useState("/image/ads/Explore.png");
     const [DirectLink, setDirectLink] = useState("//zuhempih.com/4/7432886");
 
+    // function
     const DisplayEvent = () => {
         if(DisplayShow !== "none"){
             setDisplayShow("none");
