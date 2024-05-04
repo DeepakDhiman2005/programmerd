@@ -23,7 +23,6 @@ export async function generateMetadata(props){
 }
 
 const SearchBlogPost = (props) => {
-    // console.log(props);
     let query = props.searchParams.blogpost;
     // console.log(query);
     return <>
