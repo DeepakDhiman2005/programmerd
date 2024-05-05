@@ -60,7 +60,7 @@ const TypingPage = () => {
             <div className="flex justify-center items-center">
                 <input ref={timer} placeholder="0:00" defaultValue={"1:00"} type="text" className="outline-none bg-transparent w-12" />
                 <FaUndo title="retry" size={"13px"} className="ml-2 cursor-pointer" onClick={()=>{
-                    console.log("reset")
+                    // console.log("reset")
                     let value = collection[Math.floor(Math.random()*2)];
                     setResetValue(ResetValue + 1);
                     setTextValue(value);
