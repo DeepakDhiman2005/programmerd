@@ -38,7 +38,7 @@ export default function RootLayout({children}) {
         <meta name="google-adsense-account" content="ca-pub-2256609026395082" />
         <meta name="monetag" content="3b97426fb901b6dba3a6bce34a96719d" />
         <MoneVignetteAds />
-        {/* <MoneBannerAds /> */}
+        <MoneBannerAds />
         <Ads />
       </head>
       <body className={inter.className}>
