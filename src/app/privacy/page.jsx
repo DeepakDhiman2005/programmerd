@@ -48,6 +48,9 @@ const Privacy = () => {
                 <h2 className="text-slate-800 mt-2 mb-2 font-semibold">8. Contact Us</h2>
                 <p>If you have any questions about this Privacy Policy, please contact us at instagram (<a href="https://www.instagram.com/deepakdhiman4367/" target="_blank" className="text-purple-700 hover:text-blue-700 no-underline">instagram.com</a>).</p>
 
+                <h2 className="text-slate-800 mt-2 mb-2 font-semibold">9. Advertisements</h2>
+                <p>In compliance with Google AdSense policies, we utilize third-party advertising companies to display ads on our website. These companies may employ cookies to collect information about your visits to this and other websites to provide advertisements about products and services tailored to your interests. If you wish to learn more about this practice or opt out of personalized advertising, you can do so by visiting the Ads Settings page or the www.aboutads.info website. It's important to note that if you haven't opted out of third-party ad serving, cookies from other vendors or ad networks may also be used for ad placement. We are committed to transparency, and you have the option to review and manage your ad preferences for a more customized browsing experience.</p>
+
                 <div className="flex justify-start mt-7 items-center">
                     <Button color="green" onClick={() => {
                         router.push("/");
@@ -56,7 +59,6 @@ const Privacy = () => {
                         <Button color="red">Youtube</Button>
                     </a>
                 </div>
-
             </div>
         </div>
     </>
