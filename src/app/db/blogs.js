@@ -864,5 +864,121 @@ export const db_blogs = [
         ],
         comment: []
     }
+   },
+   {
+    method: "add",
+    date: "06-05-2024",
+    type: "blog",
+    data: {
+        title: "⨯ useSearchParams() should be wrapped in a suspense boundary at page \"/\".",
+        desc: `⨯ useSearchParams() should be wrapped in a suspense boundary at page "/".
+        ⨯ useSearchParams() should be wrapped in a suspense boundary at page "/search".
+       Error occurred prerendering page "/search".
+       > Export encountered errors on following paths:
+               /page: /
+               /search/page: /search`,
+        image: "/uploads/image/n1714986625917-28-next-error.png",
+        date: "06-05-2024",
+        content: [
+            {
+                desc: `⨯ useSearchParams() should be wrapped in a suspense boundary at page "/".
+        ⨯ useSearchParams() should be wrapped in a suspense boundary at page "/search".
+       Error occurred prerendering page "/search".`
+            },
+            {b: "> Export encountered errors on following paths:"},
+            {points: [
+               `/page: /`,
+               `/search/page: /search`,
+            ]},
+            {
+                image: {
+                    image: "/uploads/image/n1714986625917-28-next-error.png",
+                    width: 1000, height: 300
+                }
+            },
+            {title: "If you show this problem."},
+            {b: "Youtube Video Link:"},
+            {redirect: {
+                text: "Error Video on Youtube",
+                href: "https://youtube.com/shorts/wxcx-QzSwDM",
+                target: "_blank"
+            }},
+            {b: "Then follow this blog:"},
+            {title: "Step 1: Open your Nextjs Folder"},
+            {code: {
+                type: "normal",
+                code: [`<span class="text-purple-500">import</span> { Suspense } <span class="text-purple-500">from</span> <span class="text-green-400">'react'</span>`]
+            }},
+            {points: [
+                "Add this code in `layout.js` page"
+            ]},
+            {
+                image: {
+                    image: "/uploads/image/n1714986630677-98336-next-suspense.png",
+                    width: 700, height: 200
+                }
+            },
+            {title: "Step 2: Open your `next.config.js` page:"},
+            {desc: "Add this code"},
+            {code:{
+                type: "normal",
+                code: [`<span class="text-blue-300">output:</span> \"export\"`]
+            }},
+            {code: {
+                type: "normal",
+                code: [
+                    `/** <span class="text-blue-400">@type</span> {<span class="text-green-500">import('next').NextConfig</span>} */`,
+                    `<span class="text-blue-500">const</span> <span class="text-blue-400">nextConfig</span> = {`,
+                        `<span class="text-blue-300">output:</span> "export"`,
+                    `}`,
+                    `<span class="text-blue-400">module.exports</span> = <span class="text-blue-400">nextConfig</span>`,
+                ]
+            }},
+            {title: "Step 3: Open Terminal"},
+            {b: "Write this Code"},
+            {code: ["npm run build"]},
+            {title: "Your Problem is Solve!"},
+            {title: "Thank you, I hope enjoy this blog!"},
+            {b: "Explore:"},
+            {
+                redirect: {
+                    text: "Programmer D YouTube",
+                    href: "https://www.youtube.com/@ProgrammerD7/",
+                    target: "_blank"
+                }
+            },
+            {
+                redirect: {
+                    text: "Programmer D Instagram",
+                    href: "https://www.instagram.com/deepakdhiman4367/",
+                    target: "_blank"
+                }
+            },
+            {b: "Buy Awesome Products This Link:"},
+            {
+                product: {
+                    title : "Portronics Hydra 10/5.0 + 2.4 GHz, RGB",
+                    image: "https://rukminim2.flixcart.com/image/612/612/xif0q/keyboard/gaming-keyboard/e/l/r/hydra-10-5-0-2-4-ghz-rgb-type-c-charging-brown-switch-mechanical-original-imagtyz3zbya4gf3.jpeg?q=70",
+                    score: "9.6",
+                    by: "flipkart",
+                    href: "https://fktr.in/Rfb1vi6"
+                }
+            },
+            {
+                redirect: {
+                    text: "Products",
+                    href: "/products/"
+                }
+            },
+            {b: "Explore All Blogs:"},
+            {
+                redirect: {
+                    text: "Blogs",
+                    href: "/blogs/"
+                }
+            }
+        ],
+        comment: []
+    }
    }
 ];
