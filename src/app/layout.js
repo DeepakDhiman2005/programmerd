@@ -19,6 +19,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 // Ads
 import MoneVignetteAds from '@/components/MoneVignetteAds'
 import MoneBannerAds from '@/components/Ads/MoneBannerAds'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 // next
 // import Script from "next/script";
@@ -50,6 +51,7 @@ export default function RootLayout({children}) {
             {children}
           </Suspense>
           <Footer />
+          <GoogleAnalytics />
           <Analytics />
           <SpeedInsights />
         </Providers>
