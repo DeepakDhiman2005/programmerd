@@ -28,7 +28,15 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Learn Coding online - ProgrammerD',
-  description: 'Learn Coding online in programmerD.'
+  description: `Welcome to ProgrammerD! 🚀 Dive into the world where coding meets creativity! Join us for in-depth tutorials on Python, JavaScript, Java & more. Explore software development methodologies, best practices & industry insights. Unleash your creativity with coding for visual effects, interactive apps & digital art. Subscribe & join our vibrant community of enthusiasts! 💻✨ Let's embark on a journey of discovery & innovation together!`,
+  keywords: ['Next.js', 'React.js', 'JavaScript', 'Full Stack Website Developer', 'How to Learn Programming Language.', 'Web Development Full Course.', 'App Development', 'Node.js', 'Frontend', 'Backend', 'Learn Web Development in 2024.', 'Coding', 'Tailwindcss', 'A.I', 'HTML & CSS', 'Programmer D', 'MERN Stack', 'Technology', 'Programming'],
+  authors: [
+    { name: 'Deepak Dhiman', url: 'https://www.instagram.com/deepakdhiman4367/' },
+    {url: 'https://github.com/DeepakDhiman2005'},
+    { url: 'https://www.youtube.com/c/ProgrammerD7'},
+    { url: "https://www.freelancer.com/u/dhimandeepak957" },
+    { url: "https://www.fiverr.com/deepakdhiman877?up_rollout=true" }
+  ]
 }
 
 export default function RootLayout({children}) {

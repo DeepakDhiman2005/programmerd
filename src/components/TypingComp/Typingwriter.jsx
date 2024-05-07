@@ -108,7 +108,13 @@ const Typingwriter = ({ reset=0, children, value }) => {
                 for (let i = 0; i < children.length; i++) {
                     array.push(children[i]);
                 }
-                setTextArray([...array]);
+                // console.log(array)
+                if(array.length > 700){
+                    array = array.slice(0, 700);
+                    setTextArray([...array]);
+                }else {
+                    setTextArray([...array]);
+                }
                 for(let i=0; i < array.length; i++){
                     let tagName = TypeWriter.current.getElementsByTagName("div")[i];
                     if(i === 0){
@@ -121,7 +127,6 @@ const Typingwriter = ({ reset=0, children, value }) => {
                         }
                     }
                 }
-                // console.log(array)
             }
             TagPost.current = 0;
         } catch (err) {
@@ -131,6 +136,7 @@ const Typingwriter = ({ reset=0, children, value }) => {
 
     return <>
         <div ref={TypeWriter} className='w-full bg-white p-3 border border-white border-solid rounded-md flex justify-start items-center flex-wrap cursor-pointer' onClick={SelectBox}>
+        <input type="text" id='typewriter' className='w-0 h-0 outline-none' placeholder='type writer...' onKeyDown={KeyEvent} />
             {
                 TextArray.map((text, i) => {
                     if (i === 0) {
@@ -144,7 +150,6 @@ const Typingwriter = ({ reset=0, children, value }) => {
                     }
                 })
             }
-            <input type="text" id='typewriter' className='w-0 h-0 outline-none' placeholder='type writer...' onKeyDown={KeyEvent} />
         </div>
     </>
 }
