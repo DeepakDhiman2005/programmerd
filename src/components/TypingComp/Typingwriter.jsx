@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useRef, useState } from 'react';
 
-const Typingwriter = ({ reset=0, children, value }) => {
+const Typingwriter = ({ reset=0, Sound=true, children, value, onChange }) => {
     // variable
     const RightType = "text-2xl m-0.5 border-b-2 border-solid border-transparent transition-all bg-green-100 text-green-400 rounded-sm";
     const WrongType = "text-2xl m-0.5 border-b-2 border-solid border-transparent transition-all bg-red-100 text-red-400 rounded-sm";
@@ -13,6 +13,7 @@ const Typingwriter = ({ reset=0, children, value }) => {
 
     // useState
     const [TextArray, setTextArray] = useState([]);
+    const [Count, setCount] = useState(0);
 
     const KeyEvent = (e) => {
         // console.log(e);
@@ -29,6 +30,8 @@ const Typingwriter = ({ reset=0, children, value }) => {
                     tagName.className = "text-transparent" + " " + RightType;
                     tagName.innerHTML = "S";
                     sound.src = "/sound/right.mp3";
+                    onChange(Count+1);
+                    setCount(Count+1);
                 } else {
                     if(tagName.ariaValueText === "space"){
                         tagName.innerHTML = "S";
@@ -48,7 +51,9 @@ const Typingwriter = ({ reset=0, children, value }) => {
                     }
                     sound.src = "/sound/wrong.mp3";
                 }
-                sound.play();
+                if(Sound){
+                    sound.play();
+                }
 
                 try {
                     let afterName = TypeWriter.current.getElementsByTagName("div")[TagPost.current + 1];
@@ -72,12 +77,16 @@ const Typingwriter = ({ reset=0, children, value }) => {
                 }
 
                 sound.src = "/sound/right.mp3";
-                sound.play();
+                if(Sound){
+                    sound.play();
+                }
                 try {
                     let beforeName = TypeWriter.current.getElementsByTagName("div")[TagPost.current - 1];
                     if(beforeName.ariaValueText === "space"){
                         beforeName.className = "text-transparent " +SelectType;
                         beforeName.innerHTML = "S";
+                        onChange(Count-1);
+                        setCount(Count-1);
                     }else{
                         beforeName.className = SelectType;
                     }
@@ -102,6 +111,7 @@ const Typingwriter = ({ reset=0, children, value }) => {
     useEffect(() => {
         try {
             // console.log(children.split(" "));
+            setCount(0);
             setTextArray([])
             if (typeof children === "string") {
                 let array = [];
