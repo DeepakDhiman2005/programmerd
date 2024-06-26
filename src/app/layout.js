@@ -49,7 +49,7 @@ export default function RootLayout({children}) {
         <GoogleAnalytics />
         // <MoneVignetteAds />
         // <MoneBannerAds />
-        <Ads />
+        // <Ads />
       </head>
       <body className={inter.className}>
         <Providers>
