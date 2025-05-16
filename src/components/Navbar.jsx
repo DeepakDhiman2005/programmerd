@@ -123,7 +123,7 @@ const Navbar = () => {
                             <Link href={"/blogs"} className={ClassList}>Blogs</Link>
                         </li>
                         <li>
-                            <Link href="/contact" className={ClassList}>Contact</Link>
+                            <Link href="/contact-us" className={ClassList}>Contact Us</Link>
                         </li>
                         <li className="hidden justify-start items-center md:flex">
                             <IoIosSearch size={"22px"} className={ClassList} style={{cursor: "pointer"}} onClick={OnSearch} />
